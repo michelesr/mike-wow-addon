@@ -145,11 +145,28 @@ function mnetstats()
   mprint(string.format("Incoming bandwidth: %.4f kB/s\nOutgoing bandwith: %.4f kB/s\nLatency: %d ms", a, b,c));
 end
 
+-- print mem usage
+function mmemusage()
+  local m = gcinfo();
+  local t = {"kB", "MB", "GB"};
+  local i = math.floor(math.log10(m) / 3);
+  mprint(string.format("Memory usage: %.2f %s", m/math.pow(10, i*3), t[i+1]));
+end
+
+-- print fps
+function mframerate()
+  mprint(string.format("FPS: %.4f", GetFramerate()));
+end
+
 -- slash command menu
 function SlashCmdList.MIKE(msg, editbox)
   local m = msplit(msg);
   if m[1] == "net" then
     mnetstats();
+  elseif m[1] == "mem" then
+    mmemusage();
+  elseif m[1] == "fps" then
+    mframerate();
   elseif m[1] == "reset" then
     mprint("Your instances has been reset");
     ResetInstances();
@@ -170,6 +187,8 @@ function SlashCmdList.MIKE(msg, editbox)
     mprint("Mike's Addon");
     mprint("Usage: /mike <arg> OR /mi <arg>");
     mprint("/mike net: print netstats");
+    mprint("/mike fps: print framerate");
+    mprint("/mike mem: print addon memory usage");
     mprint("/mike reset: reset instances!");
     mprint("/mike fortitude: buff stamina on your friends!");
     mprint("/mike heal <percent> <spellname>: cast heal on next player with hp% < percent");
