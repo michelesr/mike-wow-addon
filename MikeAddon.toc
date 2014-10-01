@@ -1,5 +1,5 @@
 ## Interface: 11200
 ## Title: Mike's Addon
-## Notes: nothing to say.
+## Notes: Simple collection of scripts (License GPLv3).
 ## Version: 1.0
 Mike.lua
