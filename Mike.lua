@@ -139,10 +139,18 @@ function mmassheal(spellname, perc)
   end
 end
 
+-- print netstats 
+function mnetstats()
+  local a,b,c = GetNetStats();
+  mprint(string.format("Incoming bandwidth: %.4f kB/s\nOutgoing bandwith: %.4f kB/s\nLatency: %d ms", a, b,c));
+end
+
 -- slash command menu
 function SlashCmdList.MIKE(msg, editbox)
   local m = msplit(msg);
-  if m[1] == "reset" then
+  if m[1] == "net" then
+    mnetstats();
+  elseif m[1] == "reset" then
     mprint("Your instances has been reset");
     ResetInstances();
   elseif m[1] == "print" then
@@ -161,6 +169,7 @@ function SlashCmdList.MIKE(msg, editbox)
   else 
     mprint("Mike's Addon");
     mprint("Usage: /mike <arg> OR /mi <arg>");
+    mprint("/mike net: print netstats");
     mprint("/mike reset: reset instances!");
     mprint("/mike fortitude: buff stamina on your friends!");
     mprint("/mike heal <percent> <spellname>: cast heal on next player with hp% < percent");
