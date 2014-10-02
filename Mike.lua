@@ -32,6 +32,37 @@ local function mPrintElapsedTime()
   mPrint(string.format("Elapsed time --  %.2d:%.2d:%.2d", h, m, s)); 
 end
 
+-- print player's position (x,y)
+local function mPrintPosition()
+  local x,y = GetPlayerMapPosition("player");
+  local z = GetZoneText();
+  mPrint(string.format("%s: %.2f, %.2f", z, x*100, y*100));
+end
+
+-- share objective of quest in party chat
+local function mShareQuestObjective(i)
+  SendChatMessage("Objectives for quest " ..  GetQuestLogTitle(i) ,"party");
+  SelectQuestLogEntry(i);
+  for j=1,GetNumQuestLeaderBoards(i) do
+    SendChatMessage(GetQuestLogLeaderBoard(j), "party");
+  end
+end
+
+-- share quests objectives for shared quest in party
+local function mShareQuestObjectives()
+  for i=1,GetNumQuestLogEntries() do
+    local j=1; local b=false;
+    while (j <= 4 and not b) do
+      b = IsUnitOnQuest(i, "party" .. j); 
+      j = j + 1;
+    end
+    if b then
+      mShareQuestObjective(i);
+    end
+  end
+end
+
+
 -- return an array of strings using sep as separator
 local function mSplit(s, sep) 
   sep = sep or "%s";
@@ -279,6 +310,8 @@ function SlashCmdList.MIKE(msg, editbox)
     mMemUsage();
   elseif m[1] == "fps" then
     mFramerate();
+  elseif m[1] == "pos" then
+    mPrintPosition();
   elseif m[1] == "timer" then
     mPrintElapsedTime();
   elseif m[1] == "treset" then
@@ -288,6 +321,8 @@ function SlashCmdList.MIKE(msg, editbox)
     ResetInstances();
   elseif m[1] == "rl" then
     mReloadUI();
+  elseif m[1] == "qshare" then
+    mShareQuestObjectives();
   elseif m[1] == "psell" then
     mPoorSell();
   elseif m[1] == "pdestroy" then
@@ -322,10 +357,12 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mike net: print netstats");
     mPrint("/mike fps: print framerate");
     mPrint("/mike mem: print addon memory usage");
+    mPrint("/mike pos: print player position (x,y)");
     mPrint("/mike timer: get elapsed time since ui load or timer reset");
     mPrint("/mike treset: reset timer");
     mPrint("/mike ireset: reset instances");
     mPrint("/mike rl: reload user interface");
+    mPrint("/mike qshare: share quest objectives with party");
     mPrint("/mike psell: sell poor quality items");
     mPrint("/mike pdestroy: destroy without confirm all poor quality items");
     mPrint("/mike strip: get naked!");
