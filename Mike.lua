@@ -4,15 +4,36 @@
 SLASH_MIKE1, SLASH_MIKE2 = '/mike', '/mi';
 
 -- number of search iterations (increasing this will also increase cpu load)
-N=10;
+local N=10;
+local timer = GetTime();
 
 -- chat print
 function mPrint(s)
   ChatFrame1:AddMessage(s);
 end
 
+-- reset timer
+local function mResetTimer()
+  timer = GetTime();
+  mPrint("Timer reset!");
+end
+
+-- get elapsed time
+local function mGetElapsedTime()
+  return GetTime() - timer;
+end
+
+-- print elapsed time from addon loading or last timer reset
+local function mPrintElapsedTime()
+  local t = mGetElapsedTime();
+  local h = mod(t/3600, 60);
+  local m = mod(t/60, 60);
+  local s = mod(t, 60);
+  mPrint(string.format("Elapsed time --  %.2d:%.2d:%.2d", h, m, s)); 
+end
+
 -- return an array of strings using sep as separator
-function mSplit(s, sep) 
+local function mSplit(s, sep) 
   sep = sep or "%s";
   local t = {}; i=1;
   local start = 1;
@@ -29,7 +50,7 @@ function mSplit(s, sep)
 end
 
 -- return a subtable
-function mSubTable(t, x, y)
+local function mSubTable(t, x, y)
   local a = {}
   for i=x,y do
     a[i-1] = t[i]
@@ -38,7 +59,7 @@ function mSubTable(t, x, y)
 end
 
 -- array of word to string
-function mAToString(a, sep)
+local function mAToString(a, sep)
   sep = sep or ' ';
   local s = "";
   for x in a do
@@ -48,14 +69,14 @@ function mAToString(a, sep)
 end
 
 -- return a string from args in a table, starting from i(default:2) to j(default:end)
-function mGetSubargs(a, i, j)
+local function mGetSubargs(a, i, j)
   i = i or 2;
   j = j or table.getn(a);
   return (mAToString(mSubTable(a, i, j)));
 end
 
 -- count buffs on a target
-function mBuffCount(target)
+local function mBuffCount(target)
   local i=1; 
   while UnitBuff(target, i) ~= nil do 
     i=i+1;
@@ -64,7 +85,7 @@ function mBuffCount(target)
 end
 
 -- count debuffs on a target
-function mDebuffCount(target)
+local function mDebuffCount(target)
   local i=1; 
   while UnitDebuff(target, i) ~= nil do 
     i=i+1;
@@ -73,7 +94,7 @@ function mDebuffCount(target)
 end
 
 -- cast s1 if target isn't debuffed, else s2
-function mCastIfDebuffed(debuff, s1, s2)
+local function mCastIfDebuffed(debuff, s1, s2)
   local n = mDebuffCount("target")+1;
   local i = 1;
   local x = false;
@@ -90,7 +111,7 @@ function mCastIfDebuffed(debuff, s1, s2)
 end
 
 -- buff nearest unbuffed friendly unit with a spell
-function mMassBuff(spellName, checkString)
+local function mMassBuff(spellName, checkString)
   ClearTarget();
   local i=1; local goon = true;
   while i <= N and goon do
@@ -112,7 +133,7 @@ end
 
 
 -- cast debuff spell on nearest enemy undebuffed unit
-function mMassDebuff(spellName, checkString)
+local function mMassDebuff(spellName, checkString)
   ClearTarget();
   local i = 1; local goon = true;
   while i <= N and goon do
@@ -133,12 +154,12 @@ function mMassDebuff(spellName, checkString)
 end
 
 -- hp check, return true if hp < perc
-function mCheckHp(perc) 
+local function mCheckHp(perc) 
   return (UnitHealth("target")/UnitHealthMax("target")) < (perc/100.0);
 end
 
 -- cast a spell on  nearest friendly player if his/her hp % is < than perc
-function mMassHeal(spellName, perc)
+local function mMassHeal(spellName, perc)
   ClearTarget();
   local i = 1; local goon = true;
   while i <= N and goon do
@@ -151,7 +172,7 @@ function mMassHeal(spellName, perc)
 end
 
 -- cast s1 if hp is < perc, else s2
-function mLifeSpell(perc, s1, s2) 
+local function mLifeSpell(perc, s1, s2) 
   if mCheckHp(perc) then
     CastSpellByName(s1);
   else
@@ -160,20 +181,20 @@ function mLifeSpell(perc, s1, s2)
 end
 
 -- target nearest enemy and attack
-function mTargetAttack()
+local function mTargetAttack()
   TargetNearestEnemy();
   AttackTarget();
 end
 
 -- cast spell on party member n
-function mPartyMemberCast(n, spell)
+local function mPartyMemberCast(n, spell)
   TargetUnit("party" .. n);
   CastSpellByName(spell);
   TargetLastTarget();
 end
 
 -- put your gear in your bag
-function mGetNaked()
+local function mGetNaked()
   local k=1; local bag=0; 
   while (k <= 18 and bag <= 4) do
     local slot=1; local max=GetContainerNumSlots(bag)
@@ -197,7 +218,7 @@ function mGetNaked()
 end
 
 -- sell poor quality items to a vendor
-function mPoorSellOrDestroy(destroy)
+local function mPoorSellOrDestroy(destroy)
   destroy = destroy or false;
   for bag=0,4,1 do
     for slot=1,GetContainerNumSlots(bag) do
@@ -217,22 +238,22 @@ function mPoorSellOrDestroy(destroy)
 end
 
 -- destroy poor quality items
-function mPoorDestroy()
+local function mPoorDestroy()
   mPoorSellOrDestroy(true);
 end
 
-function mPoorSell()
+local function mPoorSell()
   mPoorSellOrDestroy(false);
 end
 
 -- print netstats 
-function mNetStats()
+local function mNetStats()
   local a,b,c = GetNetStats();
   mPrint(string.format("Incoming bandwidth: %.4f kB/s\nOutgoing bandwith: %.4f kB/s\nLatency: %d ms", a, b,c));
 end
 
 -- print mem usage
-function mMemUsage()
+local function mMemUsage()
   local m = gcinfo();
   local t = {"kB", "MB", "GB"};
   local i = math.floor(math.log10(m) / 3);
@@ -240,12 +261,12 @@ function mMemUsage()
 end
 
 -- print fps
-function mFramerate()
+local function mFramerate()
   mPrint(string.format("FPS: %.4f", GetFramerate()));
 end
 
 -- trigger UI reload
-function mReloadUI()
+local function mReloadUI()
   ReloadUI();
 end
 
@@ -258,7 +279,11 @@ function SlashCmdList.MIKE(msg, editbox)
     mMemUsage();
   elseif m[1] == "fps" then
     mFramerate();
-  elseif m[1] == "reset" then
+  elseif m[1] == "timer" then
+    mPrintElapsedTime();
+  elseif m[1] == "treset" then
+    mResetTimer();
+  elseif m[1] == "ireset" then
     mPrint("Your instances has been reset");
     ResetInstances();
   elseif m[1] == "rl" then
@@ -297,7 +322,9 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mike net: print netstats");
     mPrint("/mike fps: print framerate");
     mPrint("/mike mem: print addon memory usage");
-    mPrint("/mike reset: reset instances!");
+    mPrint("/mike timer: get elapsed time since ui load or timer reset");
+    mPrint("/mike treset: reset timer");
+    mPrint("/mike ireset: reset instances");
     mPrint("/mike rl: reload user interface");
     mPrint("/mike psell: sell poor quality items");
     mPrint("/mike pdestroy: destroy without confirm all poor quality items");
