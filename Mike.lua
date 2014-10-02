@@ -172,17 +172,57 @@ function mPartyMemberCast(n, spell)
   TargetLastTarget();
 end
 
+-- put your gear in your bag
+function mGetNaked()
+  local k=1; local bag=0; 
+  while (k <= 18 and bag <= 4) do
+    local slot=1; local max=GetContainerNumSlots(bag)
+    while (slot <= max and k <= 18) do
+      if not GetContainerItemLink(bag, slot) then
+        while not GetInventoryItemLink("player", k) do
+          k = k+1;
+        end
+        PickupInventoryItem(k);
+        if (bag == 0) then
+          PutItemInBackpack();
+        else
+          PutItemInBag(bag+19);
+        end
+        k = k+1;
+      end
+      slot = slot + 1;
+    end
+    bag = bag + 1;
+  end
+end
+
 -- sell poor quality items to a vendor
-function mPoorSell()
+function mPoorSellOrDestroy(destroy)
+  destroy = destroy or false;
   for bag=0,4,1 do
     for slot=1,GetContainerNumSlots(bag) do
       local name = GetContainerItemLink(bag, slot);
       if name and string.find(name, "ff9d9d9d") then
-        mPrint("Selling item: " .. name);
-        UseContainerItem(bag, slot)
+        if destroy then
+          mPrint("Destroying item: " .. name);
+          PickupContainerItem(bag,slot);
+          DeleteCursorItem();
+        else
+          mPrint("Selling item: " .. name);
+          UseContainerItem(bag, slot)
+        end
       end
     end
   end
+end
+
+-- destroy poor quality items
+function mPoorDestroy()
+  mPoorSellOrDestroy(true);
+end
+
+function mPoorSell()
+  mPoorSellOrDestroy(false);
 end
 
 -- print netstats 
@@ -225,6 +265,10 @@ function SlashCmdList.MIKE(msg, editbox)
     mReloadUI();
   elseif m[1] == "psell" then
     mPoorSell();
+  elseif m[1] == "pdestroy" then
+    mPoorDestroy();
+  elseif m[1] == "strip" then
+    mGetNaked();
   elseif m[1] == "print" then
     mPrint(mGetSubargs(m));
   elseif m[1] == "fortitude" then
@@ -256,6 +300,8 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mike reset: reset instances!");
     mPrint("/mike rl: reload user interface");
     mPrint("/mike psell: sell poor quality items");
+    mPrint("/mike pdestroy: destroy without confirm all poor quality items");
+    mPrint("/mike strip: get naked!");
     mPrint("/mike fortitude: buff stamina on your friends!");
     mPrint("/mike heal <percent> <spellname>: cast an healing spell on nearest player with hp% < percent");
     mPrint("/mike lspell <percent> <s1>,<s2>: cast s1 if target %hp is < percent, else s2");
