@@ -7,12 +7,12 @@ SLASH_MIKE1, SLASH_MIKE2 = '/mike', '/mi';
 N=10;
 
 -- chat print
-function mprint(s)
+function mPrint(s)
   ChatFrame1:AddMessage(s);
 end
 
 -- return an array of strings using sep as separator
-function msplit(s, sep) 
+function mSplit(s, sep) 
   sep = sep or "%s";
   local t = {}; i=1;
   local start = 1;
@@ -29,7 +29,7 @@ function msplit(s, sep)
 end
 
 -- return a subtable
-function msubtable(t, x, y)
+function mSubTable(t, x, y)
   local a = {}
   for i=x,y do
     a[i-1] = t[i]
@@ -38,7 +38,7 @@ function msubtable(t, x, y)
 end
 
 -- array of word to string
-function matostring(a, sep)
+function mAToString(a, sep)
   sep = sep or ' ';
   local s = "";
   for x in a do
@@ -48,12 +48,12 @@ function matostring(a, sep)
 end
 
 -- return a string from args in a table
-function mgetsubargs(a)
-  return (matostring(msubtable(a, 2, table.getn(a))));
+function mGetSubargs(a)
+  return (mAToString(mSubTable(a, 2, table.getn(a))));
 end
 
 -- count buffs on a target
-function mbuffcount(target)
+function mBuffCount(target)
   local i=1; 
   while UnitBuff(target, i) ~= nil do 
     i=i+1;
@@ -62,7 +62,7 @@ function mbuffcount(target)
 end
 
 -- count debuffs on a target
-function mdebuffcount(target)
+function mDebuffCount(target)
   local i=1; 
   while UnitDebuff(target, i) ~= nil do 
     i=i+1;
@@ -70,9 +70,9 @@ function mdebuffcount(target)
   return i-1;
 end
 
--- cast dbfspell if debuff is not active on target, else altspell
-function mcastifdebuffed(debuff, dbfspell, altspell)
-  local n = mdebuffcount("target")+1;
+-- cast s1 if debuff is not active on target, else s2
+function mCastIfDebuffed(debuff, s1, s2)
+  local n = mDebuffCount("target")+1;
   local i = 1;
   local x = false;
   while i < n do
@@ -81,140 +81,160 @@ function mcastifdebuffed(debuff, dbfspell, altspell)
     end i=i+1;
   end
   if x then
-    CastSpellByName(altspell);
+    CastSpellByName(s2);
   else
-    CastSpellByName(dbfspell);
+    CastSpellByName(s1);
   end
 end
 
 -- buff all unbuffed friends with a spell
-function mmassbuff(spellname, checkstring)
+function mMassBuff(spellName, checkString)
   ClearTarget();
   local i=1; local goon = true;
   while i <= N and goon do
     i=i+1; TargetNearestFriend();
     local x = true;
-    local n = mbuffcount("target")+1;
+    local n = mBuffCount("target")+1;
     local k = 1;
     while k < n do
-      if string.find(UnitBuff("target", k),checkstring) ~= nil then
+      if string.find(UnitBuff("target", k),checkString) ~= nil then
         x=false;
       end k=k+1;
     end
     if x == true and UnitIsPlayer("target") then
-      CastSpellByName(spellname);
+      CastSpellByName(spellName);
       goon = false;
     end
   end 
 end
 
 
--- cast dbfspell on all near enemy units
-function mmassdebuff(spellname, checkstring)
+-- cast s1 on all near enemy units
+function mMassDebuff(spellName, checkString)
   ClearTarget();
   local i = 1; local goon = true;
   while i <= N and goon do
     i=i+1; TargetNearestEnemy();
     local x = true;
-    local n = mdebuffcount("target")+1;
+    local n = mDebuffCount("target")+1;
     local k = 1;
     while k < n do
-      if string.find(UnitDebuff("target", k),checkstring) ~= nil then
+      if string.find(UnitDebuff("target", k),checkString) ~= nil then
         x=false;
       end k=k+1;
     end
     if x == true then
-      CastSpellByName(spellname);
+      CastSpellByName(spellName);
       goon = false;
     end
   end 
 end
 
--- heal nearest friendly player if his/her hp % is < than perc
-function mmassheal(spellname, perc)
+-- hp check, return true if hp < perc
+function mCheckHp(perc) 
+  return (UnitHealth("target")/UnitHealthMax("target")) < (perc/100.0);
+end
+
+-- cast a spell on  nearest friendly player if his/her hp % is < than perc
+function mMassSpell(spellName, perc)
   ClearTarget();
   local i = 1; local goon = true;
   while i <= N and goon do
     i=i+1; TargetNearestFriend();
-    if (UnitHealth("target")/UnitHealthMax("target") < (perc/100.0) and (UnitIsPlayer("target"))) then
-      CastSpellByName(spellname);
+    if mCheckHp(perc) and UnitIsPlayer("target") then
+      CastSpellByName(spellName);
       goon = false;
     end
   end
 end
 
+-- cast s1 if hp is < perc, else s2
+function mLifeSpell(perc, s1, s2) 
+  if mCheckHp(perc) then
+    CastSpellByName(s1);
+  else
+    CastSpellByName(s2);
+  end
+end
+
 -- target nearest enemy and attack
-function mtargetattack()
+function mTargetAttack()
   TargetNearestEnemy();
   AttackTarget();
 end
 
 -- print netstats 
-function mnetstats()
+function mNetStats()
   local a,b,c = GetNetStats();
-  mprint(string.format("Incoming bandwidth: %.4f kB/s\nOutgoing bandwith: %.4f kB/s\nLatency: %d ms", a, b,c));
+  mPrint(string.format("Incoming bandwidth: %.4f kB/s\nOutgoing bandwith: %.4f kB/s\nLatency: %d ms", a, b,c));
 end
 
 -- print mem usage
-function mmemusage()
+function mMemUsage()
   local m = gcinfo();
   local t = {"kB", "MB", "GB"};
   local i = math.floor(math.log10(m) / 3);
-  mprint(string.format("Memory usage: %.2f %s", m/math.pow(10, i*3), t[i+1]));
+  mPrint(string.format("Memory usage: %.2f %s", m/math.pow(10, i*3), t[i+1]));
 end
 
 -- print fps
-function mframerate()
-  mprint(string.format("FPS: %.4f", GetFramerate()));
+function mFramerate()
+  mPrint(string.format("FPS: %.4f", GetFramerate()));
 end
 
 -- trigger UI reload
-function mreloadui()
+function mReloadUI()
   ReloadUI();
 end
 
 -- slash command menu
 function SlashCmdList.MIKE(msg, editbox)
-  local m = msplit(msg);
+  local m = mSplit(msg);
   if m[1] == "net" then
-    mnetstats();
+    mNetStats();
   elseif m[1] == "mem" then
-    mmemusage();
+    mMemUsage();
   elseif m[1] == "fps" then
-    mframerate();
+    mFramerate();
   elseif m[1] == "reset" then
-    mprint("Your instances has been reset");
+    mPrint("Your instances has been reset");
     ResetInstances();
   elseif m[1] == "rl" then
-    mreloadui();
+    mReloadUI();
   elseif m[1] == "print" then
-    mprint(mgetsubargs(m));
+    mPrint(mGetSubargs(m));
   elseif m[1] == "fortitude" then
-    mmassbuff("Power Word: Fortitude", "Fort");
+    mMassBuff("Power Word: Fortitude", "Fort");
   elseif m[1] == "heal" then
-    sn = matostring(msubtable(m, 3, table.getn(m)));
-    mmassheal(sn, tonumber(m[2]));
+    local sn = mAToString(mSubTable(m, 3, table.getn(m)));
+    mMassSpell(sn, tonumber(m[2]));
+  elseif m[1] == "lspell" then
+    local perc = m[2];
+    local spells = mSplit(mAToString(mSubTable(m, 3, table.getn(m))), ",");
+    mPrint("perc=" .. perc .. "s1=" .. spells[1] .. "s2=" .. spells[2]);
+    mLifeSpell(tonumber(perc), spells[1], spells[2]);
   elseif m[1] == "wpain" then
-    mcastifdebuffed("Pain", "Shadow Word: Pain", "Shoot");
+    mCastIfDebuffed("Pain", "Shadow Word: Pain", "Shoot");
   elseif m[1] == "apain" then
-    mmassdebuff("Shadow Word: Pain", "Pain");
+    mMassDebuff("Shadow Word: Pain", "Pain");
   elseif m[1] == "sunder" then
-    mmassdebuff("Sunder Armor", "Sunder");
+    mMassDebuff("Sunder Armor", "Sunder");
   elseif m[1] == "tattack" then
-    mtargetattack();
+    mTargetAttack();
   else 
-    mprint("Mike's Addon");
-    mprint("Usage: /mike <arg> OR /mi <arg>");
-    mprint("/mike net: print netstats");
-    mprint("/mike fps: print framerate");
-    mprint("/mike mem: print addon memory usage");
-    mprint("/mike reset: reset instances!");
-    mprint("/mike rl: reload user interface");
-    mprint("/mike fortitude: buff stamina on your friends!");
-    mprint("/mike heal <percent> <spellname>: cast heal on next player with hp% < percent");
-    mprint("/mike wpain: cast 'Shadow Word: Pain' if not debuffed, else wand 'Shoot'");
-    mprint("/mike apain: cast 'Shadow Word: Pain' on nearest enemy not debuffed");
-    mprint("/mike sunder: cast 'Sunder Armor' on nearest enemy not debuffed");
-    mprint("/mike tattack: target nearest enemy (like TAB) and auto-attack");
+    mPrint("Mike's Addon");
+    mPrint("Usage: /mike <arg> OR /mi <arg>");
+    mPrint("/mike net: print netstats");
+    mPrint("/mike fps: print framerate");
+    mPrint("/mike mem: print addon memory usage");
+    mPrint("/mike reset: reset instances!");
+    mPrint("/mike rl: reload user interface");
+    mPrint("/mike fortitude: buff stamina on your friends!");
+    mPrint("/mike heal <percent> <spellname>: cast spell on nearest player with hp% < percent");
+    mPrint("/mike lspell <percent> <s1>,<s2>: cast s1 if target %hp is < percent, else s2");
+    mPrint("/mike wpain: cast 'Shadow Word: Pain' if not debuffed, else wand 'Shoot'");
+    mPrint("/mike apain: cast 'Shadow Word: Pain' on nearest enemy not debuffed");
+    mPrint("/mike sunder: cast 'Sunder Armor' on nearest enemy not debuffed");
+    mPrint("/mike tattack: target nearest enemy (like TAB) and auto-attack");
   end
 end
