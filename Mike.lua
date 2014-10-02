@@ -172,6 +172,19 @@ function mPartyMemberCast(n, spell)
   TargetLastTarget();
 end
 
+-- sell poor quality items to a vendor
+function mPoorSell()
+  for bag=0,4,1 do
+    for slot=1,GetContainerNumSlots(bag) do
+      local name = GetContainerItemLink(bag, slot);
+      if name and string.find(name, "ff9d9d9d") then
+        mPrint("Selling item: " .. name);
+        UseContainerItem(bag, slot)
+      end
+    end
+  end
+end
+
 -- print netstats 
 function mNetStats()
   local a,b,c = GetNetStats();
@@ -210,6 +223,8 @@ function SlashCmdList.MIKE(msg, editbox)
     ResetInstances();
   elseif m[1] == "rl" then
     mReloadUI();
+  elseif m[1] == "psell" then
+    mPoorSell();
   elseif m[1] == "print" then
     mPrint(mGetSubargs(m));
   elseif m[1] == "fortitude" then
@@ -240,6 +255,7 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mike mem: print addon memory usage");
     mPrint("/mike reset: reset instances!");
     mPrint("/mike rl: reload user interface");
+    mPrint("/mike psell: sell poor quality items");
     mPrint("/mike fortitude: buff stamina on your friends!");
     mPrint("/mike heal <percent> <spellname>: cast an healing spell on nearest player with hp% < percent");
     mPrint("/mike lspell <percent> <s1>,<s2>: cast s1 if target %hp is < percent, else s2");
