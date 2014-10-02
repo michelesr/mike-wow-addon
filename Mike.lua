@@ -47,9 +47,11 @@ function mAToString(a, sep)
   return string.sub(s, 2, string.len(s));
 end
 
--- return a string from args in a table
-function mGetSubargs(a)
-  return (mAToString(mSubTable(a, 2, table.getn(a))));
+-- return a string from args in a table, starting from i(default:2) to j(default:end)
+function mGetSubargs(a, i, j)
+  i = i or 2;
+  j = j or table.getn(a);
+  return (mAToString(mSubTable(a, i, j)));
 end
 
 -- count buffs on a target
@@ -70,7 +72,7 @@ function mDebuffCount(target)
   return i-1;
 end
 
--- cast s1 if debuff is not active on target, else s2
+-- cast s1 if target isn't debuffed, else s2
 function mCastIfDebuffed(debuff, s1, s2)
   local n = mDebuffCount("target")+1;
   local i = 1;
@@ -87,7 +89,7 @@ function mCastIfDebuffed(debuff, s1, s2)
   end
 end
 
--- buff all unbuffed friends with a spell
+-- buff nearest unbuffed friendly unit with a spell
 function mMassBuff(spellName, checkString)
   ClearTarget();
   local i=1; local goon = true;
@@ -109,7 +111,7 @@ function mMassBuff(spellName, checkString)
 end
 
 
--- cast s1 on all near enemy units
+-- cast debuff spell on nearest enemy undebuffed unit
 function mMassDebuff(spellName, checkString)
   ClearTarget();
   local i = 1; local goon = true;
@@ -136,7 +138,7 @@ function mCheckHp(perc)
 end
 
 -- cast a spell on  nearest friendly player if his/her hp % is < than perc
-function mMassSpell(spellName, perc)
+function mMassHeal(spellName, perc)
   ClearTarget();
   local i = 1; local goon = true;
   while i <= N and goon do
@@ -161,6 +163,13 @@ end
 function mTargetAttack()
   TargetNearestEnemy();
   AttackTarget();
+end
+
+-- cast spell on party member n
+function mPartyMemberCast(n, spell)
+  TargetUnit("party" .. n);
+  CastSpellByName(spell);
+  TargetLastTarget();
 end
 
 -- print netstats 
@@ -206,13 +215,15 @@ function SlashCmdList.MIKE(msg, editbox)
   elseif m[1] == "fortitude" then
     mMassBuff("Power Word: Fortitude", "Fort");
   elseif m[1] == "heal" then
-    local sn = mAToString(mSubTable(m, 3, table.getn(m)));
-    mMassSpell(sn, tonumber(m[2]));
+    local sn = mGetSubargs(m, 3);
+    mMassHeal(sn, tonumber(m[2]));
   elseif m[1] == "lspell" then
     local perc = m[2];
-    local spells = mSplit(mAToString(mSubTable(m, 3, table.getn(m))), ",");
-    mPrint("perc=" .. perc .. "s1=" .. spells[1] .. "s2=" .. spells[2]);
+    local spells = mSplit(mGetSubargs(m, 3), ",");
     mLifeSpell(tonumber(perc), spells[1], spells[2]);
+  elseif m[1] == "pcast" then
+    local n = m[2];
+    mPartyMemberCast(n, mGetSubargs(m, 3));
   elseif m[1] == "wpain" then
     mCastIfDebuffed("Pain", "Shadow Word: Pain", "Shoot");
   elseif m[1] == "apain" then
@@ -230,8 +241,9 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mike reset: reset instances!");
     mPrint("/mike rl: reload user interface");
     mPrint("/mike fortitude: buff stamina on your friends!");
-    mPrint("/mike heal <percent> <spellname>: cast spell on nearest player with hp% < percent");
+    mPrint("/mike heal <percent> <spellname>: cast an healing spell on nearest player with hp% < percent");
     mPrint("/mike lspell <percent> <s1>,<s2>: cast s1 if target %hp is < percent, else s2");
+    mPrint("/mike pcast <n> <spell>: cast spell on party on #n party member");
     mPrint("/mike wpain: cast 'Shadow Word: Pain' if not debuffed, else wand 'Shoot'");
     mPrint("/mike apain: cast 'Shadow Word: Pain' on nearest enemy not debuffed");
     mPrint("/mike sunder: cast 'Sunder Armor' on nearest enemy not debuffed");
