@@ -70,8 +70,26 @@ function mdebuffcount(target)
   return i-1;
 end
 
+-- cast dbfspell if debuff is not active on target, else altspell
+function mcastifdebuffed(debuff, dbfspell, altspell)
+  local n = mdebuffcount("target")+1;
+  local i = 1;
+  local x = false;
+  while i < n do
+    if string.find(UnitDebuff("target", i), debuff) ~= nil then
+      x = true;
+    end i=i+1;
+  end
+  if x then
+    CastSpellByName(altspell);
+  else
+    CastSpellByName(dbfspell);
+  end
+end
+
 -- buff all unbuffed friends with a spell
 function mmassbuff(spellname, checkstring)
+  ClearTarget();
   local i=1; local goon = true;
   while i <= N and goon do
     i=i+1; TargetNearestFriend();
@@ -90,25 +108,10 @@ function mmassbuff(spellname, checkstring)
   end 
 end
 
--- cast dbfspell if debuff is not active on target, else altspell
-function mcastifdebuffed(debuff, dbfspell, altspell)
-  local n = mdebuffcount("target")+1;
-  local i = 1;
-  local x = false;
-  while i < n do
-    if string.find(UnitDebuff("target", i), debuff) ~= nil then
-      x = true;
-    end i=i+1;
-  end
-  if x then
-    CastSpellByName(altspell);
-  else
-    CastSpellByName(dbfspell);
-  end
-end
 
 -- cast dbfspell on all near enemy units
 function mmassdebuff(spellname, checkstring)
+  ClearTarget();
   local i = 1; local goon = true;
   while i <= N and goon do
     i=i+1; TargetNearestEnemy();
@@ -129,6 +132,7 @@ end
 
 -- heal nearest friendly player if his/her hp % is < than perc
 function mmassheal(spellname, perc)
+  ClearTarget();
   local i = 1; local goon = true;
   while i <= N and goon do
     i=i+1; TargetNearestFriend();
@@ -137,6 +141,12 @@ function mmassheal(spellname, perc)
       goon = false;
     end
   end
+end
+
+-- target nearest enemy and attack
+function mtargetattack()
+  TargetNearestEnemy();
+  AttackTarget();
 end
 
 -- print netstats 
@@ -158,6 +168,11 @@ function mframerate()
   mprint(string.format("FPS: %.4f", GetFramerate()));
 end
 
+-- trigger UI reload
+function mreloadui()
+  ReloadUI();
+end
+
 -- slash command menu
 function SlashCmdList.MIKE(msg, editbox)
   local m = msplit(msg);
@@ -170,6 +185,8 @@ function SlashCmdList.MIKE(msg, editbox)
   elseif m[1] == "reset" then
     mprint("Your instances has been reset");
     ResetInstances();
+  elseif m[1] == "rl" then
+    mreloadui();
   elseif m[1] == "print" then
     mprint(mgetsubargs(m));
   elseif m[1] == "fortitude" then
@@ -183,6 +200,8 @@ function SlashCmdList.MIKE(msg, editbox)
     mmassdebuff("Shadow Word: Pain", "Pain");
   elseif m[1] == "sunder" then
     mmassdebuff("Sunder Armor", "Sunder");
+  elseif m[1] == "tattack" then
+    mtargetattack();
   else 
     mprint("Mike's Addon");
     mprint("Usage: /mike <arg> OR /mi <arg>");
@@ -190,10 +209,12 @@ function SlashCmdList.MIKE(msg, editbox)
     mprint("/mike fps: print framerate");
     mprint("/mike mem: print addon memory usage");
     mprint("/mike reset: reset instances!");
+    mprint("/mike rl: reload user interface");
     mprint("/mike fortitude: buff stamina on your friends!");
     mprint("/mike heal <percent> <spellname>: cast heal on next player with hp% < percent");
     mprint("/mike wpain: cast 'Shadow Word: Pain' if not debuffed, else wand 'Shoot'");
     mprint("/mike apain: cast 'Shadow Word: Pain' on nearest enemy not debuffed");
     mprint("/mike sunder: cast 'Sunder Armor' on nearest enemy not debuffed");
+    mprint("/mike tattack: target nearest enemy (like TAB) and auto-attack");
   end
 end
