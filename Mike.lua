@@ -41,11 +41,12 @@ end
 
 -- share objective of quest in party chat
 local function mShareQuestObjective(i)
-  SendChatMessage("Objectives for quest " ..  GetQuestLogTitle(i) ,"party");
+  local s = "Objectives for quest " ..  GetQuestLogTitle(i) .. ": "; 
   SelectQuestLogEntry(i);
   for j=1,GetNumQuestLeaderBoards(i) do
-    SendChatMessage(GetQuestLogLeaderBoard(j), "party");
+    s = s .. GetQuestLogLeaderBoard(j) .. "; ";
   end
+  SendChatMessage(s, "party");
 end
 
 -- share quests objectives for shared quest in party
@@ -60,6 +61,10 @@ local function mShareQuestObjectives()
       mShareQuestObjective(i);
     end
   end
+end
+
+local function mShareSelectedQuestObjectives()
+  mShareQuestObjective(GetQuestLogSelection());
 end
 
 
@@ -323,6 +328,8 @@ function SlashCmdList.MIKE(msg, editbox)
     mReloadUI();
   elseif m[1] == "qshare" then
     mShareQuestObjectives();
+  elseif m[1] == "qss" then
+    mShareSelectedQuestObjectives();
   elseif m[1] == "psell" then
     mPoorSell();
   elseif m[1] == "pdestroy" then
@@ -363,6 +370,7 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mike ireset: reset instances");
     mPrint("/mike rl: reload user interface");
     mPrint("/mike qshare: share quest objectives with party");
+    mPrint("/mike qss: share the quest that is selected (highlighted) in the quest log");
     mPrint("/mike psell: sell poor quality items");
     mPrint("/mike pdestroy: destroy without confirm all poor quality items");
     mPrint("/mike strip: get naked!");
