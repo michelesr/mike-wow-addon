@@ -8,10 +8,14 @@ This is a collection of simple scripts that i use in the game for simplify some 
 Installation
 ============
 
-Clone the repo, put it in your AddOn folder of your WoW client, rename the folder to MikeAddon, and you're good to go. 
+Clone the repo or download the zip, put it in your AddOn folder of your WoW client, rename the folder to MikeAddon, and you're good to go. 
 
         cd <YourWowFolder>/Interface/AddOns/
         git clone https://github.com/michelesr/mike-wow-addon/ MikeAddon
+        
+Update with
+        
+        git pull origin master
 
 Usage
 =====
