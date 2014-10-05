@@ -261,6 +261,18 @@ function mPoorSell()
   mPoorSellOrDestroy(false);
 end
 
+-- equip w1 on main hand and w2 on off hand
+function mEquipHandWeapons(w)
+  for i=1,2 do 
+    local x,y;
+    x,y = mGetContainerItemByName(w[i]);
+    if x and y then
+      PickupContainerItem(x,y);
+      EquipCursorItem(15+i);
+    end
+  end
+end
+
 -- print netstats 
 function mNetStats()
   local a,b,c = GetNetStats();
