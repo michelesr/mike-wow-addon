@@ -253,22 +253,53 @@ local function mGetNaked()
   end
 end
 
+-- return bag and slot index of item matching string
+function mGetContainerItemByName(item, printString) 
+  printString = printString or "Found Item: ";
+  for bag = 0,4,1 do
+    for slot = 1, GetContainerNumSlots(bag) do
+      local name = GetContainerItemLink(bag, slot);
+      if name and string.find(name, item) then
+        mPrint(printString .. name);
+        return bag, slot; 
+      end
+    end
+  end
+end
+
+-- return an array of {bag, slot} of items matching string
+function mGetContainerItemsByName(item, printString) 
+  printString = printString or "Found item: ";
+  local t = {};
+  local i = 1;
+  for bag = 0,4,1 do
+    for slot = 1, GetContainerNumSlots(bag) do
+      local name = GetContainerItemLink(bag, slot);
+      if name and string.find(name, item) then
+        mPrint(printString .. name);
+        t[i] = {bag, slot}; 
+        i = i + 1; 
+      end
+    end
+  end
+  return t;
+end
+
 -- sell poor quality items to a vendor
 local function mPoorSellOrDestroy(destroy)
   destroy = destroy or false;
-  for bag=0,4,1 do
-    for slot=1,GetContainerNumSlots(bag) do
-      local name = GetContainerItemLink(bag, slot);
-      if name and string.find(name, "ff9d9d9d") then
-        if destroy then
-          mPrint("Destroying item: " .. name);
-          PickupContainerItem(bag,slot);
-          DeleteCursorItem();
-        else
-          mPrint("Selling item: " .. name);
-          UseContainerItem(bag, slot)
-        end
-      end
+  if destroy then
+    printString = "Destroying item: ";
+  else
+    printString = "Selling item: ";
+  end
+  local items = mGetContainerItemsByName("ff9d9d9d", printString);
+  for x in items do
+    if destroy then
+      PickupContainerItem(items[x][1], items[x][2]);
+      DeleteCursorItem();
+    else
+      UseContainerItem(items[x][1], items[x][2]);
     end
   end
 end
