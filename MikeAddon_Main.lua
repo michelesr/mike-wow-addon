@@ -33,6 +33,12 @@ function SlashCmdList.MIKE(msg, editbox)
     mPoorDestroy();
   elseif m[1] == "strip" then
     mGetNaked();
+  elseif m[1] == "equip" then
+    local i = mSplit(mGetSubargs(m, 2), ",");
+    mEquipItems(i); 
+  elseif m[1] == "wequip" then
+    local w = mSplit(mGetSubargs(m, 2), ",");
+    mEquipHandWeapons({w[1], w[2]}); 
   elseif m[1] == "print" then
     mPrint(mGetSubargs(m));
   elseif m[1] == "fortitude" then
@@ -70,6 +76,8 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mike qss: share objectives for the quest that is selected (highlighted) in the quest log");
     mPrint("/mike psell: sell poor quality items");
     mPrint("/mike pdestroy: destroy without confirm all poor quality items");
+    mPrint("/mike equip <item1>,<item2>,...,<itemN>: equips items");
+    mPrint("/mike wequip <w1>,<w2> = equip w1 on main hand and w2 on offhand");
     mPrint("/mike strip: put your equip in the inventory");
     mPrint("/mike fortitude: cast 'Power Word: Fortitude' on nearest unbuffed friendly player");
     mPrint("/mike heal <percent> <spellname>: cast an healing spell on nearest player with hp% < percent");

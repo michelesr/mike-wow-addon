@@ -265,10 +265,22 @@ end
 function mEquipHandWeapons(w)
   for i=1,2 do 
     local x,y;
-    x,y = mGetContainerItemByName(w[i]);
+    x,y = mGetContainerItemByName(w[i], "Equipping item: ");
     if x and y then
       PickupContainerItem(x,y);
       EquipCursorItem(15+i);
+    end
+  end
+end
+
+-- equips items on the appropriate slots 
+function mEquipItems(items) 
+  for i in items do
+    local x,y;
+    x,y = mGetContainerItemByName(items[i], "Equipping item: ");
+    if x and y then
+      PickupContainerItem(x,y);
+      AutoEquipCursorItem();
     end
   end
 end

@@ -2,6 +2,6 @@
 ## Title: Mike's Addon
 ## Notes: Simple collection of scripts (License GPLv3).
 ## Version: 1.0
-IOLib.lua
-Core.lua
-Main.lua
+MikeAddon_IOLib.lua
+MikeAddon_Core.lua
+MikeAddon_Main.lua
