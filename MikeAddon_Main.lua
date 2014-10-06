@@ -42,6 +42,10 @@ function SlashCmdList.MIKE(msg, editbox)
   elseif m[1] == "ireset" then
     mPrint("Your instances has been reset");
     ResetInstances();
+  elseif m[1] == "tsave" then
+    mSaveTarget();
+  elseif m[1] == "trestore" then
+    mRestoreTarget();
   elseif m[1] == "rl" then
     mReloadUI();
   elseif m[1] == "qshare" then
@@ -92,6 +96,8 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mike timer: get elapsed time from ui load or timer reset");
     mPrint("/mike treset: reset timer");
     mPrint("/mike ireset: reset instances");
+    mPrint("/mike tsave: save current target name");
+    mPrint("/mike trestore: target unit with saved name");
     mPrint("/mike rl: reload user interface");
     mPrint("/mike qshare: share objectives of common quests in party");
     mPrint("/mike qss: share objectives for the quest that is selected (highlighted) in the quest log");

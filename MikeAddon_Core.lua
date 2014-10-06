@@ -24,6 +24,7 @@ License:
 -- number of search iterations (increasing this will also increase cpu load)
 local N=10;
 local timer = GetTime();
+local savedTarget = nil;
 
 -- reset timer
 function mResetTimer()
@@ -43,6 +44,18 @@ function mPrintElapsedTime()
   local m = mod(t/60, 60);
   local s = mod(t, 60);
   mPrint(string.format("Elapsed time --  %.2d:%.2d:%.2d", h, m, s)); 
+end
+
+-- save target
+function mSaveTarget()
+  savedTarget = UnitName("target");
+end
+
+-- restore target
+function mRestoreTarget()
+  if savedTarget then
+    TargetByName(savedTarget);
+  end
 end
 
 -- print player's position (x,y)
