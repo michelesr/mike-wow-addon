@@ -34,25 +34,25 @@ function SlashCmdList.MIKE(msg, editbox)
   elseif m[1] == "strip" then
     mGetNaked();
   elseif m[1] == "equip" then
-    local i = mSplit(mGetSubargs(m, 2), ",");
+    local i = mSplit(mGetSubArgs(m, 2), ",");
     mEquipItems(i); 
   elseif m[1] == "wequip" then
-    local w = mSplit(mGetSubargs(m, 2), ",");
+    local w = mSplit(mGetSubArgs(m, 2), ",");
     mEquipHandWeapons({w[1], w[2]}); 
   elseif m[1] == "print" then
-    mPrint(mGetSubargs(m));
+    mPrint(mGetSubArgs(m));
   elseif m[1] == "fortitude" then
     mMassBuff("Power Word: Fortitude", "Fort");
   elseif m[1] == "heal" then
-    local sn = mGetSubargs(m, 3);
+    local sn = mGetSubArgs(m, 3);
     mMassHeal(sn, tonumber(m[2]));
   elseif m[1] == "lspell" then
     local perc = m[2];
-    local spells = mSplit(mGetSubargs(m, 3), ",");
+    local spells = mSplit(mGetSubArgs(m, 3), ",");
     mLifeSpell(tonumber(perc), spells[1], spells[2]);
   elseif m[1] == "pcast" then
     local n = m[2];
-    mPartyMemberCast(n, mGetSubargs(m, 3));
+    mPartyMemberCast(n, mGetSubArgs(m, 3));
   elseif m[1] == "wpain" then
     mCastIfDebuffed("Pain", "Shadow Word: Pain", "Shoot");
   elseif m[1] == "apain" then
