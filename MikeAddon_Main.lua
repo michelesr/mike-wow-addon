@@ -1,4 +1,25 @@
--- Mike's Addon, version 1.0
+--[[
+
+Mike's WoW Addon
+Version: 1.0
+Application Main CLI UI
+
+License:
+  This program is free software; you can redistribute it and/or
+  modify it under the terms of the GNU General Public License
+  as published by the Free Software Foundation; either version 3
+  of the License, or (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program(see LICENSE); if not, write to the Free Software
+  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+]]
 
 -- slash command
 SLASH_MIKE1, SLASH_MIKE2 = '/mike', '/mi';
@@ -34,10 +55,10 @@ function SlashCmdList.MIKE(msg, editbox)
   elseif m[1] == "strip" then
     mGetNaked();
   elseif m[1] == "equip" then
-    local i = mSplit(mGetSubArgs(m, 2), ",");
+    local i = mSplit(mGetSubArgs(m, 2), ", ");
     mEquipItems(i); 
   elseif m[1] == "wequip" then
-    local w = mSplit(mGetSubArgs(m, 2), ",");
+    local w = mSplit(mGetSubArgs(m, 2), ", ");
     mEquipHandWeapons({w[1], w[2]}); 
   elseif m[1] == "print" then
     mPrint(mGetSubArgs(m));
@@ -48,7 +69,7 @@ function SlashCmdList.MIKE(msg, editbox)
     mMassHeal(sn, tonumber(m[2]));
   elseif m[1] == "lspell" then
     local perc = m[2];
-    local spells = mSplit(mGetSubArgs(m, 3), ",");
+    local spells = mSplit(mGetSubArgs(m, 3), ", ");
     mLifeSpell(tonumber(perc), spells[1], spells[2]);
   elseif m[1] == "pcast" then
     local n = m[2];
@@ -63,12 +84,12 @@ function SlashCmdList.MIKE(msg, editbox)
     mTargetAttack();
   else 
     mPrint("Mike's Addon");
-    mPrint("Usage: /mike <arg> OR /mi <arg>");
+    mPrint("Usage: /mike <arguments> OR /mi <arguments>");
     mPrint("/mike net: print net stats");
     mPrint("/mike fps: print framerate");
-    mPrint("/mike mem: print addon's memory usage");
-    mPrint("/mike pos: print player position (x,y)");
-    mPrint("/mike timer: get elapsed time since ui load or timer reset");
+    mPrint("/mike mem: print addons memory usage");
+    mPrint("/mike pos: print player position");
+    mPrint("/mike timer: get elapsed time from ui load or timer reset");
     mPrint("/mike treset: reset timer");
     mPrint("/mike ireset: reset instances");
     mPrint("/mike rl: reload user interface");
@@ -76,12 +97,12 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mike qss: share objectives for the quest that is selected (highlighted) in the quest log");
     mPrint("/mike psell: sell poor quality items");
     mPrint("/mike pdestroy: destroy without confirm all poor quality items");
-    mPrint("/mike equip <item1>,<item2>,...,<itemN>: equips items");
-    mPrint("/mike wequip <w1>,<w2> = equip w1 on main hand and w2 on offhand");
+    mPrint("/mike equip <item1>, <item2>, ..., <itemN>: equips items");
+    mPrint("/mike wequip <w1>, <w2>: equip w1 on main hand and w2 on offhand");
     mPrint("/mike strip: put your equip in the inventory");
     mPrint("/mike fortitude: cast 'Power Word: Fortitude' on nearest unbuffed friendly player");
     mPrint("/mike heal <percent> <spellname>: cast an healing spell on nearest player with hp% < percent");
-    mPrint("/mike lspell <percent> <s1>,<s2>: cast s1 if target %hp is < percent, else s2");
+    mPrint("/mike lspell <percent> <s1>, <s2>: cast s1 if target %hp is < percent, else s2");
     mPrint("/mike pcast <n> <spell>: cast spell party member number n");
     mPrint("/mike wpain: cast 'Shadow Word: Pain' if not debuffed, else wand 'Shoot'");
     mPrint("/mike apain: cast 'Shadow Word: Pain' on nearest enemy not debuffed");
