@@ -21,9 +21,9 @@ License:
 
 ]]
 
--- chat print
-function mPrint(s)
-  ChatFrame1:AddMessage(s);
+-- chat print (rgb colors intensity from 0 to 1)
+function mPrint(s, r, g, b)
+  ChatFrame1:AddMessage(s, r, g, b);
 end
 
 -- return an array of strings using sep as separator
@@ -43,6 +43,15 @@ function mSplit(s, sep)
   end
   t[i] = string.sub(s, start);
   return t;
+end
+
+-- split paths
+function mPathSplit(s)
+  if string.find(s, '\\') then
+    return mSplit(s, '\\');
+  elseif string.find(s, '/') then
+    return mSplit(s, '/')
+  end
 end
 
 -- return a subtable

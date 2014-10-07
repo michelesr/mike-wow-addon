@@ -94,22 +94,48 @@ function mShareSelectedQuestObjectives()
   mShareQuestObjective(GetQuestLogSelection());
 end
 
--- count buffs on a target
-function mBuffCount(target)
+-- count buffs on a unit
+function mBuffCount(unit)
   local i=1; 
-  while UnitBuff(target, i) ~= nil do 
+  while UnitBuff(unit, i) do 
     i=i+1;
   end
   return i-1;
 end
 
 -- count debuffs on a target
-function mDebuffCount(target)
+function mDebuffCount(unit)
   local i=1; 
-  while UnitDebuff(target, i) ~= nil do 
+  while UnitDebuff(unit, i) do 
     i=i+1;
   end
   return i-1;
+end
+
+-- print target buff icons name
+function mPrintBuff(unit)
+  for i=1,mBuffCount(unit) do
+    local x = UnitBuff(unit, i);
+    local y = mPathSplit(x);
+    if y then
+      mPrint(y[3]);
+    else
+      mPrint(x);
+    end
+  end
+end
+
+-- print target debuff icons name
+function mPrintDebuff(unit)
+  for i=1,mDebuffCount(unit) do
+    local x = UnitDebuff(unit, i);
+    local y = mPathSplit(x);
+    if y then
+      mPrint(y[3]);
+    else
+      mPrint(x);
+    end
+  end
 end
 
 -- cast s1 if target isn't debuffed, else s2
