@@ -3,9 +3,9 @@ Macro framework
 
 Following functions are suited for macro writing.
 
-NOTE: watch out for spaces after comma!
+**NOTE**: watch out for spaces after comma!
 
-NOTE: <buff_icon_name> and <debuff_icon_name> can be client dependent (for example Mac client could be different from Windows client)
+**NOTE**: <buff_icon_name> and <debuff_icon_name> can be client dependent (for example Mac client could be different from Windows client)
 
 Spam heals based on HP
 ======================
@@ -18,7 +18,7 @@ Spam heals based on HP
 
 This will cast the selected spell on nearest friendly player with HP percent inferior to <percent>.
 
-Examples ::
+**Example**s ::
 
 	/mike heal 80 Flash Heal
 	/mike heal 50 Holy Light
@@ -40,7 +40,7 @@ Cast spell based on HP
 
 This will check for your target HP, and will cast <spell1> if its HP percent is inferior to <percent>, otherwise, will cast <spell2>.
 
-Examples ::
+**Example**s ::
 
 	/mike lspell 20 Execute, Heroic Strike
 	/mike lspell 50 Heal, Lesser Heal
@@ -64,7 +64,7 @@ You can write macro to cast spell based of target status (buffed/unbuffed with a
 
 This will cast <spell1> if target is not buffed with buff represented by <buff_icon_name>, else <spell2>.
 
-Example ::
+**Example** ::
 
 	/mike bcast Fortitude, Power Word: Fortitude, Power Word: Shield 
 
@@ -72,7 +72,7 @@ Example ::
 
 This will cast "Power Word: Fortitude" if target is unbuffed with a buff that contains 'Fortitude' in its icon name, else "Power Word: Shield"
 
-NOTE: in this example, i used 'Fortitude' as <buff_icon_name> instead of the entire icon name, you can do it if you want!
+**NOTE**: in this example, i used 'Fortitude' as <buff_icon_name> instead of the entire icon name, you can do it if you want!
 
 ::
 
@@ -82,7 +82,7 @@ NOTE: in this example, i used 'Fortitude' as <buff_icon_name> instead of the ent
 
 This will cast <spell1> if target is not debuffed with debuff represented by <debuff_icon_name>, else <spell2>
 
-Example ::
+**Example** ::
 
 	/mike dcast Pain, Shadow Word: Pain, Mind Blast
 

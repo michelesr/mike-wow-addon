@@ -3,7 +3,7 @@ Premade macros
 
 This one are premade macros script, that i wrote to simplify even more commands for some macro.
 
-NOTE: if you want your premade macro, write me at mikefender@cryptolab.net and I'll add it.
+**NOTE**: if you want your premade macro, write me at mikefender@cryptolab.net and I'll add it.
 
 ::
 

@@ -9,7 +9,7 @@ To share objectives for common quests in party ::
 
 ..
 
-NOTE: there's a limit for max chat messages per seconds, so if you have too many quests some will not be shared.
+**NOTE**: there's a limit for max chat messages per seconds, so if you have too many quests some will not be shared.
 
 To share quest objectives for selected quest ::
 
@@ -17,4 +17,4 @@ To share quest objectives for selected quest ::
 
 ..
 
-NOTE: this will share the quest that is selected (highlighted) in the quest log.
+**NOTE**: this will share the quest that is selected (highlighted) in the quest log.

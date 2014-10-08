@@ -13,4 +13,4 @@ Destroy poor items ::
 
 ..
 
-NOTE: there's not a prompt for confirm, item will be deleted as soon as you launch the command.
+**NOTE**: there's not a prompt for confirm, item will be deleted as soon as you launch the command.

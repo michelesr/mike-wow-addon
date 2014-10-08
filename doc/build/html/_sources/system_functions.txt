@@ -7,7 +7,7 @@ This will reset istances for current party ::
 
 ..
 
-NOTE: You can't reset raid istances.
+**NOTE**: You can't reset raid istances.
 
 Reloading User Interface
 ========================

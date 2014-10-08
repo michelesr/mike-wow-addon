@@ -52,8 +52,8 @@
   <div class="section" id="macro-framework">
 <h1>Macro framework<a class="headerlink" href="#macro-framework" title="Permalink to this headline">¶</a></h1>
 <p>Following functions are suited for macro writing.</p>
-<p>NOTE: watch out for spaces after comma!</p>
-<p>NOTE: &lt;buff_icon_name&gt; and &lt;debuff_icon_name&gt; can be client dependent (for example Mac client could be different from Windows client)</p>
+<p><strong>NOTE</strong>: watch out for spaces after comma!</p>
+<p><strong>NOTE</strong>: &lt;buff_icon_name&gt; and &lt;debuff_icon_name&gt; can be client dependent (for example Mac client could be different from Windows client)</p>
 </div>
 <div class="section" id="spam-heals-based-on-hp">
 <h1>Spam heals based on HP<a class="headerlink" href="#spam-heals-based-on-hp" title="Permalink to this headline">¶</a></h1>
@@ -61,7 +61,7 @@
 </pre></div>
 </div>
 <p>This will cast the selected spell on nearest friendly player with HP percent inferior to &lt;percent&gt;.</p>
-<p>Examples</p>
+<p><a href="#id1"><span class="problematic" id="id2">**</span></a>Example**s</p>
 <div class="highlight-python"><div class="highlight"><pre>/mike heal 80 Flash Heal
 /mike heal 50 Holy Light
 </pre></div>
@@ -75,7 +75,7 @@
 </pre></div>
 </div>
 <p>This will check for your target HP, and will cast &lt;spell1&gt; if its HP percent is inferior to &lt;percent&gt;, otherwise, will cast &lt;spell2&gt;.</p>
-<p>Examples</p>
+<p><a href="#id3"><span class="problematic" id="id4">**</span></a>Example**s</p>
 <div class="highlight-python"><div class="highlight"><pre>/mike lspell 20 Execute, Heroic Strike
 /mike lspell 50 Heal, Lesser Heal
 </pre></div>
@@ -90,17 +90,17 @@
 </pre></div>
 </div>
 <p>This will cast &lt;spell1&gt; if target is not buffed with buff represented by &lt;buff_icon_name&gt;, else &lt;spell2&gt;.</p>
-<p>Example</p>
+<p><strong>Example</strong></p>
 <div class="highlight-python"><div class="highlight"><pre>/mike bcast Fortitude, Power Word: Fortitude, Power Word: Shield
 </pre></div>
 </div>
 <p>This will cast &#8220;Power Word: Fortitude&#8221; if target is unbuffed with a buff that contains &#8216;Fortitude&#8217; in its icon name, else &#8220;Power Word: Shield&#8221;</p>
-<p>NOTE: in this example, i used &#8216;Fortitude&#8217; as &lt;buff_icon_name&gt; instead of the entire icon name, you can do it if you want!</p>
+<p><strong>NOTE</strong>: in this example, i used &#8216;Fortitude&#8217; as &lt;buff_icon_name&gt; instead of the entire icon name, you can do it if you want!</p>
 <div class="highlight-python"><div class="highlight"><pre>/mike dcast &lt;debuff_icon_name&gt;, &lt;spell1&gt;, &lt;spell2&gt;
 </pre></div>
 </div>
 <p>This will cast &lt;spell1&gt; if target is not debuffed with debuff represented by &lt;debuff_icon_name&gt;, else &lt;spell2&gt;</p>
-<p>Example</p>
+<p><strong>Example</strong></p>
 <div class="highlight-python"><div class="highlight"><pre>/mike dcast Pain, Shadow Word: Pain, Mind Blast
 </pre></div>
 </div>

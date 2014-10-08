@@ -24,7 +24,7 @@ I must admit that is more a collection of scripts then a real addon, but i had t
 
 I hope you can find it useful, and if you need some information or wanna requests some feature feel free to write me at mikefender@cryptolab.net.
 
-This is free software, released under the GNU GPL License Version 3. 
+This is **free** software, released under the *GNU GPL License Version 3*. 
 
 Source code is available on github at https://github.com/michelesr/mike-wow-addon. 
 

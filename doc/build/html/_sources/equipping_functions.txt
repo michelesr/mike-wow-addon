@@ -3,12 +3,12 @@ Equipping functions
 
 Here's a list of equipping functions.
 
-NOTE: Watch out for space after commas!
+**NOTE**: Watch out for space after commas!
 
-NOTE: There's no need to put whole item name, you can abbreviate it if the abbreviation is unique.
+**NOTE**: There's no need to put whole item name, you can abbreviate it if the abbreviation is unique.
 
-- Example: Reforged Blade of Heroes -> Reforged
-- Example: Reforged Blade of Heroes -> Heroes
+- **Example**: Reforged Blade of Heroes -> Reforged
+- **Example**: Reforged Blade of Heroes -> Heroes
 
 Auto Equipping Items
 ====================
@@ -20,7 +20,9 @@ This will equip items in the appropriate slots ::
 
 ..
 
-NOTE: this will search for the item in your inventory, if it finds them link will be prompted in the chat and items will be equipped (if possible) in the appropriate slots. 
+The command above search for the item in your inventory, if it finds them link will be prompted in the chat and items will be equipped (if possible) in the appropriate slots. 
+
+**HINT**: you can also use this function to swap items, in fact, the "equip" function will not do nothing for item not found in your bags, so if you use /mi equip <item1>, <item2> and one of the two item is equipped, it will be swapped with the other item.
 
 Equipping weapons in right hand
 ===============================
@@ -34,7 +36,7 @@ This will equip item1 on main hand and item2 on off hand ::
 Put Equipment in Containers
 ===========================
 
-NOTE: containers refer to backpack and additional bags, while inventory refers as equipped items, as Blizzard
+**NOTE**: containers refer to backpack and additional bags, while inventory refers as equipped items, as Blizzard
 API states.
 
 ::
