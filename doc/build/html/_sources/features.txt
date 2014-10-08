@@ -1,0 +1,24 @@
+Features Overview
+=================
+
+In this page all the main features of the addon will be explained.
+
+Getting system information
+==========================
+
+Sometimes you would know about information such as latency, fps, or memory usage of addons, etc.
+
+Network statistics
+==================
+
+Getting network informations ::
+
+	/mike net
+..
+
+This will show outgoing and incoming bandwith in kB/s and communication latency in ms.
+
+
+
+
+

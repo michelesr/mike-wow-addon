@@ -1,0 +1,46 @@
+Premade macros
+==============
+
+This one are premade macros script, that i wrote to simplify even more commands for some macro.
+
+NOTE: if you want your premade macro, write me at mikefender@cryptolab.net and I'll add it.
+
+::
+
+	/mike tattack
+
+..
+
+This will target nearest enemy unit (like if you pressed the tab key) and will auto-attack it.
+
+::
+
+	/mike sunder
+
+..
+
+This will search for nearest enemy with is not debuffed with "Sunder Armor" and will cast on it. This could be useful for a tank that want to put a stack of Sunder Armor on every enemies to improve aggro keeping.
+
+::
+
+	/mike fortitude
+
+..
+
+This will cast "Power Word: Fortitude" on nearest unbuffed friendly player.
+
+::
+
+	/mike wpain
+
+..
+
+This will cast "Shadow Word: Pain" if target is not debuffed, else will Shoot with Wand.
+
+::
+
+	/mike apain
+
+..
+
+This will cast "Shadow Word: Pain" on nearest enemy unit not debuffed.

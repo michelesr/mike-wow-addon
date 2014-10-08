@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Equipping functions &mdash; Mike WoW Addon 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Mike WoW Addon 1.0 documentation" href="index.html" />
+    <link rel="next" title="Macro framework" href="macro_framework.html" />
+    <link rel="prev" title="Poor items" href="poor_items.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="macro_framework.html" title="Macro framework"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="poor_items.html" title="Poor items"
+             accesskey="P">previous</a> |</li>
+        <li><a href="main.html">Mike WoW Addon 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="equipping-functions">
+<h1>Equipping functions<a class="headerlink" href="#equipping-functions" title="Permalink to this headline">¶</a></h1>
+<p>Here&#8217;s a list of equipping functions.</p>
+<p>NOTE: Watch out for space after commas!</p>
+<p>NOTE: There&#8217;s no need to put whole item name, you can abbreviate it if the abbreviation is unique.</p>
+<ul class="simple">
+<li>Example: Reforged Blade of Heroes -&gt; Reforged</li>
+<li>Example: Reforged Blade of Heroes -&gt; Heroes</li>
+</ul>
+</div>
+<div class="section" id="auto-equipping-items">
+<h1>Auto Equipping Items<a class="headerlink" href="#auto-equipping-items" title="Permalink to this headline">¶</a></h1>
+<p>This will equip items in the appropriate slots</p>
+<div class="highlight-python"><div class="highlight"><pre>/mike equip &lt;item1&gt;, &lt;item2&gt;, ..., &lt;itemN&gt;
+</pre></div>
+</div>
+<p>NOTE: this will search for the item in your inventory, if it finds them link will be prompted in the chat and items will be equipped (if possible) in the appropriate slots.</p>
+</div>
+<div class="section" id="equipping-weapons-in-right-hand">
+<h1>Equipping weapons in right hand<a class="headerlink" href="#equipping-weapons-in-right-hand" title="Permalink to this headline">¶</a></h1>
+<p>This will equip item1 on main hand and item2 on off hand</p>
+<div class="highlight-python"><div class="highlight"><pre>/mike wequip &lt;mainweapon&gt;, &lt;offweapon&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="put-equipment-in-containers">
+<h1>Put Equipment in Containers<a class="headerlink" href="#put-equipment-in-containers" title="Permalink to this headline">¶</a></h1>
+<p>NOTE: containers refer to backpack and additional bags, while inventory refers as equipped items, as Blizzard
+API states.</p>
+<div class="highlight-python"><div class="highlight"><pre>/mike strip
+</pre></div>
+</div>
+<p>This will strip you, putting all your equipment in your containers.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="main.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Equipping functions</a></li>
+<li><a class="reference internal" href="#auto-equipping-items">Auto Equipping Items</a></li>
+<li><a class="reference internal" href="#equipping-weapons-in-right-hand">Equipping weapons in right hand</a></li>
+<li><a class="reference internal" href="#put-equipment-in-containers">Put Equipment in Containers</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="poor_items.html"
+                        title="previous chapter">Poor items</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="macro_framework.html"
+                        title="next chapter">Macro framework</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/equipping_functions.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="macro_framework.html" title="Macro framework"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="poor_items.html" title="Poor items"
+             >previous</a> |</li>
+        <li><a href="main.html">Mike WoW Addon 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, MicheleSr.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
