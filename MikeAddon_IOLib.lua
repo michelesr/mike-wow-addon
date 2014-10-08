@@ -23,32 +23,33 @@ License:
 
 -- chat print (rgb colors intensity from 0 to 1)
 function mPrint(s, r, g, b)
-  ChatFrame1:AddMessage(s, r, g, b);
+  ChatFrame1:AddMessage(s, r, g, b)
 end
 
 -- return an array of strings using sep as separator
 function mSplit(s, sep) 
-  sep = sep or " ";
-  local step = string.len(sep);
-  local t = {}; 
-  local i=1;
-  local start = 1;
-  local j = string.find(s, sep);
+  sep = sep or " "
+  local step = string.len(sep)
+  local t = {} 
+  local i=1
+  local start = 1
+  local j = string.find(s, sep)
   if j then
     while j do
-      t[i] = string.sub(s, start, j-1);
-      i = i+1; start = j+step;
-      j = string.find(s, sep, start);
+      t[i] = string.sub(s, start, j-1)
+      i = i+1
+      start = j+step
+      j = string.find(s, sep, start)
     end
   end
-  t[i] = string.sub(s, start);
-  return t;
+  t[i] = string.sub(s, start)
+  return t
 end
 
 -- split paths
 function mPathSplit(s)
   if string.find(s, '\\') then
-    return mSplit(s, '\\');
+    return mSplit(s, '\\')
   elseif string.find(s, '/') then
     return mSplit(s, '/')
   end
@@ -60,22 +61,22 @@ function mSubTable(t, x, y)
   for i=x,y do
     a[i-1] = t[i]
   end
-  return a;
+  return a
 end
 
 -- array of word to string
 function mAToString(a, sep)
-  sep = sep or ' ';
-  local s = "";
+  sep = sep or ' '
+  local s = ""
   for x in a do
-    s = s .. sep .. a[x];
+    s = s .. sep .. a[x]
   end
-  return string.sub(s, 2, string.len(s));
+  return string.sub(s, 2, string.len(s))
 end
 
 -- return a string from args in a table, starting from i(default:2) to j(default:end)
 function mGetSubArgs(a, i, j)
-  i = i or 2;
-  j = j or table.getn(a);
-  return (mAToString(mSubTable(a, i, j)));
+  i = i or 2
+  j = j or table.getn(a)
+  return (mAToString(mSubTable(a, i, j)))
 end
