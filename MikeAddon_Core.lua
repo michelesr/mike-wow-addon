@@ -139,13 +139,30 @@ function mPrintDebuff(unit)
   end
 end
 
+-- cast s1 if target isn't buffed, else s2
+function mCastIfBuffed(buff, s1, s2)
+  local n = mBuffCount("target")+1
+  local i = 1
+  local x = false
+  while i < n do
+    if string.find(UnitBuff("target", i), buff) then
+      x = true
+    end i=i+1
+  end
+  if x then
+    CastSpellByName(s2)
+  else
+    CastSpellByName(s1)
+  end
+end
+
 -- cast s1 if target isn't debuffed, else s2
 function mCastIfDebuffed(debuff, s1, s2)
   local n = mDebuffCount("target")+1
   local i = 1
   local x = false
   while i < n do
-    if string.find(UnitDebuff("target", i), debuff) ~= nil then
+    if string.find(UnitDebuff("target", i), debuff) then
       x = true
     end i=i+1
   end
