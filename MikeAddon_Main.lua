@@ -44,6 +44,8 @@ function SlashCmdList.MIKE(msg, editbox)
     ResetInstances()
   elseif m[1] == "tsave" then
     mSaveTarget()
+  elseif m[1] == "tcustom" then
+    mSetTarget(m[2]);
   elseif m[1] == "trestore" then
     mRestoreTarget()
   elseif m[1] == "rl" then
@@ -123,6 +125,7 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("Target save & restore functions:", 1, 1, 0)
     mPrint("/mike tsave: save current target name")
     mPrint("/mike trestore: target unit with saved name")
+    mPrint("/mike tcustom <name>: set custom target to restore");
     mPrint("System functions", 1, 1, 0)
     mPrint("/mike ireset: reset instances")
     mPrint("/mike rl: reload user interface")

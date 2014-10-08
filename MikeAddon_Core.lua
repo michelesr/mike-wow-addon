@@ -51,6 +51,13 @@ function mSaveTarget()
   savedTarget = UnitName("target")
 end
 
+-- set custom target
+function mSetTarget(name)
+  if name then
+    savedTarget = name
+  end
+end
+
 -- restore target
 function mRestoreTarget()
   if savedTarget then
