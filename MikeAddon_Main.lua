@@ -45,7 +45,7 @@ function SlashCmdList.MIKE(msg, editbox)
   elseif m[1] == "tsave" then
     mSaveTarget()
   elseif m[1] == "tcustom" then
-    mSetTarget(m[2]);
+    mSetTarget(mGetSubArgs(m, 2));
   elseif m[1] == "trestore" then
     mRestoreTarget()
   elseif m[1] == "rl" then
