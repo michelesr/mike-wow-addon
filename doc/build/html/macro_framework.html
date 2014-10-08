@@ -53,6 +53,7 @@
 <h1>Macro framework<a class="headerlink" href="#macro-framework" title="Permalink to this headline">¶</a></h1>
 <p>Following functions are suited for macro writing.</p>
 <p>NOTE: watch out for spaces after comma!</p>
+<p>NOTE: &lt;buff_icon_name&gt; and &lt;debuff_icon_name&gt; can be client dependent (for example Mac client could be different from Windows client)</p>
 </div>
 <div class="section" id="spam-heals-based-on-hp">
 <h1>Spam heals based on HP<a class="headerlink" href="#spam-heals-based-on-hp" title="Permalink to this headline">¶</a></h1>
@@ -65,6 +66,8 @@
 /mike heal 50 Holy Light
 </pre></div>
 </div>
+<p>The first will cast &#8220;Flash Heal&#8221; on nearest friendly player with less than 80% HP.</p>
+<p>The first will cast &#8220;Holy Light&#8221; on nearest friendly player with less than 50% HP.</p>
 </div>
 <div class="section" id="cast-spell-based-on-hp">
 <h1>Cast spell based on HP<a class="headerlink" href="#cast-spell-based-on-hp" title="Permalink to this headline">¶</a></h1>
@@ -77,6 +80,31 @@
 /mike lspell 50 Heal, Lesser Heal
 </pre></div>
 </div>
+<p>The first will cast Execute if target has less than 20% HP, else Heroic Strike.</p>
+<p>The second will cast Heal if target has less than 50% HP, else Lesser Heal.</p>
+</div>
+<div class="section" id="buff-debuff-based-cast">
+<h1>Buff/Debuff based cast<a class="headerlink" href="#buff-debuff-based-cast" title="Permalink to this headline">¶</a></h1>
+<p>You can write macro to cast spell based of target status (buffed/unbuffed with a specified buff/debuff)</p>
+<div class="highlight-python"><div class="highlight"><pre>/mike bcast &lt;buff_icon_name&gt;, &lt;spell1&gt;, &lt;spell2&gt;
+</pre></div>
+</div>
+<p>This will cast &lt;spell1&gt; if target is not buffed with buff represented by &lt;buff_icon_name&gt;, else &lt;spell2&gt;.</p>
+<p>Example</p>
+<div class="highlight-python"><div class="highlight"><pre>/mike bcast Fortitude, Power Word: Fortitude, Power Word: Shield
+</pre></div>
+</div>
+<p>This will cast &#8220;Power Word: Fortitude&#8221; if target is unbuffed with a buff that contains &#8216;Fortitude&#8217; in its icon name, else &#8220;Power Word: Shield&#8221;</p>
+<p>NOTE: in this example, i used &#8216;Fortitude&#8217; as &lt;buff_icon_name&gt; instead of the entire icon name, you can do it if you want!</p>
+<div class="highlight-python"><div class="highlight"><pre>/mike dcast &lt;debuff_icon_name&gt;, &lt;spell1&gt;, &lt;spell2&gt;
+</pre></div>
+</div>
+<p>This will cast &lt;spell1&gt; if target is not debuffed with debuff represented by &lt;debuff_icon_name&gt;, else &lt;spell2&gt;</p>
+<p>Example</p>
+<div class="highlight-python"><div class="highlight"><pre>/mike dcast Pain, Shadow Word: Pain, Mind Blast
+</pre></div>
+</div>
+<p>This will cast &#8220;Shadow Word: Pain&#8221; if target is not debuffed with a debuff with contains &#8216;Pain&#8217; in its icon name, else will cast &#8220;Mind Blast&#8221;</p>
 </div>
 <div class="section" id="buff-debuff-spamming">
 <h1>Buff/Debuff spamming<a class="headerlink" href="#buff-debuff-spamming" title="Permalink to this headline">¶</a></h1>
@@ -96,8 +124,6 @@
 </pre></div>
 </div>
 <p>This will cast &lt;spell&gt; on nearest enemy unit that is undebuffed with debuff represented by &lt;debuff_icon_name&gt;.</p>
-<p>NOTE: watch out for spaces after comma!</p>
-<p>NOTE: &lt;buff_icon_name&gt; and &lt;debuff_icon_name&gt; can be client dependent (for example Mac client could be different from Windows client)</p>
 </div>
 
 
@@ -111,6 +137,7 @@
 <li><a class="reference internal" href="#">Macro framework</a></li>
 <li><a class="reference internal" href="#spam-heals-based-on-hp">Spam heals based on HP</a></li>
 <li><a class="reference internal" href="#cast-spell-based-on-hp">Cast spell based on HP</a></li>
+<li><a class="reference internal" href="#buff-debuff-based-cast">Buff/Debuff based cast</a></li>
 <li><a class="reference internal" href="#buff-debuff-spamming">Buff/Debuff spamming</a></li>
 </ul>
 
