@@ -207,7 +207,7 @@ This will cast the appropriate spell rank based on target lvl.
 +------+------+
 | 2-14 | 2    |
 +------+------+
-| 14-2 | 3    |
+| 14-26| 3    |
 +------+------+
 | 26-38| 4    |
 +------+------+
