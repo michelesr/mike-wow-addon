@@ -1,7 +1,7 @@
 --[[
 
 Mike's WoW Addon 
-Version: 1.0.2
+Version: 1.0.3
 Application Main CLI UI
 
 License:
@@ -73,9 +73,8 @@ function SlashCmdList.MIKE(msg, editbox)
     local sn = mGetSubArgs(m, 3)
     mMassHeal(sn, tonumber(m[2]))
   elseif m[1] == "lspell" then
-    local perc = m[2]
     local spells = mSplit(mGetSubArgs(m, 3), ", ")
-    mLifeSpell(tonumber(perc), spells[1], spells[2])
+    mLifeSpell(tonumber(m[2]), spells[1], spells[2])
   elseif m[1] == "bcast" then
     local x = mSplit(mGetSubArgs(m, 2), ", ")
     mCastIfBuffed(x[1], x[2], x[3]);
@@ -86,11 +85,17 @@ function SlashCmdList.MIKE(msg, editbox)
     local x = mSplit(mGetSubArgs(m, 2), ", ")
     mClassCast(x[1], x[2])
   elseif m[1] == "lvlcast" then
-    local spell = mGetSubArgs(m, 3);
-    mLevelCast(tonumber(m[2]), spell)
+    local spells = mSplit(mGetSubArgs(m, 3), ", ")
+    mLevelCast(tonumber(m[2]), spells[1], spells[2])
   elseif m[1] == "rcast" then
-    local spell = mGetSubArgs(m, 3);
+    local spell = mGetSubArgs(m, 3)
     mRankCast(tonumber(m[2]), spell)
+  elseif m[1] == "manacast" then
+    local spells = mSplit(mGetSubArgs(m, 3), ", ")
+    mManaCast(tonumber(m[2]), spells[1], spells[2])
+  elseif m[1] == "mpcast" then
+    local spells = mSplit(mGetSubArgs(m, 3), ", ")
+    mManaPercentCast(tonumber(m[2]), spells[1], spells[2])
   elseif m[1] == "pcast" then
     local n = m[2]
     mPartyMemberCast(n, mGetSubArgs(m, 3))
@@ -123,6 +128,7 @@ function SlashCmdList.MIKE(msg, editbox)
   else 
     mPrint("Mike's Addon", 1, 1, 0)
     mPrint("Usage: /mike <arguments> OR /mi <arguments>")
+    mPrint("[ ] are for optional (not mandatory) arguments");
     mPrint("System informations", 1, 1, 0)
     mPrint("/mike net: print net stats")
     mPrint("/mike fps: print framerate")
@@ -145,21 +151,23 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mike psell: sell poor quality items")
     mPrint("/mike pdestroy: destroy without confirm all poor quality items")
     mPrint("Equipping function", 1, 1, 0)
-    mPrint("/mike equip <item1>, <item2>, ..., <itemN>: equips items")
-    mPrint("/mike wequip <w1>, <w2>: equip w1 on main hand and w2 on offhand")
+    mPrint("/mike equip <item1>[, <item2>, ..., <itemN>]: equips items")
+    mPrint("/mike wequip <w1>[, <w2>]: equip w1 on main hand and w2 on offhand")
     mPrint("/mike strip: put your equip in the inventory")
     mPrint("Macro framework", 1, 1, 0)
     mPrint("/mike heal <percent> <spellname>: cast an healing spell on nearest player with hp% < percent")
-    mPrint("/mike lspell <percent> <s1>, <s2>: cast s1 if target %hp is < percent, else s2")
+    mPrint("/mike lspell <percent> <s1>[, <s2>]: cast s1 if target %hp is < percent, else s2")
     mPrint("/mike pbuff: print buff icon names (needed for pbuff) of your target (or you)")
     mPrint("/mike pdebuff: print debuff icon names (needed for pdebuff) of your target (or you)")
     mPrint("/mike mbuff <spell>, <buff_icon_name>: buff nearest unbuffed friendly player")
     mPrint("/mike mdebuff <spell>, <buff_icon_name>: debuff nearest unbuffed enemy unit")
-    mPrint("/mike bcast <buff_icon_name>, <spell1>, <spell2>: cast on target spell1 if not buffed, else spell2");
-    mPrint("/mike dcast <debuff_icon_name>, <spell1>, <spell2>: cast on target spell1 if not debuffed, else spell2");
-    mPrint("/mike ccast <class1> <class2> ... <classN>, <spell>: cast <spell> on target if its class match"); 
-    mPrint("/mike lvlcast <min_lvl> <spell>: cast spell if target lvl is major/equal <min_lvl>");
+    mPrint("/mike bcast <buff_icon_name>, <s1>[, <s2>]: cast on target s1 if not buffed, else s2");
+    mPrint("/mike dcast <debuff_icon_name>, <s1>[, <s2>]: cast on target s1 if not debuffed, else s2");
+    mPrint("/mike ccast <class1> [<class2> ... <classN>], <spell>: cast <spell> on target if its class match"); 
+    mPrint("/mike lvlcast <min_lvl> <s1>[, <s2>]: cast spell if target lvl is major/equal <min_lvl>, else s2");
     mPrint("/mike rcast <max_spell_rank> <spell>: check target lvl and cast appropriate rank of the spell");
+    mPrint("/mike manacast <min_mana> <s1>[, <s2>]: cast s1 if your mana is at least <min_mana>, else s2");
+    mPrint("/mike mpcast <mana_percent> <s1>[, <s2>]: cast s1 if your mana% is at least <percent>, else s2");
     mPrint("/mike pcast <n> <spell>: cast spell party member number n")
     mPrint("Premade macro functions", 1, 1, 0)
     mPrint("/mike tattack: target nearest enemy (like TAB) and auto-attack")

@@ -1,7 +1,7 @@
 --[[
 
 Mike's WoW Addon
-Version: 1.0.2
+Version: 1.0.3
 Application Core
 
 License:
@@ -149,7 +149,7 @@ end
 -- cast spell if class match
 function mClassCast(classes, spell)
   local c = UnitClass("target")
-  if c and string.find(classes, c) then
+  if spell and c and string.find(classes, c) then
     CastSpellByName(spell)
   end
 end
@@ -164,9 +164,9 @@ function mCastIfBuffed(buff, s1, s2)
       x = true
     end i=i+1
   end
-  if x then
+  if x and s2 then
     CastSpellByName(s2)
-  else
+  elseif s1 then
     CastSpellByName(s1)
   end
 end
@@ -181,9 +181,9 @@ function mCastIfDebuffed(debuff, s1, s2)
       x = true
     end i=i+1
   end
-  if x then
+  if x and s2 then
     CastSpellByName(s2)
-  else
+  elseif s1 then
     CastSpellByName(s1)
   end
 end
@@ -195,7 +195,7 @@ function mRankCast(maxRank, spell)
   local lvl = UnitLevel("target");
   if lvl then
     for i=maxRank,1,-1 do
-      if lvl >= levels[i] then
+      if lvl >= levels[i] and spell then
         CastSpellByName(spell .. "(Rank " .. i .. ")");
         return nil
       end
@@ -203,12 +203,28 @@ function mRankCast(maxRank, spell)
   end
 end
 
--- cast spell if lvl is major/equal minLvl
-function mLevelCast(minLvl, spell)
+-- cast s1 if lvl is major/equal minLvl, else s2
+function mLevelCast(minLvl, s1 , s2)
   local lvl = UnitLevel("target");
-  if lvl and lvl >= minLvl then
-    CastSpellByName(spell);
+  if s1 and lvl and lvl >= minLvl then
+    CastSpellByName(s1);
+  elseif s2 then
+    CastSpellByName(s2);
   end
+end
+
+-- cast spell1 if mana is >= than minMana, else s2
+function mManaCast(minMana, s1, s2)
+  if s1 and UnitMana("player") >= minMana then
+    CastSpellByName(s1);
+  elseif s2 then
+    CastSpellByName(s2);
+  end
+end
+
+-- cast spell1 if mana% is >= percent, else s2
+function mManaPercentCast(percent, s1, s2)
+  mManaCast(UnitManaMax("player") * percent / 100.0, s1, s2); 
 end
 
 -- buff nearest unbuffed friendly unit with a spell
@@ -225,7 +241,7 @@ function mMassBuff(spellName, checkString)
         x=false
       end k=k+1
     end
-    if x == true and UnitIsPlayer("target") then
+    if spellName and  x == true and UnitIsPlayer("target") then
       CastSpellByName(spellName)
       return nil
     end
@@ -246,7 +262,7 @@ function mMassDebuff(spellName, checkString)
         x=false
       end k=k+1
     end
-    if x == true then
+    if spellName and x == true then
       CastSpellByName(spellName)
       return nil
     end
@@ -258,13 +274,13 @@ function mCheckHp(perc)
   return (UnitHealth("target")/UnitHealthMax("target")) < (perc/100.0)
 end
 
--- cast a spell on  nearest friendly player if his/her hp % is < than perc
+-- cast a spell on nearest friendly player if his/her hp % is < than perc
 function mMassHeal(spellName, perc)
   ClearTarget()
   for i=1,N do
     i=i+1
     TargetNearestFriend()
-    if mCheckHp(perc) and UnitIsPlayer("target") then
+    if spellName and mCheckHp(perc) and UnitIsPlayer("target") then
       CastSpellByName(spellName)
       return nil
     end
@@ -273,9 +289,9 @@ end
 
 -- cast s1 if hp is < perc, else s2
 function mLifeSpell(perc, s1, s2) 
-  if mCheckHp(perc) then
+  if s1 and mCheckHp(perc) then
     CastSpellByName(s1)
-  else
+  elseif s2 then
     CastSpellByName(s2)
   end
 end
@@ -289,7 +305,9 @@ end
 -- cast spell on party member n
 function mPartyMemberCast(n, spell)
   TargetUnit("party" .. n)
-  CastSpellByName(spell)
+  if spell then
+    CastSpellByName(spell)
+  end
   TargetLastTarget()
 end
 
