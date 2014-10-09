@@ -96,29 +96,6 @@
 </div>
 <p><strong>HINT</strong>: you can put multiple ccast in a single macro, to cast different spell on different classes, like i did on the example.</p>
 </div>
-<div class="section" id="buff-debuff-based-cast">
-<h1>Buff/Debuff based cast<a class="headerlink" href="#buff-debuff-based-cast" title="Permalink to this headline">¶</a></h1>
-<p>You can write macro to cast spell based of target status (buffed/unbuffed with a specified buff/debuff)</p>
-<div class="highlight-python"><div class="highlight"><pre>/mike bcast &lt;buff_icon_name&gt;, &lt;spell1&gt;, &lt;spell2&gt;
-</pre></div>
-</div>
-<p>This will cast &lt;spell1&gt; if target is not buffed with buff represented by &lt;buff_icon_name&gt;, else &lt;spell2&gt;.</p>
-<p><strong>Example</strong></p>
-<div class="highlight-python"><div class="highlight"><pre>/mike bcast Fortitude, Power Word: Fortitude, Power Word: Shield
-</pre></div>
-</div>
-<p>This will cast &#8220;Power Word: Fortitude&#8221; if target is unbuffed with a buff that contains &#8216;Fortitude&#8217; in its icon name, else &#8220;Power Word: Shield&#8221;</p>
-<p><strong>NOTE</strong>: in this example, i used &#8216;Fortitude&#8217; as &lt;buff_icon_name&gt; instead of the entire icon name, you can do it if you want!</p>
-<div class="highlight-python"><div class="highlight"><pre>/mike dcast &lt;debuff_icon_name&gt;, &lt;spell1&gt;, &lt;spell2&gt;
-</pre></div>
-</div>
-<p>This will cast &lt;spell1&gt; if target is not debuffed with debuff represented by &lt;debuff_icon_name&gt;, else &lt;spell2&gt;</p>
-<p><strong>Example</strong></p>
-<div class="highlight-python"><div class="highlight"><pre>/mike dcast Pain, Shadow Word: Pain, Mind Blast
-</pre></div>
-</div>
-<p>This will cast &#8220;Shadow Word: Pain&#8221; if target is not debuffed with a debuff with contains &#8216;Pain&#8217; in its icon name, else will cast &#8220;Mind Blast&#8221;</p>
-</div>
 <div class="section" id="buff-debuff-spamming">
 <h1>Buff/Debuff spamming<a class="headerlink" href="#buff-debuff-spamming" title="Permalink to this headline">¶</a></h1>
 <p>You can write a macro to cast buff on nearest unbuffed player o debuff to nearest undebuffed unit.</p>
@@ -138,6 +115,30 @@
 </div>
 <p>This will cast &lt;spell&gt; on nearest enemy unit that is undebuffed with debuff represented by &lt;debuff_icon_name&gt;.</p>
 </div>
+<div class="section" id="buff-debuff-based-cast">
+<h1>Buff/Debuff based cast<a class="headerlink" href="#buff-debuff-based-cast" title="Permalink to this headline">¶</a></h1>
+<p>You can write macro to cast spell based of target status (buffed/unbuffed with a specified buff/debuff)</p>
+<p>See &#8220;Buff/Debuff spamming&#8221; for information about &lt;buff_icon_name&gt; and &lt;debuff_icon_name&gt;</p>
+<div class="highlight-python"><div class="highlight"><pre>/mike bcast &lt;buff_icon_name&gt;, &lt;spell1&gt;, &lt;spell2&gt;
+</pre></div>
+</div>
+<p>This will cast &lt;spell1&gt; if target is not buffed with buff represented by &lt;buff_icon_name&gt;, else &lt;spell2&gt;.</p>
+<p><strong>Example</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>/mike bcast Fortitude, Power Word: Fortitude, Power Word: Shield
+</pre></div>
+</div>
+<p>This will cast &#8220;Power Word: Fortitude&#8221; if target is unbuffed with a buff that contains &#8216;Fortitude&#8217; in its icon name, else &#8220;Power Word: Shield&#8221;</p>
+<p><strong>NOTE</strong>: in this example, i used &#8216;Fortitude&#8217; as &lt;buff_icon_name&gt; instead of the entire icon name, you can do it if you want (this will also check for Prayer of Fortitude buffs) !</p>
+<div class="highlight-python"><div class="highlight"><pre>/mike dcast &lt;debuff_icon_name&gt;, &lt;spell1&gt;, &lt;spell2&gt;
+</pre></div>
+</div>
+<p>This will cast &lt;spell1&gt; if target is not debuffed with debuff represented by &lt;debuff_icon_name&gt;, else &lt;spell2&gt;</p>
+<p><strong>Example</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>/mike dcast Pain, Shadow Word: Pain, Mind Blast
+</pre></div>
+</div>
+<p>This will cast &#8220;Shadow Word: Pain&#8221; if target is not debuffed with a debuff with contains &#8216;Pain&#8217; in its icon name, else will cast &#8220;Mind Blast&#8221;</p>
+</div>
 
 
           </div>
@@ -151,8 +152,8 @@
 <li><a class="reference internal" href="#spam-heals-based-on-hp">Spam heals based on HP</a></li>
 <li><a class="reference internal" href="#cast-spell-based-on-hp">Cast spell based on HP</a></li>
 <li><a class="reference internal" href="#class-based-cast">Class based cast</a></li>
-<li><a class="reference internal" href="#buff-debuff-based-cast">Buff/Debuff based cast</a></li>
 <li><a class="reference internal" href="#buff-debuff-spamming">Buff/Debuff spamming</a></li>
+<li><a class="reference internal" href="#buff-debuff-based-cast">Buff/Debuff based cast</a></li>
 </ul>
 
   <h4>Previous topic</h4>
