@@ -1,7 +1,7 @@
 --[[
 
 Mike's WoW Addon
-Version: 1.0.1
+Version: 1.0.2
 Application Core
 
 License:
@@ -185,6 +185,29 @@ function mCastIfDebuffed(debuff, s1, s2)
     CastSpellByName(s2)
   else
     CastSpellByName(s1)
+  end
+end
+
+-- cast spell with rank appropriate for target lvl
+-- maxRank: current max rank of the spell
+function mRankCast(maxRank, spell)
+  local levels = {1, 2, 14, 26, 38, 50};
+  local lvl = UnitLevel("target");
+  if lvl then
+    for i=maxRank,1,-1 do
+      if lvl >= levels[i] then
+        CastSpellByName(spell .. "(Rank " .. i .. ")");
+        return nil
+      end
+    end
+  end
+end
+
+-- cast spell if lvl is major/equal minLvl
+function mLevelCast(minLvl, spell)
+  local lvl = UnitLevel("target");
+  if lvl and lvl >= minLvl then
+    CastSpellByName(spell);
   end
 end
 

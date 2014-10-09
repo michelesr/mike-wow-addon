@@ -1,7 +1,7 @@
 --[[
 
 Mike's WoW Addon 
-Version: 1.0.1
+Version: 1.0.2
 Application Main CLI UI
 
 License:
@@ -84,7 +84,13 @@ function SlashCmdList.MIKE(msg, editbox)
     mCastIfDebuffed(x[1], x[2], x[3]);
   elseif m[1] == "ccast" then
     local x = mSplit(mGetSubArgs(m, 2), ", ")
-    mClassCast(x[1], x[2]);
+    mClassCast(x[1], x[2])
+  elseif m[1] == "lvlcast" then
+    local spell = mGetSubArgs(m, 3);
+    mLevelCast(tonumber(m[2]), spell)
+  elseif m[1] == "rcast" then
+    local spell = mGetSubArgs(m, 3);
+    mRankCast(tonumber(m[2]), spell)
   elseif m[1] == "pcast" then
     local n = m[2]
     mPartyMemberCast(n, mGetSubArgs(m, 3))
@@ -152,6 +158,8 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mike bcast <buff_icon_name>, <spell1>, <spell2>: cast on target spell1 if not buffed, else spell2");
     mPrint("/mike dcast <debuff_icon_name>, <spell1>, <spell2>: cast on target spell1 if not debuffed, else spell2");
     mPrint("/mike ccast <class1> <class2> ... <classN>, <spell>: cast <spell> on target if its class match"); 
+    mPrint("/mike lvlcast <min_lvl> <spell>: cast spell if target lvl is major/equal <min_lvl>");
+    mPrint("/mike rcast <max_spell_rank> <spell>: check target lvl and cast appropriate rank of the spell");
     mPrint("/mike pcast <n> <spell>: cast spell party member number n")
     mPrint("Premade macro functions", 1, 1, 0)
     mPrint("/mike tattack: target nearest enemy (like TAB) and auto-attack")
