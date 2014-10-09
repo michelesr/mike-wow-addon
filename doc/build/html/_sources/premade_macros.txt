@@ -1,5 +1,5 @@
-Premade macros
-==============
+Premade macro commands
+======================
 
 This one are premade macros script, that i wrote to simplify even more commands for some macro.
 
