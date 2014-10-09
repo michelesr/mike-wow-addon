@@ -54,6 +54,15 @@
 <p>Following functions are suited for macro writing.</p>
 <p><strong>NOTE</strong>: watch out for spaces after comma!</p>
 <p><strong>NOTE</strong>: &lt;buff_icon_name&gt; and &lt;debuff_icon_name&gt; can be client dependent (for example Mac client could be different from Windows client)</p>
+<p><strong>NOTE</strong>: &lt;spell&gt; refers to spell name as you seen it in the tooltip, if rank is not specified will be cast the highest.</p>
+<p><strong>NOTE</strong>: to specify rank for spell use this syntax</p>
+<div class="highlight-python"><div class="highlight"><pre>Spell Name(Rank X)
+</pre></div>
+</div>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre>Smite(Rank 2)
+</pre></div>
+</div>
 </div>
 <div class="section" id="spam-heals-based-on-hp">
 <h1>Spam heals based on HP<a class="headerlink" href="#spam-heals-based-on-hp" title="Permalink to this headline">¶</a></h1>
@@ -139,6 +148,69 @@
 </div>
 <p>This will cast &#8220;Shadow Word: Pain&#8221; if target is not debuffed with a debuff with contains &#8216;Pain&#8217; in its icon name, else will cast &#8220;Mind Blast&#8221;</p>
 </div>
+<div class="section" id="cast-spell-based-on-target-lvl">
+<h1>Cast spell based on target lvl<a class="headerlink" href="#cast-spell-based-on-target-lvl" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python"><div class="highlight"><pre>/mike lvlcast &lt;min_lvl&gt; &lt;spell&gt;
+</pre></div>
+</div>
+<p>This will cast &lt;spell&gt; if target lvl is major/equal &lt;min_lvl&gt;.</p>
+<p><strong>Example</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>/mike lvlcast 20 Smite
+</pre></div>
+</div>
+<p>This will cast &#8220;Smite&#8221; only if target is lvl 20+</p>
+<p><strong>HINT</strong>: you can chain this commands in a macro to cast different spells on target of different level range</p>
+<p><strong>Example</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>/mike lvlcast 50 Power Word: Fortitude(Rank 6)
+/mike lvlcast 38 Power Word: Fortitude(Rank 5)
+/mike lvlcast 26 Power Word: Fortitude(Rank 4)
+</pre></div>
+</div>
+<p><strong>NOTE</strong>: launching this macro can cause &#8220;Another action is in progress&#8221; message, this is normal because if you cast the first spell (Rank 6) then you can&#8217;t cast Rank 5-4 due to cooldown.</p>
+</div>
+<div class="section" id="cast-appropriate-rank-for-a-spell">
+<h1>Cast appropriate rank for a spell<a class="headerlink" href="#cast-appropriate-rank-for-a-spell" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python"><div class="highlight"><pre>/mike rcast &lt;max_rank&gt; &lt;spell&gt;
+</pre></div>
+</div>
+<p>This will cast the appropriate spell rank based on target lvl.</p>
+<p>&lt;max_rank&gt; is the highest available rank for &lt;spell&gt;.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Lvl</th>
+<th class="head">Rank</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1-2</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>2-14</td>
+<td>2</td>
+</tr>
+<tr class="row-even"><td>14-2</td>
+<td>3</td>
+</tr>
+<tr class="row-odd"><td>26-38</td>
+<td>4</td>
+</tr>
+<tr class="row-even"><td>38-50</td>
+<td>5</td>
+</tr>
+<tr class="row-odd"><td>50-60</td>
+<td>6</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre>/mike rcast 6 Power Word: Fortitude
+</pre></div>
+</div>
+</div>
 
 
           </div>
@@ -154,6 +226,8 @@
 <li><a class="reference internal" href="#class-based-cast">Class based cast</a></li>
 <li><a class="reference internal" href="#buff-debuff-spamming">Buff/Debuff spamming</a></li>
 <li><a class="reference internal" href="#buff-debuff-based-cast">Buff/Debuff based cast</a></li>
+<li><a class="reference internal" href="#cast-spell-based-on-target-lvl">Cast spell based on target lvl</a></li>
+<li><a class="reference internal" href="#cast-appropriate-rank-for-a-spell">Cast appropriate rank for a spell</a></li>
 </ul>
 
   <h4>Previous topic</h4>

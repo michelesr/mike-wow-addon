@@ -7,6 +7,22 @@ Following functions are suited for macro writing.
 
 **NOTE**: <buff_icon_name> and <debuff_icon_name> can be client dependent (for example Mac client could be different from Windows client)
 
+**NOTE**: <spell> refers to spell name as you seen it in the tooltip, if rank is not specified will be cast the highest. 
+
+**NOTE**: to specify rank for spell use this syntax
+
+::
+
+	Spell Name(Rank X)
+
+..
+
+**Example**::
+
+	Smite(Rank 2)
+
+..
+
 Spam heals based on HP
 ======================
 
@@ -139,3 +155,69 @@ This will cast <spell1> if target is not debuffed with debuff represented by <de
 ..
 
 This will cast "Shadow Word: Pain" if target is not debuffed with a debuff with contains 'Pain' in its icon name, else will cast "Mind Blast" 
+
+Cast spell based on target lvl
+==============================
+
+::
+
+	/mike lvlcast <min_lvl> <spell>
+
+..
+
+This will cast <spell> if target lvl is major/equal <min_lvl>.
+
+**Example** ::
+
+	/mike lvlcast 20 Smite
+
+..
+
+This will cast "Smite" only if target is lvl 20+
+
+**HINT**: you can chain this commands in a macro to cast different spells on target of different level range
+
+**Example** ::
+
+	/mike lvlcast 50 Power Word: Fortitude(Rank 6)
+	/mike lvlcast 38 Power Word: Fortitude(Rank 5)
+	/mike lvlcast 26 Power Word: Fortitude(Rank 4)
+
+..
+
+**NOTE**: launching this macro can cause "Another action is in progress" message, this is normal because if you cast the first spell (Rank 6) then you can't cast Rank 5-4 due to cooldown.
+
+Cast appropriate rank for a spell
+=================================
+
+::
+
+	/mike rcast <max_rank> <spell>
+
+..
+
+This will cast the appropriate spell rank based on target lvl.
+
+<max_rank> is the highest available rank for <spell>.
+
++------+------+
+| Lvl  | Rank |
++======+======+
+| 1-2  | 1    |
++------+------+
+| 2-14 | 2    |
++------+------+
+| 14-2 | 3    |
++------+------+
+| 26-38| 4    |
++------+------+
+| 38-50| 5    |
++------+------+
+| 50-60| 6    |
++------+------+
+
+**Example**::
+
+	/mike rcast 6 Power Word: Fortitude
+
+..
