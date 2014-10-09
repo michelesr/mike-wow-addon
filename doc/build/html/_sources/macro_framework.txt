@@ -18,7 +18,7 @@ Spam heals based on HP
 
 This will cast the selected spell on nearest friendly player with HP percent inferior to <percent>.
 
-**Example**s ::
+**Example** ::
 
 	/mike heal 80 Flash Heal
 	/mike heal 50 Holy Light
@@ -40,7 +40,7 @@ Cast spell based on HP
 
 This will check for your target HP, and will cast <spell1> if its HP percent is inferior to <percent>, otherwise, will cast <spell2>.
 
-**Example**s ::
+**Example** ::
 
 	/mike lspell 20 Execute, Heroic Strike
 	/mike lspell 50 Heal, Lesser Heal
@@ -50,6 +50,26 @@ This will check for your target HP, and will cast <spell1> if its HP percent is 
 The first will cast Execute if target has less than 20% HP, else Heroic Strike. 
 
 The second will cast Heal if target has less than 50% HP, else Lesser Heal.
+
+Class based cast
+================
+
+::
+
+	/mike ccast <class1> <class2> ... <classN>, <spell>
+
+..
+
+This will cast the selected <spell> only if target's class match with classes provided.
+
+**Example** ::
+
+	/mike ccast Warrior Rogue Paladin, Blessing of Might
+	/mike ccast Mage Warlock Priest, Blessing of Wisdom
+
+..
+
+**HINT**: you can put multiple ccast in a single macro, to cast different spell on different classes, like i did on the example.
 
 Buff/Debuff based cast
 ======================

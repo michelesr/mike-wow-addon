@@ -61,7 +61,7 @@
 </pre></div>
 </div>
 <p>This will cast the selected spell on nearest friendly player with HP percent inferior to &lt;percent&gt;.</p>
-<p><a href="#id1"><span class="problematic" id="id2">**</span></a>Example**s</p>
+<p><strong>Example</strong></p>
 <div class="highlight-python"><div class="highlight"><pre>/mike heal 80 Flash Heal
 /mike heal 50 Holy Light
 </pre></div>
@@ -75,13 +75,26 @@
 </pre></div>
 </div>
 <p>This will check for your target HP, and will cast &lt;spell1&gt; if its HP percent is inferior to &lt;percent&gt;, otherwise, will cast &lt;spell2&gt;.</p>
-<p><a href="#id3"><span class="problematic" id="id4">**</span></a>Example**s</p>
+<p><strong>Example</strong></p>
 <div class="highlight-python"><div class="highlight"><pre>/mike lspell 20 Execute, Heroic Strike
 /mike lspell 50 Heal, Lesser Heal
 </pre></div>
 </div>
 <p>The first will cast Execute if target has less than 20% HP, else Heroic Strike.</p>
 <p>The second will cast Heal if target has less than 50% HP, else Lesser Heal.</p>
+</div>
+<div class="section" id="class-based-cast">
+<h1>Class based cast<a class="headerlink" href="#class-based-cast" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python"><div class="highlight"><pre>/mike ccast &lt;class1&gt; &lt;class2&gt; ... &lt;classN&gt;, &lt;spell&gt;
+</pre></div>
+</div>
+<p>This will cast the selected &lt;spell&gt; only if target&#8217;s class match with classes provided.</p>
+<p><strong>Example</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>/mike ccast Warrior Rogue Paladin, Blessing of Might
+/mike ccast Mage Warlock Priest, Blessing of Wisdom
+</pre></div>
+</div>
+<p><strong>HINT</strong>: you can put multiple ccast in a single macro, to cast different spell on different classes, like i did on the example.</p>
 </div>
 <div class="section" id="buff-debuff-based-cast">
 <h1>Buff/Debuff based cast<a class="headerlink" href="#buff-debuff-based-cast" title="Permalink to this headline">¶</a></h1>
@@ -137,6 +150,7 @@
 <li><a class="reference internal" href="#">Macro framework</a></li>
 <li><a class="reference internal" href="#spam-heals-based-on-hp">Spam heals based on HP</a></li>
 <li><a class="reference internal" href="#cast-spell-based-on-hp">Cast spell based on HP</a></li>
+<li><a class="reference internal" href="#class-based-cast">Class based cast</a></li>
 <li><a class="reference internal" href="#buff-debuff-based-cast">Buff/Debuff based cast</a></li>
 <li><a class="reference internal" href="#buff-debuff-spamming">Buff/Debuff spamming</a></li>
 </ul>
