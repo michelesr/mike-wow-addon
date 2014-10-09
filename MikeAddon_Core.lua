@@ -146,6 +146,14 @@ function mPrintDebuff(unit)
   end
 end
 
+-- cast spell if class match
+function mClassCast(classes, spell)
+  local c = UnitClass("target")
+  if c and string.find(classes, c) then
+    CastSpellByName(spell)
+  end
+end
+
 -- cast s1 if target isn't buffed, else s2
 function mCastIfBuffed(buff, s1, s2)
   local n = mBuffCount("target")+1
