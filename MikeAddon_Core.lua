@@ -214,9 +214,7 @@ end
 -- buff nearest unbuffed friendly unit with a spell
 function mMassBuff(spellName, checkString)
   ClearTarget()
-  local i=1
-  local goon = true
-  while i <= N and goon do
+  for i=1,N do
     i=i+1
     TargetNearestFriend()
     local x = true
@@ -229,7 +227,7 @@ function mMassBuff(spellName, checkString)
     end
     if x == true and UnitIsPlayer("target") then
       CastSpellByName(spellName)
-      goon = false
+      return nil
     end
   end 
 end
@@ -237,9 +235,7 @@ end
 -- cast debuff spell on nearest enemy undebuffed unit
 function mMassDebuff(spellName, checkString)
   ClearTarget()
-  local i = 1
-  local goon = true
-  while i <= N and goon do
+  for i=1,N do
     i=i+1
     TargetNearestEnemy()
     local x = true
@@ -252,7 +248,7 @@ function mMassDebuff(spellName, checkString)
     end
     if x == true then
       CastSpellByName(spellName)
-      goon = false
+      return nil
     end
   end 
 end
@@ -265,14 +261,12 @@ end
 -- cast a spell on  nearest friendly player if his/her hp % is < than perc
 function mMassHeal(spellName, perc)
   ClearTarget()
-  local i = 1
-  local goon = true
-  while i <= N and goon do
+  for i=1,N do
     i=i+1
     TargetNearestFriend()
     if mCheckHp(perc) and UnitIsPlayer("target") then
       CastSpellByName(spellName)
-      goon = false
+      return nil
     end
   end
 end
