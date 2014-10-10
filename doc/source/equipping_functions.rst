@@ -3,9 +3,12 @@ Equipping functions
 
 Here's a list of equipping functions.
 
+**NOTE**: arguments inside [ ] are optional.
+
 **NOTE**: Watch out for space after commas!
 
 **NOTE**: There's no need to put whole item name, you can abbreviate it if the abbreviation is unique.
+
 
 - **Example**: Reforged Blade of Heroes -> Reforged
 - **Example**: Reforged Blade of Heroes -> Heroes
@@ -16,20 +19,41 @@ Auto Equipping Items
 
 This will equip items in the appropriate slots ::
 
-	/mike equip <item1>, <item2>, ..., <itemN>
+	/mike equip <item1>[, <item2>, ..., <itemN>]
 
 ..
+
+**Example** ::
+
+	/mike equip Avenger's Breastplate, Belt of Might, Avenger's Crown
+
+..
+
 
 The command above search for the item in your inventory, if it finds them link will be prompted in the chat and items will be equipped (if possible) in the appropriate slots. 
 
 **HINT**: you can also use this function to swap items, in fact, the "equip" function will not do nothing for item not found in your bags, so if you use /mi equip <item1>, <item2> and one of the two item is equipped, it will be swapped with the other item.
+
+**Example** ::
+
+	/mike equip Belt of Might, Belt of The Fallen Emperor, Acid Inscribed Greaves, Avenger's Greaves
+
+..
+
+This will get the belt and the boots on the bag and swap with the ones equipped.
 
 Equipping weapons in right hand
 ===============================
 
 This will equip item1 on main hand and item2 on off hand ::
 
-	/mike wequip <mainweapon>, <offweapon>
+	/mike wequip <mainweapon>[, <offweapon>]
+
+..
+
+**Example** ::
+
+	/mike wequip Argent Custodian, Ebon Hand
 
 ..
 

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Macro framework &mdash; Mike WoW Addon 1.0.2 documentation</title>
+    <title>Macro framework &mdash; Mike WoW Addon 1.0.3 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.0.2',
+        VERSION:     '1.0.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mike WoW Addon 1.0.2 documentation" href="index.html" />
+    <link rel="top" title="Mike WoW Addon 1.0.3 documentation" href="index.html" />
     <link rel="next" title="Premade macro commands" href="premade_macros.html" />
     <link rel="prev" title="Equipping functions" href="equipping_functions.html" /> 
   </head>
@@ -40,7 +40,7 @@
         <li class="right" >
           <a href="equipping_functions.html" title="Equipping functions"
              accesskey="P">previous</a> |</li>
-        <li><a href="main.html">Mike WoW Addon 1.0.2 documentation</a> &raquo;</li> 
+        <li><a href="main.html">Mike WoW Addon 1.0.3 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -52,6 +52,7 @@
   <div class="section" id="macro-framework">
 <h1>Macro framework<a class="headerlink" href="#macro-framework" title="Permalink to this headline">¶</a></h1>
 <p>Following functions are suited for macro writing.</p>
+<p><strong>NOTE</strong>: arguments inside [ ] are optional.</p>
 <p><strong>NOTE</strong>: watch out for spaces after comma!</p>
 <p><strong>NOTE</strong>: &lt;buff_icon_name&gt; and &lt;debuff_icon_name&gt; can be client dependent (for example Mac client could be different from Windows client)</p>
 <p><strong>NOTE</strong>: &lt;spell&gt; refers to spell name as you seen it in the tooltip, if rank is not specified will be cast the highest.</p>
@@ -80,27 +81,30 @@
 </div>
 <div class="section" id="cast-spell-based-on-hp">
 <h1>Cast spell based on HP<a class="headerlink" href="#cast-spell-based-on-hp" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-python"><div class="highlight"><pre>/mike lspell &lt;percent&gt; &lt;spell1&gt;, &lt;spell2&gt;
+<div class="highlight-python"><div class="highlight"><pre>/mike lspell &lt;percent&gt; &lt;spell1&gt;[, &lt;spell2&gt;]
 </pre></div>
 </div>
 <p>This will check for your target HP, and will cast &lt;spell1&gt; if its HP percent is inferior to &lt;percent&gt;, otherwise, will cast &lt;spell2&gt;.</p>
 <p><strong>Example</strong></p>
 <div class="highlight-python"><div class="highlight"><pre>/mike lspell 20 Execute, Heroic Strike
 /mike lspell 50 Heal, Lesser Heal
+/mike lspell 20 Flash Heal
 </pre></div>
 </div>
 <p>The first will cast Execute if target has less than 20% HP, else Heroic Strike.</p>
 <p>The second will cast Heal if target has less than 50% HP, else Lesser Heal.</p>
+<p>The third will cast Flash Heal if target has less than 20% HP.</p>
 </div>
 <div class="section" id="class-based-cast">
 <h1>Class based cast<a class="headerlink" href="#class-based-cast" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-python"><div class="highlight"><pre>/mike ccast &lt;class1&gt; &lt;class2&gt; ... &lt;classN&gt;, &lt;spell&gt;
+<div class="highlight-python"><div class="highlight"><pre>/mike ccast &lt;class1&gt;[ &lt;class2&gt; ... &lt;classN&gt;], &lt;spell&gt;
 </pre></div>
 </div>
 <p>This will cast the selected &lt;spell&gt; only if target&#8217;s class match with classes provided.</p>
 <p><strong>Example</strong></p>
-<div class="highlight-python"><div class="highlight"><pre>/mike ccast Warrior Rogue Paladin, Blessing of Might
+<div class="highlight-python"><div class="highlight"><pre>/mike ccast Warrior Rogue, Blessing of Might
 /mike ccast Mage Warlock Priest, Blessing of Wisdom
+/mike ccast Paladin, Blessing of Kings
 </pre></div>
 </div>
 <p><strong>HINT</strong>: you can put multiple ccast in a single macro, to cast different spell on different classes, like i did on the example.</p>
@@ -128,7 +132,7 @@
 <h1>Buff/Debuff based cast<a class="headerlink" href="#buff-debuff-based-cast" title="Permalink to this headline">¶</a></h1>
 <p>You can write macro to cast spell based of target status (buffed/unbuffed with a specified buff/debuff)</p>
 <p>See &#8220;Buff/Debuff spamming&#8221; for information about &lt;buff_icon_name&gt; and &lt;debuff_icon_name&gt;</p>
-<div class="highlight-python"><div class="highlight"><pre>/mike bcast &lt;buff_icon_name&gt;, &lt;spell1&gt;, &lt;spell2&gt;
+<div class="highlight-python"><div class="highlight"><pre>/mike bcast &lt;buff_icon_name&gt;, &lt;spell1&gt;[, &lt;spell2&gt;]
 </pre></div>
 </div>
 <p>This will cast &lt;spell1&gt; if target is not buffed with buff represented by &lt;buff_icon_name&gt;, else &lt;spell2&gt;.</p>
@@ -138,7 +142,7 @@
 </div>
 <p>This will cast &#8220;Power Word: Fortitude&#8221; if target is unbuffed with a buff that contains &#8216;Fortitude&#8217; in its icon name, else &#8220;Power Word: Shield&#8221;</p>
 <p><strong>NOTE</strong>: in this example, i used &#8216;Fortitude&#8217; as &lt;buff_icon_name&gt; instead of the entire icon name, you can do it if you want (this will also check for Prayer of Fortitude buffs) !</p>
-<div class="highlight-python"><div class="highlight"><pre>/mike dcast &lt;debuff_icon_name&gt;, &lt;spell1&gt;, &lt;spell2&gt;
+<div class="highlight-python"><div class="highlight"><pre>/mike dcast &lt;debuff_icon_name&gt;, &lt;spell1&gt;[, &lt;spell2&gt;]
 </pre></div>
 </div>
 <p>This will cast &lt;spell1&gt; if target is not debuffed with debuff represented by &lt;debuff_icon_name&gt;, else &lt;spell2&gt;</p>
@@ -150,10 +154,10 @@
 </div>
 <div class="section" id="cast-spell-based-on-target-lvl">
 <h1>Cast spell based on target lvl<a class="headerlink" href="#cast-spell-based-on-target-lvl" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-python"><div class="highlight"><pre>/mike lvlcast &lt;min_lvl&gt; &lt;spell&gt;
+<div class="highlight-python"><div class="highlight"><pre>/mike lvlcast &lt;min_lvl&gt; &lt;spell1&gt;[, &lt;spell2&gt;]
 </pre></div>
 </div>
-<p>This will cast &lt;spell&gt; if target lvl is major/equal &lt;min_lvl&gt;.</p>
+<p>This will cast &lt;spell1&gt; if target lvl is major/equal &lt;min_lvl&gt;, else &lt;spell2&gt;.</p>
 <p><strong>Example</strong></p>
 <div class="highlight-python"><div class="highlight"><pre>/mike lvlcast 20 Smite
 </pre></div>
@@ -163,9 +167,10 @@
 <p><strong>Example</strong></p>
 <div class="highlight-python"><div class="highlight"><pre>/mike lvlcast 50 Power Word: Fortitude(Rank 6)
 /mike lvlcast 38 Power Word: Fortitude(Rank 5)
-/mike lvlcast 26 Power Word: Fortitude(Rank 4)
+/mike lvlcast 26 Power Word: Fortitude(Rank 4), Power Word: Fortitude(Rank 3)
 </pre></div>
 </div>
+<p>This will cast rank 6 if target is 50+, rank 5 if target is 38-49, rank 4 if target is 26-37, rank 3 else.</p>
 <p><strong>NOTE</strong>: launching this macro can cause &#8220;Another action is in progress&#8221; message, this is normal because if you cast the first spell (Rank 6) then you can&#8217;t cast Rank 5-4 due to cooldown.</p>
 </div>
 <div class="section" id="cast-appropriate-rank-for-a-spell">
@@ -186,22 +191,22 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>1-2</td>
+<tr class="row-even"><td>1</td>
 <td>1</td>
 </tr>
-<tr class="row-odd"><td>2-14</td>
+<tr class="row-odd"><td>2-13</td>
 <td>2</td>
 </tr>
-<tr class="row-even"><td>14-26</td>
+<tr class="row-even"><td>14-25</td>
 <td>3</td>
 </tr>
-<tr class="row-odd"><td>26-38</td>
+<tr class="row-odd"><td>26-37</td>
 <td>4</td>
 </tr>
-<tr class="row-even"><td>38-50</td>
+<tr class="row-even"><td>38-49</td>
 <td>5</td>
 </tr>
-<tr class="row-odd"><td>50-60</td>
+<tr class="row-odd"><td>50 +</td>
 <td>6</td>
 </tr>
 </tbody>
@@ -210,6 +215,34 @@
 <div class="highlight-python"><div class="highlight"><pre>/mike rcast 6 Power Word: Fortitude
 </pre></div>
 </div>
+</div>
+<div class="section" id="mana-based-spell">
+<h1>Mana based spell<a class="headerlink" href="#mana-based-spell" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-python"><div class="highlight"><pre>/mike manacast &lt;min_mana&gt; &lt;spell1&gt;[, &lt;spell2&gt;]
+</pre></div>
+</div>
+<p>This will cast &lt;spell1&gt; if your remaining mana is major/equal &lt;min_mana&gt;, else &lt;spell2&gt;</p>
+<p><strong>Example</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>/mike manacast 1000 Holy Light
+/mike manacast 200 Flash of Light(Rank 2), Flash of Light(Rank 1)
+</pre></div>
+</div>
+<p>The first will cast Holy Light if you have 1000 or more mana left.</p>
+<p>The second will cast Flash of Light: rank 2 if you have 200+ mana left, rank 1 else</p>
+</div>
+<div class="section" id="mana-percent-based-spell">
+<h1>Mana percent based spell<a class="headerlink" href="#mana-percent-based-spell" title="Permalink to this headline">¶</a></h1>
+<p>Same as manacast but this time will be checked in &lt;percent&gt;.</p>
+<div class="highlight-python"><div class="highlight"><pre>/mike mpcast &lt;mana_percent&gt; &lt;spell1&gt;[, &lt;spell2&gt;]
+</pre></div>
+</div>
+<p><strong>Example</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>/mike mpcast 70 Holy Light
+/mike mpcast 50 Flash of Light(Rank 2), Flash of Light(Rank 1)
+</pre></div>
+</div>
+<p>The first will cast Holy Light if you have 70% or more mana left.</p>
+<p>The second will cast Flash of Light: rank 2 if you have 50%+ mana left, rank 1 else</p>
 </div>
 
 
@@ -228,6 +261,8 @@
 <li><a class="reference internal" href="#buff-debuff-based-cast">Buff/Debuff based cast</a></li>
 <li><a class="reference internal" href="#cast-spell-based-on-target-lvl">Cast spell based on target lvl</a></li>
 <li><a class="reference internal" href="#cast-appropriate-rank-for-a-spell">Cast appropriate rank for a spell</a></li>
+<li><a class="reference internal" href="#mana-based-spell">Mana based spell</a></li>
+<li><a class="reference internal" href="#mana-percent-based-spell">Mana percent based spell</a></li>
 </ul>
 
   <h4>Previous topic</h4>
@@ -270,7 +305,7 @@
         <li class="right" >
           <a href="equipping_functions.html" title="Equipping functions"
              >previous</a> |</li>
-        <li><a href="main.html">Mike WoW Addon 1.0.2 documentation</a> &raquo;</li> 
+        <li><a href="main.html">Mike WoW Addon 1.0.3 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

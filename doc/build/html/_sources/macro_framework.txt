@@ -3,6 +3,8 @@ Macro framework
 
 Following functions are suited for macro writing.
 
+**NOTE**: arguments inside [ ] are optional.
+
 **NOTE**: watch out for spaces after comma!
 
 **NOTE**: <buff_icon_name> and <debuff_icon_name> can be client dependent (for example Mac client could be different from Windows client)
@@ -50,7 +52,7 @@ Cast spell based on HP
 
 ::
 
-	/mike lspell <percent> <spell1>, <spell2>
+	/mike lspell <percent> <spell1>[, <spell2>]
 
 ..
 
@@ -60,6 +62,7 @@ This will check for your target HP, and will cast <spell1> if its HP percent is 
 
 	/mike lspell 20 Execute, Heroic Strike
 	/mike lspell 50 Heal, Lesser Heal
+	/mike lspell 20 Flash Heal
 
 ..
 
@@ -67,12 +70,14 @@ The first will cast Execute if target has less than 20% HP, else Heroic Strike.
 
 The second will cast Heal if target has less than 50% HP, else Lesser Heal.
 
+The third will cast Flash Heal if target has less than 20% HP.
+
 Class based cast
 ================
 
 ::
 
-	/mike ccast <class1> <class2> ... <classN>, <spell>
+	/mike ccast <class1>[ <class2> ... <classN>], <spell>
 
 ..
 
@@ -80,8 +85,9 @@ This will cast the selected <spell> only if target's class match with classes pr
 
 **Example** ::
 
-	/mike ccast Warrior Rogue Paladin, Blessing of Might
+	/mike ccast Warrior Rogue, Blessing of Might
 	/mike ccast Mage Warlock Priest, Blessing of Wisdom
+	/mike ccast Paladin, Blessing of Kings
 
 ..
 
@@ -124,7 +130,7 @@ See "Buff/Debuff spamming" for information about <buff_icon_name> and <debuff_ic
 
 ::
 
-	/mike bcast <buff_icon_name>, <spell1>, <spell2>
+	/mike bcast <buff_icon_name>, <spell1>[, <spell2>]
 
 ..
 
@@ -142,7 +148,7 @@ This will cast "Power Word: Fortitude" if target is unbuffed with a buff that co
 
 ::
 
-	/mike dcast <debuff_icon_name>, <spell1>, <spell2>
+	/mike dcast <debuff_icon_name>, <spell1>[, <spell2>]
 
 ..
 
@@ -161,11 +167,11 @@ Cast spell based on target lvl
 
 ::
 
-	/mike lvlcast <min_lvl> <spell>
+	/mike lvlcast <min_lvl> <spell1>[, <spell2>]
 
 ..
 
-This will cast <spell> if target lvl is major/equal <min_lvl>.
+This will cast <spell1> if target lvl is major/equal <min_lvl>, else <spell2>.
 
 **Example** ::
 
@@ -181,9 +187,11 @@ This will cast "Smite" only if target is lvl 20+
 
 	/mike lvlcast 50 Power Word: Fortitude(Rank 6)
 	/mike lvlcast 38 Power Word: Fortitude(Rank 5)
-	/mike lvlcast 26 Power Word: Fortitude(Rank 4)
+	/mike lvlcast 26 Power Word: Fortitude(Rank 4), Power Word: Fortitude(Rank 3)
 
 ..
+
+This will cast rank 6 if target is 50+, rank 5 if target is 38-49, rank 4 if target is 26-37, rank 3 else.
 
 **NOTE**: launching this macro can cause "Another action is in progress" message, this is normal because if you cast the first spell (Rank 6) then you can't cast Rank 5-4 due to cooldown.
 
@@ -203,17 +211,17 @@ This will cast the appropriate spell rank based on target lvl.
 +------+------+
 | Lvl  | Rank |
 +======+======+
-| 1-2  | 1    |
+| 1    | 1    |
 +------+------+
-| 2-14 | 2    |
+| 2-13 | 2    |
 +------+------+
-| 14-26| 3    |
+| 14-25| 3    |
 +------+------+
-| 26-38| 4    |
+| 26-37| 4    |
 +------+------+
-| 38-50| 5    |
+| 38-49| 5    |
 +------+------+
-| 50-60| 6    |
+| 50 + | 6    |
 +------+------+
 
 **Example**::
@@ -221,3 +229,51 @@ This will cast the appropriate spell rank based on target lvl.
 	/mike rcast 6 Power Word: Fortitude
 
 ..
+
+Mana based spell
+================
+
+::
+
+	/mike manacast <min_mana> <spell1>[, <spell2>]
+
+..
+
+This will cast <spell1> if your remaining mana is major/equal <min_mana>, else <spell2>
+
+**Example**
+
+::
+
+	/mike manacast 1000 Holy Light
+	/mike manacast 200 Flash of Light(Rank 2), Flash of Light(Rank 1)
+
+..
+
+The first will cast Holy Light if you have 1000 or more mana left.
+
+The second will cast Flash of Light: rank 2 if you have 200+ mana left, rank 1 else
+
+Mana percent based spell
+========================
+
+Same as manacast but this time will be checked in <percent>.
+
+::
+
+	/mike mpcast <mana_percent> <spell1>[, <spell2>]
+
+..
+
+**Example**
+
+::
+
+	/mike mpcast 70 Holy Light
+	/mike mpcast 50 Flash of Light(Rank 2), Flash of Light(Rank 1)
+
+..
+
+The first will cast Holy Light if you have 70% or more mana left.
+
+The second will cast Flash of Light: rank 2 if you have 50%+ mana left, rank 1 else
