@@ -163,7 +163,7 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mike mdebuff <spell>, <buff_icon_name>: debuff nearest unbuffed enemy unit")
     mPrint("/mike bcast <buff_icon_name>, <s1>[, <s2>]: cast on target s1 if not buffed, else s2");
     mPrint("/mike dcast <debuff_icon_name>, <s1>[, <s2>]: cast on target s1 if not debuffed, else s2");
-    mPrint("/mike ccast <class1> [<class2> ... <classN>], <spell>: cast <spell> on target if its class match"); 
+    mPrint("/mike ccast <class1>[ <class2> ... <classN>], <spell>: cast <spell> on target if its class match"); 
     mPrint("/mike lvlcast <min_lvl> <s1>[, <s2>]: cast spell if target lvl is major/equal <min_lvl>, else s2");
     mPrint("/mike rcast <max_spell_rank> <spell>: check target lvl and cast appropriate rank of the spell");
     mPrint("/mike manacast <min_mana> <s1>[, <s2>]: cast s1 if your mana is at least <min_mana>, else s2");
