@@ -21,6 +21,8 @@ License:
 
 ]]
 
+local version = "1.0.3"
+
 -- slash command
 SLASH_MIKE1, SLASH_MIKE2 = '/mike', '/mi'
 
@@ -126,7 +128,7 @@ function SlashCmdList.MIKE(msg, editbox)
     local x = mSplit(mGetSubArgs(m, 2), ", ")
     mMassDebuff(x[1], x[2])
   else 
-    mPrint("Mike's Addon", 1, 1, 0)
+    mPrint("Mike's Addon v" .. version, 1, 1, 0)
     mPrint("Usage: /mike <arguments> OR /mi <arguments>")
     mPrint("[ ] are for optional (not mandatory) arguments");
     mPrint("System informations", 1, 1, 0)
@@ -175,5 +177,6 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mike fortitude: cast 'Power Word: Fortitude' on nearest unbuffed friendly player")
     mPrint("/mike wpain: cast 'Shadow Word: Pain' if not debuffed, else wand 'Shoot'")
     mPrint("/mike apain: cast 'Shadow Word: Pain' on nearest enemy not debuffed")
+    mPrint("Documentation: https://michelesr.github.io/mike-wow-addon/doc/build/html/main.html", 1, 1, 0); 
   end
 end
