@@ -65,6 +65,31 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="castsequence">
+<h1>Castsequence<a class="headerlink" href="#castsequence" title="Permalink to this headline">¶</a></h1>
+<p>If you played latest version of WoW you sure have used at least one time /castsequence macro, but in vanilla there&#8217;s not castsequence, so...</p>
+<div class="highlight-python"><div class="highlight"><pre>/mike castsequence &lt;reset_time&gt; &lt;s1&gt;, &lt;s2&gt;[, &lt;s3&gt;, ..., &lt;sN&gt;]
+</pre></div>
+</div>
+<p>This will cast s1, then s2, then ..., then sN then again s1, etc.</p>
+<p>The &lt;reset_time&gt; is the number of second that have to pass before the macro will restart casting from &lt;s1&gt;, however, if you cast all the spell before that time
+you will restart from s1 even if time is not expired.</p>
+<p><strong>HINT</strong>: set that &lt;reset_time&gt; to a word (like <em>noreset</em> or <em>whateryouwant</em>) or to 0 or to a negative number to <strong>disable</strong> auto reset.</p>
+<p><strong>Example</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>/mike castsequence 10 Holy Fire, Mind Blast, Smite, Smite, Mind Blast
+/mike castsequence noreset Smite, Mind Blast
+/mike castsequence ilikepizza Sunder Armor, Heroic Strike
+/mike castsequence 0 Renew, Power Word: Shield
+/mike castsequence -5 Renew, Smite
+</pre></div>
+</div>
+<p>All the above will cast in sequence without a reset time, except the first that will reset after 10 seconds.</p>
+<p><strong>NOTE</strong>: blizzard castsequence what something like:</p>
+<div class="highlight-python"><div class="highlight"><pre>/castsequence reset=10 Mind Blast, Smite
+</pre></div>
+</div>
+<p>You <strong>can&#8217;t</strong> set reset like reset=&lt;number&gt;, and also you always have to set it to a value (see HINT)</p>
+</div>
 <div class="section" id="spam-heals-based-on-hp">
 <h1>Spam heals based on HP<a class="headerlink" href="#spam-heals-based-on-hp" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-python"><div class="highlight"><pre>/mike heal &lt;percent&gt; &lt;spellname&gt;
@@ -254,6 +279,7 @@
   <h3><a href="main.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Macro framework</a></li>
+<li><a class="reference internal" href="#castsequence">Castsequence</a></li>
 <li><a class="reference internal" href="#spam-heals-based-on-hp">Spam heals based on HP</a></li>
 <li><a class="reference internal" href="#cast-spell-based-on-hp">Cast spell based on HP</a></li>
 <li><a class="reference internal" href="#class-based-cast">Class based cast</a></li>

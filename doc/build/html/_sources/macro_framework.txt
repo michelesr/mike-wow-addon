@@ -25,6 +25,45 @@ Following functions are suited for macro writing.
 
 ..
 
+Castsequence
+============
+
+If you played latest version of WoW you sure have used at least one time /castsequence macro, but in vanilla there's not castsequence, so...
+
+::
+
+	/mike castsequence <reset_time> <s1>, <s2>[, <s3>, ..., <sN>]
+
+..
+
+This will cast s1, then s2, then ..., then sN then again s1, etc.
+
+The <reset_time> is the number of second that have to pass before the macro will restart casting from <s1>, however, if you cast all the spell before that time
+you will restart from s1 even if time is not expired.
+
+**HINT**: set that <reset_time> to a word (like *noreset* or *whateryouwant*) or to 0 or to a negative number to **disable** auto reset.
+
+**Example** ::
+
+	/mike castsequence 10 Holy Fire, Mind Blast, Smite, Smite, Mind Blast
+	/mike castsequence noreset Smite, Mind Blast
+	/mike castsequence ilikepizza Sunder Armor, Heroic Strike 
+	/mike castsequence 0 Renew, Power Word: Shield
+	/mike castsequence -5 Renew, Smite
+
+..
+
+All the above will cast in sequence without a reset time, except the first that will reset after 10 seconds.
+
+
+**NOTE**: blizzard castsequence what something like::
+
+	/castsequence reset=10 Mind Blast, Smite
+
+..
+
+You **can't** set reset like reset=<number>, and also you always have to set it to a value (see HINT) 
+
 Spam heals based on HP
 ======================
 
