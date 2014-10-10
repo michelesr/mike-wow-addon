@@ -12,15 +12,14 @@ Introduction
 
 Everything started when i wanted to write some macro for the game.
 
-As soon as i started doing that i noticed some bad things of ingame macro/scripting interface, such as:
+As soon as i started i noticed some bad things about ingame macro/scripting interface, such as:
 
 - limit of 255 characters in macro or scripts
 - macro editor is limited in features (is not suitable for developing)
 - limit of 255 characters make you write unclear code
+- some main feature like /castsequence not implemented in vanilla
 
-So i dediced to make an addon where i put all my script embedeed in slash commands, and also provide a simple interface to write some generic macro.
-
-I must admit that is more a collection of scripts then a real addon, but i had to do that because was the only way to do what i was looking for, and I'm satisfied of the result.
+So i dediced to make an addon where i put all my script embedded in slash commands, and also provide a simple command line interface to write some generic macro.
 
 I hope you can find it useful, and if you need some information or wanna requests some feature feel free to write me at mikefender@cryptolab.net.
 
