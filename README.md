@@ -20,5 +20,7 @@ Update with
 Usage
 =====
 
+Check out the full documentation at: https://michelesr.github.io/mike-wow-addon/doc/build/html/main.html
+
 Use /mi or /mike slash command to see the list of commands available. 
 Use the slash commands or bind them to a macro!
