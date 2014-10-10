@@ -41,7 +41,7 @@ This will cast s1, then s2, then ..., then sN then again s1, etc.
 The <reset_time> is the number of second that have to pass before the macro will restart casting from <s1>, however, if you cast all the spell before that time
 you will restart from s1 even if time is not expired.
 
-**HINT**: set that <reset_time> to a word (like *noreset* or *whateryouwant*) or to 0 or to a negative number to **disable** auto reset.
+**HINT**: set <reset_time> to a word (like *noreset* or *whateryouwant*) or to 0 or to a negative number to **disable** auto reset.
 
 **Example** ::
 
@@ -56,7 +56,7 @@ you will restart from s1 even if time is not expired.
 All the above will cast in sequence without a reset time, except the first that will reset after 10 seconds.
 
 
-**NOTE**: blizzard castsequence what something like::
+**NOTE**: blizzard castsequence was something like::
 
 	/castsequence reset=10 Mind Blast, Smite
 
