@@ -71,6 +71,9 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint(mGetSubArgs(m))
   elseif m[1] == "fortitude" then
     mMassBuff("Power Word: Fortitude", "Fort")
+  elseif m[1] == "castsequence" then
+    local reset = tonumber(m[2]) or 0
+    mCastSequence(reset, mSplit(mGetSubArgs(m, 3), ", "))
   elseif m[1] == "heal" then
     local sn = mGetSubArgs(m, 3)
     mMassHeal(sn, tonumber(m[2]))
@@ -157,6 +160,7 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mike wequip <w1>[, <w2>]: equip w1 on main hand and w2 on offhand")
     mPrint("/mike strip: put your equip in the inventory")
     mPrint("Macro framework", 1, 1, 0)
+    mPrint("/mike castsequence <reset> <s1>, <s2>[, <s3>, ..., <sN>]: cast spell in sequence returning to first after last or after <reset> seconds (0 or less for no reset)")
     mPrint("/mike heal <percent> <spellname>: cast an healing spell on nearest player with hp% < percent")
     mPrint("/mike lspell <percent> <s1>[, <s2>]: cast s1 if target %hp is < percent, else s2")
     mPrint("/mike pbuff: print buff icon names (needed for pbuff) of your target (or you)")

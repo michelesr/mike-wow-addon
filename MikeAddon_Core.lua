@@ -25,6 +25,7 @@ License:
 local N=10
 local timer = GetTime()
 local savedTarget = nil
+local castSequences = {};
 
 -- reset timer
 function mResetTimer()
@@ -100,6 +101,49 @@ end
 -- share selected quest
 function mShareSelectedQuestObjectives()
   mShareQuestObjective(GetQuestLogSelection())
+end
+
+
+-- return reference to cast sequence matching reset time and spells, initializing if not present
+function mGetCastSequence(reset, spells)
+  local b = false
+  local n = getn(spells)
+  for x in castSequences do
+    local s = castSequences[x]
+    if s["reset"] and s["reset"] == reset and getn(s["spells"]) == n then
+      local i = 1
+      while i <= n and s["spells"][i] == spells[i] do i=i+1 end
+      if i > n then 
+        return s 
+      end
+    end
+  end
+  return mInitializeCastSequence(reset, spells)
+end
+
+-- initialize new cast sequence with given reset time and spells and return reference
+function mInitializeCastSequence(reset, spells)
+  local n = getn(castSequences)
+  castSequences[n+1] = {}
+  local s = castSequences[n+1]
+  s["spells"] = spells
+  s["reset"] = reset
+  s["index"] = 1
+  s["start"] = GetTime()
+  return s
+end
+
+-- cast spell in sequence, return to first after reset time or casting last
+function mCastSequence(reset, spells)
+  local s = mGetCastSequence(reset, spells)
+  -- reset if time expired or index out of range
+  if s["reset"] > 0 and (GetTime() - s["start"]) > s["reset"] or s["index"] > getn(s["spells"]) then
+    s["start"] = GetTime()
+    s["index"] = 1
+  end
+  -- cast and increment
+  CastSpellByName(s["spells"][s["index"]])
+  s["index"] = s["index"] + 1
 end
 
 -- count buffs on a unit
