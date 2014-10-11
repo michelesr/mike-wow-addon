@@ -32,14 +32,13 @@ If you played latest version of WoW you sure have used at least one time /castse
 
 ::
 
-	/mike castsequence <reset_time> <s1>, <s2>[, <s3>, ..., <sN>]
+	/mike castsequence <reset_time> <spell1>, <spell2>[, <spell3>, ..., <spellN>]
 
 ..
 
-This will cast s1, then s2, then ..., then sN then again s1, etc.
+This will cast <spell1>, then <spell2>, then ..., then <spellN> then again <spell1>, etc.
 
-The <reset_time> is the number of second that have to pass before the macro will restart casting from <s1>, however, if you cast all the spell before that time
-you will restart from s1 even if time is not expired.
+The <reset_time> is the number of second that have to pass before the macro will restart casting from <spell1>, however, if you cast all the spell before that time you will restart from spell1 even if time is not expired.
 
 **HINT**: set <reset_time> to a word (like *noreset* or *whateryouwant*) or to 0 or to a negative number to **disable** auto reset.
 
@@ -63,6 +62,25 @@ All the above will cast in sequence without a reset time, except the first that 
 ..
 
 You **can't** set reset like reset=<number>, and also you always have to set it to a value (see HINT) 
+
+Castrandom
+==========
+
+::
+
+	/mike castrandom <spell1>, <spell2>[, <spell3>, ..., <spellN>]
+
+..
+
+This will cast a random spell from the ones provided
+
+**Example** ::
+
+	/mike castrandom Smite, Mind Blast, Shadow Word: Pain
+	/mike castrandom Flash of Light, Holy Light
+	/mike castrandom Shadow Bolt, Curse of Agony
+
+..
 
 Spam heals based on HP
 ======================
