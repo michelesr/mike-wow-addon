@@ -290,6 +290,8 @@ This will cast the appropriate spell rank based on target lvl.
 Mana based spell
 ================
 
+**HINT**: this macro should work with rage/energy too.
+
 ::
 
 	/mike manacast <min_mana> <spell1>[, <spell2>]
@@ -313,6 +315,8 @@ The second will cast Flash of Light: rank 2 if you have 200+ mana left, rank 1 e
 
 Mana percent based spell
 ========================
+
+**HINT**: this macro should work with rage/energy too.
 
 Same as manacast but this time will be checked in <percent>.
 
