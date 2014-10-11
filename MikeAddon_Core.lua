@@ -146,6 +146,12 @@ function mCastSequence(reset, spells)
   s["index"] = s["index"] + 1
 end
 
+-- cast a random spell from the list
+function mCastRandom(spells)
+  local n = getn(spells)
+  CastSpellByName(spells[math.random(1, n)])
+end
+
 -- count buffs on a unit
 function mBuffCount(unit)
   local i=1 
