@@ -2,10 +2,14 @@
 Sharing quests objectives
 *************************
 
+:index:`Sharing quest objectives`
+
 You can share your quests objectives in your party chat in 2 ways.
 
 Share objective for common quests in party
 ==========================================
+
+:index:`Share objective for common quests in party`
 
 To share objectives for common quests in party ::
 
@@ -17,6 +21,8 @@ To share objectives for common quests in party ::
 
 Share objective for current selected quest
 ==========================================
+
+:index:`Share objective for current selected quest`
 
 To share quest objectives for selected quest ::
 

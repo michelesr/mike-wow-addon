@@ -1,6 +1,7 @@
 *******************
 Equipping functions
 *******************
+:index:`Equipping functions`
 
 Here's a list of equipping functions.
 
@@ -15,6 +16,8 @@ Here's a list of equipping functions.
 
 Auto Equipping Items
 ====================
+
+:index:`Auto Equipping Items`
 
 
 This will equip items in the appropriate slots ::
@@ -45,6 +48,8 @@ This will get the belt and the boots on the bag and swap with the ones equipped.
 Equipping weapons in right hand
 ===============================
 
+:index:`Equipping weapons in right hand`
+
 This will equip item1 on main hand and item2 on off hand ::
 
 	/mike wequip <mainweapon>[, <offweapon>]
@@ -59,6 +64,8 @@ This will equip item1 on main hand and item2 on off hand ::
 
 Put Equipment in Containers
 ===========================
+
+:index:`Put Equipment in Containers`
 
 ::
 

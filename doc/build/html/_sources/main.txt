@@ -7,10 +7,14 @@
 Mike WoW Addon
 **************
 
+:index:`Main Page`
+
 Welcome to Mike's WoW Addon documentation. 
 
 Introduction
 ============
+
+:index:`Introduction`
 
 Everything started when i wanted to write some macro for the game.
 
@@ -35,6 +39,8 @@ That's all folks, enjoy!
 
 Contents
 ========
+
+:index:`Contents index`
 
 .. toctree::
    :maxdepth: 2

@@ -2,12 +2,16 @@
 Target managment
 ****************
 
+:index:`Target managment`
+
 This functions are used to save a particular target to restore that later.
 
 .. note:: target save is based on names, so will work good only with unique names, such as unique NPC (including rare and boss mobs) and players.
 
 Save
 ====
+
+:index:`Target save`
 
 To save target ::
 
@@ -18,6 +22,8 @@ To save target ::
 Restore
 =======
 
+:index:`Target restore`
+
 To restore target ::
 
 	/mike trestore
@@ -26,6 +32,8 @@ To restore target ::
 
 Set custom target
 =================
+
+:index:`Target save custom`
 
 To save a custom target name ::
 

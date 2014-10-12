@@ -2,8 +2,12 @@
 Utilities
 *********
 
+:index:`Utilities`
+
 Resetting istances
 ==================
+
+:index:`Resetting istances`
 
 This will reset istances for current party ::
 
@@ -15,6 +19,8 @@ This will reset istances for current party ::
 
 Reloading User Interface
 ========================
+
+:index:`Reload user interface`
 
 This will reload user interface ::
 

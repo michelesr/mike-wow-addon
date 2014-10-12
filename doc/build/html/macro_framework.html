@@ -51,6 +51,7 @@
             
   <div class="section" id="macro-framework">
 <h1>Macro framework<a class="headerlink" href="#macro-framework" title="Permalink to this headline">¶</a></h1>
+<p><span class="target" id="index-0"></span>Macro Framework</p>
 <p>Following functions are suited for macro writing.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -78,6 +79,7 @@
 </div>
 <div class="section" id="castsequence">
 <h2>Castsequence<a class="headerlink" href="#castsequence" title="Permalink to this headline">¶</a></h2>
+<p><span class="target" id="index-1"></span>Castsequence</p>
 <p>If you played latest version of WoW you sure have used at least one time /castsequence macro, but in vanilla there&#8217;s not castsequence, so...</p>
 <div class="highlight-python"><div class="highlight"><pre>/mike castsequence &lt;reset_time&gt; &lt;spell1&gt;, &lt;spell2&gt;[, &lt;spell3&gt;, ..., &lt;spellN&gt;]
 </pre></div>
@@ -105,6 +107,7 @@
 </div>
 <div class="section" id="castrandom">
 <h2>Castrandom<a class="headerlink" href="#castrandom" title="Permalink to this headline">¶</a></h2>
+<p><span class="target" id="index-2"></span>Castrandom</p>
 <div class="highlight-python"><div class="highlight"><pre>/mike castrandom &lt;spell1&gt;, &lt;spell2&gt;[, &lt;spell3&gt;, ..., &lt;spellN&gt;]
 </pre></div>
 </div>
@@ -118,6 +121,7 @@
 </div>
 <div class="section" id="spam-heals-based-on-hp">
 <h2>Spam heals based on HP<a class="headerlink" href="#spam-heals-based-on-hp" title="Permalink to this headline">¶</a></h2>
+<p><span class="target" id="index-3"></span>Spam heals based on HP</p>
 <div class="highlight-python"><div class="highlight"><pre>/mike heal &lt;percent&gt; &lt;spellname&gt;
 </pre></div>
 </div>
@@ -132,6 +136,7 @@
 </div>
 <div class="section" id="cast-spell-based-on-hp">
 <h2>Cast spell based on HP<a class="headerlink" href="#cast-spell-based-on-hp" title="Permalink to this headline">¶</a></h2>
+<p>index:<cite>Cast spell based on HP</cite></p>
 <div class="highlight-python"><div class="highlight"><pre>/mike lspell &lt;percent&gt; &lt;spell1&gt;[, &lt;spell2&gt;]
 </pre></div>
 </div>
@@ -148,6 +153,7 @@
 </div>
 <div class="section" id="class-based-cast">
 <h2>Class based cast<a class="headerlink" href="#class-based-cast" title="Permalink to this headline">¶</a></h2>
+<p>index:<cite>Class based cast</cite></p>
 <div class="highlight-python"><div class="highlight"><pre>/mike ccast &lt;class1&gt;[ &lt;class2&gt; ... &lt;classN&gt;], &lt;spell&gt;
 </pre></div>
 </div>
@@ -162,6 +168,7 @@
 </div>
 <div class="section" id="buff-debuff-spamming">
 <h2>Buff/Debuff spamming<a class="headerlink" href="#buff-debuff-spamming" title="Permalink to this headline">¶</a></h2>
+<p><span class="target" id="index-4"></span>Buff/Debuff spamming</p>
 <p>You can write a macro to cast buff on nearest unbuffed player o debuff to nearest undebuffed unit.</p>
 <p>In order to do this, you must know how did Blizzard named the icon that represents the buff/debuff.</p>
 <p>Here you got 2 functions to help you with discovering buff/debuffs icon names</p>
@@ -181,6 +188,7 @@
 </div>
 <div class="section" id="buff-debuff-based-cast">
 <h2>Buff/Debuff based cast<a class="headerlink" href="#buff-debuff-based-cast" title="Permalink to this headline">¶</a></h2>
+<p><span class="target" id="index-5"></span>Buff/Debuff based cast</p>
 <p>You can write macro to cast spell based of target status (buffed/unbuffed with a specified buff/debuff)</p>
 <p>See &#8220;Buff/Debuff spamming&#8221; for information about &lt;buff_icon_name&gt; and &lt;debuff_icon_name&gt;</p>
 <div class="highlight-python"><div class="highlight"><pre>/mike bcast &lt;buff_icon_name&gt;, &lt;spell1&gt;[, &lt;spell2&gt;]
@@ -208,6 +216,7 @@
 </div>
 <div class="section" id="cast-spell-based-on-target-lvl">
 <h2>Cast spell based on target lvl<a class="headerlink" href="#cast-spell-based-on-target-lvl" title="Permalink to this headline">¶</a></h2>
+<p><span class="target" id="index-6"></span>Cast spell based on target lvl</p>
 <div class="highlight-python"><div class="highlight"><pre>/mike lvlcast &lt;min_lvl&gt; &lt;spell1&gt;[, &lt;spell2&gt;]
 </pre></div>
 </div>
@@ -232,6 +241,7 @@
 </div>
 <div class="section" id="cast-appropriate-rank-for-a-spell">
 <h2>Cast appropriate rank for a spell<a class="headerlink" href="#cast-appropriate-rank-for-a-spell" title="Permalink to this headline">¶</a></h2>
+<p><span class="target" id="index-7"></span>Cast appropriate rank for a spell</p>
 <div class="highlight-python"><div class="highlight"><pre>/mike rcast &lt;max_rank&gt; &lt;spell&gt;
 </pre></div>
 </div>
@@ -275,6 +285,7 @@
 </div>
 <div class="section" id="mana-based-spell">
 <h2>Mana based spell<a class="headerlink" href="#mana-based-spell" title="Permalink to this headline">¶</a></h2>
+<p><span class="target" id="index-8"></span>Mana based spell</p>
 <p><strong>HINT</strong>: this macro should work with rage/energy too.</p>
 <div class="highlight-python"><div class="highlight"><pre>/mike manacast &lt;min_mana&gt; &lt;spell1&gt;[, &lt;spell2&gt;]
 </pre></div>
@@ -290,6 +301,7 @@
 </div>
 <div class="section" id="mana-percent-based-spell">
 <h2>Mana percent based spell<a class="headerlink" href="#mana-percent-based-spell" title="Permalink to this headline">¶</a></h2>
+<p><span class="target" id="index-9"></span>Mana percent based spell</p>
 <p><strong>HINT</strong>: this macro should work with rage/energy too.</p>
 <p>Same as manacast but this time will be checked in &lt;percent&gt;.</p>
 <div class="highlight-python"><div class="highlight"><pre>/mike mpcast &lt;mana_percent&gt; &lt;spell1&gt;[, &lt;spell2&gt;]
