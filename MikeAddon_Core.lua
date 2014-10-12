@@ -450,7 +450,9 @@ end
 function mEquipHandWeapons(w)
   for i=1,2 do 
     local x,y
-    x,y = mGetContainerItemByName(w[i], "Equipping item: ")
+    if w[i] then
+      x,y = mGetContainerItemByName(w[i], "Equipping item: ")
+    end
     if x and y then
       PickupContainerItem(x,y)
       EquipCursorItem(15+i)
