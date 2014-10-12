@@ -3,6 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+***************
 Mike WoW Addon
 ================
 Welcome to Mike's WoW Addon documentation. 

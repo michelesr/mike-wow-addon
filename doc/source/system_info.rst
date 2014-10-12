@@ -1,5 +1,6 @@
+**************************
 Getting system information
-==========================
+**************************
 
 Sometimes you would know about information such as latency, fps, or memory usage of addons, etc.
 

@@ -1,5 +1,6 @@
+***************
 Macro framework
-===============
+***************
 
 Following functions are suited for macro writing.
 

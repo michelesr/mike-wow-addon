@@ -1,5 +1,6 @@
+************
 Installation
-============
+************
 
 The installation process is simple, and consist in the following step:
 

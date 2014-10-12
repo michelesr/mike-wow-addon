@@ -1,11 +1,18 @@
+**********
 Poor items
-==========
+**********
+
+Selling Poor items
+==================
 
 Sell poor items to current vendor ::
 
 	/mike psell
 
 ..
+
+Destroy Poor Items
+==================
 
 Destroy poor items ::
 

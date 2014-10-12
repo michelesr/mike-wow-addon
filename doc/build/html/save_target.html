@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Save &amp; Restore Target &mdash; Mike WoW Addon 1.0.3 documentation</title>
+    <title>Target managment &mdash; Mike WoW Addon 1.0.3 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -49,26 +49,35 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="save-restore-target">
-<h1>Save &amp; Restore Target<a class="headerlink" href="#save-restore-target" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="target-managment">
+<h1>Target managment<a class="headerlink" href="#target-managment" title="Permalink to this headline">¶</a></h1>
 <p>This functions are used to save a particular target to restore that later.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">target save is based on names, so will work good only with unique names, such as unique NPC (including rare and boss mobs) and players.</p>
 </div>
+<div class="section" id="save">
+<h2>Save<a class="headerlink" href="#save" title="Permalink to this headline">¶</a></h2>
 <p>To save target</p>
 <div class="highlight-python"><div class="highlight"><pre>/mike tsave
 </pre></div>
 </div>
+</div>
+<div class="section" id="restore">
+<h2>Restore<a class="headerlink" href="#restore" title="Permalink to this headline">¶</a></h2>
 <p>To restore target</p>
 <div class="highlight-python"><div class="highlight"><pre>/mike trestore
 </pre></div>
 </div>
+</div>
+<div class="section" id="set-custom-target">
+<h2>Set custom target<a class="headerlink" href="#set-custom-target" title="Permalink to this headline">¶</a></h2>
 <p>To save a custom target name</p>
 <div class="highlight-python"><div class="highlight"><pre>/mike tcustom &lt;name&gt;
 </pre></div>
 </div>
 <p><strong>HINT</strong>: you can use this if you&#8217;re searching for a rare mob, save his &lt;name&gt; and then use /mi restore to target him.</p>
+</div>
 </div>
 
 
@@ -77,6 +86,16 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="main.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Target managment</a><ul>
+<li><a class="reference internal" href="#save">Save</a></li>
+<li><a class="reference internal" href="#restore">Restore</a></li>
+<li><a class="reference internal" href="#set-custom-target">Set custom target</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="timer_functions.html"
                         title="previous chapter">Timer functions</a></p>

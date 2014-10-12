@@ -1,9 +1,13 @@
-Save & Restore Target
-=====================
+****************
+Target managment
+****************
 
 This functions are used to save a particular target to restore that later.
 
 .. note:: target save is based on names, so will work good only with unique names, such as unique NPC (including rare and boss mobs) and players.
+
+Save
+====
 
 To save target ::
 
@@ -11,11 +15,17 @@ To save target ::
 
 ..
 
+Restore
+=======
+
 To restore target ::
 
 	/mike trestore
 
 ..
+
+Set custom target
+=================
 
 To save a custom target name ::
 

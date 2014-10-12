@@ -1,5 +1,6 @@
+***************
 Timer functions
-===============
+***************
 
 Simple timing functions.
 

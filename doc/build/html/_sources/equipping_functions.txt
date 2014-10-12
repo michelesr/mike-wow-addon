@@ -1,5 +1,6 @@
+*******************
 Equipping functions
-===================
+*******************
 
 Here's a list of equipping functions.
 
