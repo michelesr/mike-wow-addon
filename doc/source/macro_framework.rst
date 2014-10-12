@@ -3,15 +3,15 @@ Macro framework
 
 Following functions are suited for macro writing.
 
-**NOTE**: arguments inside [ ] are optional.
+.. note:: arguments inside [ ] are optional.
 
-**NOTE**: watch out for spaces after comma!
+.. note:: watch out for spaces after comma!
 
-**NOTE**: <buff_icon_name> and <debuff_icon_name> can be client dependent (for example Mac client could be different from Windows client)
+.. note:: <buff_icon_name> and <debuff_icon_name> can be client dependent (for example Mac client could be different from Windows client)
 
-**NOTE**: <spell> refers to spell name as you seen it in the tooltip, if rank is not specified will be cast the highest. 
+.. note:: <spell> refers to spell name as you seen it in the tooltip, if rank is not specified will be cast the highest. 
 
-**NOTE**: to specify rank for spell use this syntax
+**HINT**: to specify rank for spell use this syntax
 
 ::
 
@@ -55,7 +55,7 @@ The <reset_time> is the number of second that have to pass before the macro will
 All the above will cast in sequence without a reset time, except the first that will reset after 10 seconds.
 
 
-**NOTE**: blizzard castsequence was something like::
+.. note:: blizzard castsequence was something like::
 
 	/castsequence reset=10 Mind Blast, Smite
 
@@ -201,7 +201,7 @@ This will cast <spell1> if target is not buffed with buff represented by <buff_i
 
 This will cast "Power Word: Fortitude" if target is unbuffed with a buff that contains 'Fortitude' in its icon name, else "Power Word: Shield"
 
-**NOTE**: in this example, i used 'Fortitude' as <buff_icon_name> instead of the entire icon name, you can do it if you want (this will also check for Prayer of Fortitude buffs) !
+.. note:: in this example, i used 'Fortitude' as <buff_icon_name> instead of the entire icon name, you can do it if you want (this will also check for Prayer of Fortitude buffs) !
 
 ::
 
@@ -250,7 +250,7 @@ This will cast "Smite" only if target is lvl 20+
 
 This will cast rank 6 if target is 50+, rank 5 if target is 38-49, rank 4 if target is 26-37, rank 3 else.
 
-**NOTE**: launching this macro can cause "Another action is in progress" message, this is normal because if you cast the first spell (Rank 6) then you can't cast Rank 5-4 due to cooldown.
+.. note:: launching this macro can cause "Another action is in progress" message, this is normal because if you cast the first spell (Rank 6) then you can't cast Rank 5-4 due to cooldown.
 
 Cast appropriate rank for a spell
 =================================

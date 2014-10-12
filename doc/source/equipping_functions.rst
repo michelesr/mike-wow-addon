@@ -3,12 +3,11 @@ Equipping functions
 
 Here's a list of equipping functions.
 
-**NOTE**: arguments inside [ ] are optional.
+.. note:: arguments inside [ ] are optional.
 
-**NOTE**: Watch out for space after commas!
+.. note:: Watch out for space after commas!
 
-**NOTE**: There's no need to put whole item name, you can abbreviate it if the abbreviation is unique.
-
+.. note:: There's no need to put whole item name, you can abbreviate it if the abbreviation is unique.
 
 - **Example**: Reforged Blade of Heroes -> Reforged
 - **Example**: Reforged Blade of Heroes -> Heroes
@@ -60,9 +59,6 @@ This will equip item1 on main hand and item2 on off hand ::
 Put Equipment in Containers
 ===========================
 
-**NOTE**: containers refer to backpack and additional bags, while inventory refers as equipped items, as Blizzard
-API states.
-
 ::
 
 	/mike strip
@@ -70,4 +66,6 @@ API states.
 ..
 
 This will strip you, putting all your equipment in your containers.
+
+.. note:: containers refer to backpack and additional bags, while inventory refers as equipped items, as Blizzard API states.
 

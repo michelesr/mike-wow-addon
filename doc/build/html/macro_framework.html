@@ -52,11 +52,23 @@
   <div class="section" id="macro-framework">
 <h1>Macro framework<a class="headerlink" href="#macro-framework" title="Permalink to this headline">¶</a></h1>
 <p>Following functions are suited for macro writing.</p>
-<p><strong>NOTE</strong>: arguments inside [ ] are optional.</p>
-<p><strong>NOTE</strong>: watch out for spaces after comma!</p>
-<p><strong>NOTE</strong>: &lt;buff_icon_name&gt; and &lt;debuff_icon_name&gt; can be client dependent (for example Mac client could be different from Windows client)</p>
-<p><strong>NOTE</strong>: &lt;spell&gt; refers to spell name as you seen it in the tooltip, if rank is not specified will be cast the highest.</p>
-<p><strong>NOTE</strong>: to specify rank for spell use this syntax</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">arguments inside [ ] are optional.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">watch out for spaces after comma!</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">&lt;buff_icon_name&gt; and &lt;debuff_icon_name&gt; can be client dependent (for example Mac client could be different from Windows client)</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">&lt;spell&gt; refers to spell name as you seen it in the tooltip, if rank is not specified will be cast the highest.</p>
+</div>
+<p><strong>HINT</strong>: to specify rank for spell use this syntax</p>
 <div class="highlight-python"><div class="highlight"><pre>Spell Name(Rank X)
 </pre></div>
 </div>
@@ -83,9 +95,12 @@
 </pre></div>
 </div>
 <p>All the above will cast in sequence without a reset time, except the first that will reset after 10 seconds.</p>
-<p><strong>NOTE</strong>: blizzard castsequence was something like:</p>
-<div class="highlight-python"><div class="highlight"><pre>/castsequence reset=10 Mind Blast, Smite
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>blizzard castsequence was something like:</p>
+<div class="last highlight-python"><div class="highlight"><pre>/castsequence reset=10 Mind Blast, Smite
 </pre></div>
+</div>
 </div>
 <p>You <strong>can&#8217;t</strong> set reset like reset=&lt;number&gt;, and also you always have to set it to a value (see HINT)</p>
 </div>
@@ -178,7 +193,10 @@
 </pre></div>
 </div>
 <p>This will cast &#8220;Power Word: Fortitude&#8221; if target is unbuffed with a buff that contains &#8216;Fortitude&#8217; in its icon name, else &#8220;Power Word: Shield&#8221;</p>
-<p><strong>NOTE</strong>: in this example, i used &#8216;Fortitude&#8217; as &lt;buff_icon_name&gt; instead of the entire icon name, you can do it if you want (this will also check for Prayer of Fortitude buffs) !</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">in this example, i used &#8216;Fortitude&#8217; as &lt;buff_icon_name&gt; instead of the entire icon name, you can do it if you want (this will also check for Prayer of Fortitude buffs) !</p>
+</div>
 <div class="highlight-python"><div class="highlight"><pre>/mike dcast &lt;debuff_icon_name&gt;, &lt;spell1&gt;[, &lt;spell2&gt;]
 </pre></div>
 </div>
@@ -208,7 +226,10 @@
 </pre></div>
 </div>
 <p>This will cast rank 6 if target is 50+, rank 5 if target is 38-49, rank 4 if target is 26-37, rank 3 else.</p>
-<p><strong>NOTE</strong>: launching this macro can cause &#8220;Another action is in progress&#8221; message, this is normal because if you cast the first spell (Rank 6) then you can&#8217;t cast Rank 5-4 due to cooldown.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">launching this macro can cause &#8220;Another action is in progress&#8221; message, this is normal because if you cast the first spell (Rank 6) then you can&#8217;t cast Rank 5-4 due to cooldown.</p>
+</div>
 </div>
 <div class="section" id="cast-appropriate-rank-for-a-spell">
 <h1>Cast appropriate rank for a spell<a class="headerlink" href="#cast-appropriate-rank-for-a-spell" title="Permalink to this headline">¶</a></h1>
