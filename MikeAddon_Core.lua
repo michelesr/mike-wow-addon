@@ -533,6 +533,32 @@ function mEquipItems(items)
   end
 end
 
+-- return stance index by name or nil if not found
+function mSearchStanceByName(name)
+  for i=1,GetNumShapeshiftForms() do
+    local a,b = GetShapeshiftFormInfo(i)
+    if string.find(b, name) then
+      return i
+    end
+  end
+end
+
+-- stance switch
+function mStanceSwitch(stances)
+  local s = {}
+  for x in stances do
+    s[x] = mSearchStanceByName(stances[x])
+  end
+  for x in s do
+    local a,b,c,d = GetShapeshiftFormInfo(s[x])
+    if c == 1 then
+      CastShapeshiftForm(s[mod(x, getn(s)) + 1])
+      return nil
+    end
+  end
+  CastShapeshiftForm(s[1])
+end
+
 -- print netstats 
 function mNetStats()
   local a,b,c = GetNetStats()

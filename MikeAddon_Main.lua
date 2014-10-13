@@ -82,6 +82,9 @@ function SlashCmdList.MIKE(msg, editbox)
   elseif m[1] == "castrandom" then
     local spells = mSplit(mGetSubArgs(m), ", ")
     mCastRandom(spells)
+  elseif m[1] == "stance" then
+    local stances = mSplit(mGetSubArgs(m), ", ")
+    mStanceSwitch(stances)
   elseif m[1] == "heal" then
     local sn = mGetSubArgs(m, 3)
     mMassHeal(sn, tonumber(m[2]))
@@ -170,7 +173,8 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mi strip: put your equip in the inventory")
     mPrint("Macro framework", 1, 1, 0)
     mPrint("/mi castsequence [reset=<sec>/combat/target] <s1>, <s2>[, <s3>, ..., <sN>]: cast spell in sequence")
-    mPrint("/mi castrandom <s1>, <s2>[, <s3>, ... <sN>]: cast a random spell from the list");
+    mPrint("/mi castrandom <s1>, <s2>[, <s3>, ..., <sN>]: cast a random spell from the list");
+    mPrint("/mi stance <s1>, <s2>[, <s3>, ..., <sN>]: cast stance that follow active in the list (or first if last is active or there is no active)")
     mPrint("/mi heal <percent> <spellname>: cast an healing spell on nearest player with hp% < percent")
     mPrint("/mi lspell <percent> <s1>[, <s2>]: cast s1 if target %hp is < percent, else s2")
     mPrint("/mi pbuff: print buff icon names (needed for pbuff) of your target (or you)")
