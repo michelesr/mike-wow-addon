@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Macro framework &mdash; Mike WoW Addon 1.0.3 documentation</title>
+    <title>Macro framework &mdash; Mike WoW Addon 1.0.4 documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,7 +14,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '1.0.3',
+        VERSION:     '1.0.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mike WoW Addon 1.0.3 documentation" href="index.html" />
+    <link rel="top" title="Mike WoW Addon 1.0.4 documentation" href="index.html" />
     <link rel="next" title="Premade macro commands" href="premade_macros.html" />
     <link rel="prev" title="Equipping functions" href="equipping_functions.html" /> 
   </head>
@@ -40,7 +40,7 @@
         <li class="right" >
           <a href="equipping_functions.html" title="Equipping functions"
              accesskey="P">previous</a> |</li>
-        <li><a href="main.html">Mike WoW Addon 1.0.3 documentation</a> &raquo;</li> 
+        <li><a href="main.html">Mike WoW Addon 1.0.4 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -79,29 +79,32 @@
 <div class="section" id="castsequence">
 <h2>Castsequence<a class="headerlink" href="#castsequence" title="Permalink to this headline">¶</a></h2>
 <p id="index-1">If you played latest version of WoW you sure have used at least one time /castsequence macro, but in vanilla there&#8217;s not castsequence, so...</p>
-<div class="highlight-python"><div class="highlight"><pre>/mi castsequence &lt;reset_time&gt; &lt;spell1&gt;, &lt;spell2&gt;[, &lt;spell3&gt;, ..., &lt;spellN&gt;]
+<div class="highlight-python"><div class="highlight"><pre>/mi castsequence [reset=&lt;sec&gt;/combat/target] &lt;spell1&gt;, &lt;spell2&gt;[, &lt;spell3&gt;, ..., &lt;spellN&gt;]
 </pre></div>
 </div>
 <p>This will cast &lt;spell1&gt;, then &lt;spell2&gt;, then ..., then &lt;spellN&gt; then again &lt;spell1&gt;, etc.</p>
-<p>The &lt;reset_time&gt; is the number of second that have to pass before the macro will restart casting from &lt;spell1&gt;, however, if you cast all the spell before that time you will restart from spell1 even if time is not expired.</p>
-<p><strong>HINT</strong>: set &lt;reset_time&gt; to a word (like <em>noreset</em> or <em>whateryouwant</em>) or to 0 or to a negative number to <strong>disable</strong> auto reset.</p>
+<ul class="simple">
+<li>reset=combat will reset when you enter or exit combat</li>
+<li>reset=target will reset when you change target</li>
+<li>reset=&lt;sec&gt; will reset after &lt;sec&gt; seconds</li>
+</ul>
+<p>You can mix up them using / as separator</p>
 <p><strong>Example</strong></p>
-<div class="highlight-python"><div class="highlight"><pre>/mi castsequence 10 Holy Fire, Mind Blast, Smite, Smite, Mind Blast
-/mi castsequence noreset Smite, Mind Blast
-/mi castsequence ilikepizza Sunder Armor, Heroic Strike
-/mi castsequence 0 Renew, Power Word: Shield
-/mi castsequence -5 Renew, Smite
+<div class="highlight-python"><div class="highlight"><pre>/mi castsequence Holy Light, Flash of Light
+/mi castsequence reset=10 Renew, Lesser Heal
+/mi castsequence reset=target Renew, Lesser Heal
+/mi castsequence reset=combat Renew, Lesser Heal
+/mi castsequence reset=combat/target Heroic Strike, Harmstring
+/mi castsequence reset=5/combat/target Mind Blast, Smite, Shadow Word Word: Pain
 </pre></div>
 </div>
-<p>All the above will cast in sequence without a reset time, except the first that will reset after 10 seconds.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>blizzard castsequence was something like:</p>
-<div class="last highlight-python"><div class="highlight"><pre>/castsequence reset=10 Mind Blast, Smite
+<p>for backward compatibility, this is still supported but is DEPRECATED</p>
+<div class="last highlight-python"><div class="highlight"><pre>/mi castsequence &lt;sec&gt; ...
 </pre></div>
 </div>
 </div>
-<p>You <strong>can&#8217;t</strong> set reset like reset=&lt;number&gt;, and also you always have to set it to a value (see HINT)</p>
 </div>
 <div class="section" id="castrandom">
 <h2>Castrandom<a class="headerlink" href="#castrandom" title="Permalink to this headline">¶</a></h2>
@@ -371,7 +374,7 @@
         <li class="right" >
           <a href="equipping_functions.html" title="Equipping functions"
              >previous</a> |</li>
-        <li><a href="main.html">Mike WoW Addon 1.0.3 documentation</a> &raquo;</li> 
+        <li><a href="main.html">Mike WoW Addon 1.0.4 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">

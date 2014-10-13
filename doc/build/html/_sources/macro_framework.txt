@@ -37,36 +37,35 @@ If you played latest version of WoW you sure have used at least one time /castse
 
 ::
 
-	/mi castsequence <reset_time> <spell1>, <spell2>[, <spell3>, ..., <spellN>]
+	/mi castsequence [reset=<sec>/combat/target] <spell1>, <spell2>[, <spell3>, ..., <spellN>]
 
 ..
 
 This will cast <spell1>, then <spell2>, then ..., then <spellN> then again <spell1>, etc.
 
-The <reset_time> is the number of second that have to pass before the macro will restart casting from <spell1>, however, if you cast all the spell before that time you will restart from spell1 even if time is not expired.
+- reset=combat will reset when you enter or exit combat
+- reset=target will reset when you change target
+- reset=<sec> will reset after <sec> seconds
 
-**HINT**: set <reset_time> to a word (like *noreset* or *whateryouwant*) or to 0 or to a negative number to **disable** auto reset.
+You can mix up them using / as separator
 
 **Example** ::
 
-	/mi castsequence 10 Holy Fire, Mind Blast, Smite, Smite, Mind Blast
-	/mi castsequence noreset Smite, Mind Blast
-	/mi castsequence ilikepizza Sunder Armor, Heroic Strike
-	/mi castsequence 0 Renew, Power Word: Shield
-	/mi castsequence -5 Renew, Smite
+	/mi castsequence Holy Light, Flash of Light
+	/mi castsequence reset=10 Renew, Lesser Heal
+	/mi castsequence reset=target Renew, Lesser Heal
+	/mi castsequence reset=combat Renew, Lesser Heal
+	/mi castsequence reset=combat/target Heroic Strike, Harmstring
+	/mi castsequence reset=5/combat/target Mind Blast, Smite, Shadow Word Word: Pain
 
 ..
 
-All the above will cast in sequence without a reset time, except the first that will reset after 10 seconds.
+.. note:: for backward compatibility, this is still supported but is DEPRECATED ::
 
-
-.. note:: blizzard castsequence was something like::
-
-	/castsequence reset=10 Mind Blast, Smite
+	/mi castsequence <sec> ...
 
 ..
 
-You **can't** set reset like reset=<number>, and also you always have to set it to a value (see HINT)
 
 Castrandom
 ==========
