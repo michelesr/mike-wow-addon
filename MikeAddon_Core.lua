@@ -111,12 +111,13 @@ end
 
 
 -- return reference to cast sequence matching reset time and spells, initializing if not present
-function mGetCastSequence(reset, spells)
+function mGetCastSequence(reset, combat, target, spells)
   local b = false
   local n = getn(spells)
   for x in castSequences do
     local s = castSequences[x]
-    if s["reset"] and s["reset"] == reset and getn(s["spells"]) == n then
+    if s["reset"] and s["reset"] == reset and getn(s["spells"]) == n and
+       s["combat"] == combat and s["target"] == target then
       local i = 1
       while i <= n and s["spells"][i] == spells[i] do i=i+1 end
       if i > n then 
@@ -124,14 +125,16 @@ function mGetCastSequence(reset, spells)
       end
     end
   end
-  return mInitializeCastSequence(reset, spells)
+  return mInitializeCastSequence(reset, combat, target, spells)
 end
 
 -- initialize new cast sequence with given reset time and spells and return reference
-function mInitializeCastSequence(reset, spells)
+function mInitializeCastSequence(reset, combat, target, spells)
   local n = getn(castSequences)
   castSequences[n+1] = {}
   local s = castSequences[n+1]
+  s["combat"] = combat
+  s["target"] = target
   s["spells"] = spells
   s["reset"] = reset
   s["index"] = 1
@@ -139,9 +142,11 @@ function mInitializeCastSequence(reset, spells)
   return s
 end
 
--- parse reset arguments
+-- parse arguments for cast sequence
 function mParseResetArgs(args)
-  local rtime, combat, target
+  local rtime
+  local combat = false
+  local target = false
   if string.find(args, "reset") then
     args = mSplit(args, "=")[2]
   end
@@ -161,17 +166,41 @@ function mParseResetArgs(args)
   return rtime, combat, target
 end
 
+-- reset cast sequence to call on target change
+function mTargetResetCastSequence()
+  for x in castSequences do
+    local s = castSequences[x]
+    if s["target"] then
+      mCastSequenceReset(s)
+    end
+  end
+end
 
 
--- cast spell in sequence, return to first after reset time or casting last
+-- reset cast sequence to call on combat leave
+function mCombatResetCastSequence() 
+  for x in castSequences do
+    local s = castSequences[x]
+    if s["combat"] then
+      mCastSequenceReset(s)
+    end
+  end
+end
+
+-- reset cast sequence
+function mCastSequenceReset(s)
+  s["start"] = GetTime()
+  s["index"] = 1
+end
+
+-- cast spell in sequence
 function mCastSequence(args, spells)
   local reset, combat, target = mParseResetArgs(args)
   mPrint(tostring(reset) .. " " .. tostring(combat) .. " " .. tostring(target))
-  local s = mGetCastSequence(reset, spells)
+  local s = mGetCastSequence(reset, combat, target, spells)
   -- reset if time expired or index out of range
   if s["reset"] > 0 and (GetTime() - s["start"]) > s["reset"] or s["index"] > getn(s["spells"]) then
-    s["start"] = GetTime()
-    s["index"] = 1
+    mCastSequenceReset(s)
   end
   -- cast and increment
   CastSpellByName(s["spells"][s["index"]])
