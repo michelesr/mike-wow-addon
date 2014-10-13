@@ -139,8 +139,34 @@ function mInitializeCastSequence(reset, spells)
   return s
 end
 
+-- parse reset arguments
+function mParseResetArgs(args)
+  local rtime, combat, target
+  if string.find(args, "reset") then
+    args = mSplit(args, "=")[2]
+  end
+  args = mSplit(args, "/")
+  for x in args do
+    if args[x] == "combat" then
+      combat = true
+    elseif args[x] == "target" then
+      target = true
+    elseif not rtime and tonumber(args[x]) then
+      rtime = tonumber(args[x])
+    end
+  end
+  if not rtime then
+    rtime = 0
+  end
+  return rtime, combat, target
+end
+
+
+
 -- cast spell in sequence, return to first after reset time or casting last
-function mCastSequence(reset, spells)
+function mCastSequence(args, spells)
+  local reset, combat, target = mParseResetArgs(args)
+  mPrint(tostring(reset) .. " " .. tostring(combat) .. " " .. tostring(target))
   local s = mGetCastSequence(reset, spells)
   -- reset if time expired or index out of range
   if s["reset"] > 0 and (GetTime() - s["start"]) > s["reset"] or s["index"] > getn(s["spells"]) then

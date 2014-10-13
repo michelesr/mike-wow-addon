@@ -74,8 +74,11 @@ function SlashCmdList.MIKE(msg, editbox)
   elseif m[1] == "fortitude" then
     mMassBuff("Power Word: Fortitude", "Fort")
   elseif m[1] == "castsequence" then
-    local reset = tonumber(m[2]) or 0
-    mCastSequence(reset, mSplit(mGetSubArgs(m, 3), ", "))
+   if string.find(m[2], "reset") or tonumber(m[2]) then
+     mCastSequence(m[2], mSplit(mGetSubArgs(m, 3), ", "))
+   else
+     mCastSequence("", mSplit(mGetSubArgs(m), ", "))
+   end
   elseif m[1] == "castrandom" then
     local spells = mSplit(mGetSubArgs(m), ", ")
     mCastRandom(spells)
