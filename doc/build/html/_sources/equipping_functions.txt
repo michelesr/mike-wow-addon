@@ -65,7 +65,7 @@ This will equip item1 on main hand and item2 on off hand ::
 Put Equipment in Containers
 ===========================
 
-.. index::Put Equipment in Containers
+.. index:: Put Equipment in Containers
 
 ::
 
