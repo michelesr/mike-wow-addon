@@ -20,7 +20,7 @@ This will reset istances for current party ::
 Switch Fullscreen/Windowed mode
 ===============================
 
-:index:`Fullscreen/Windowed mode switch"`
+:index:`Fullscreen/Windowed mode switch`
 
 This will switch from windowed mode and fullscreen mode ::
 
