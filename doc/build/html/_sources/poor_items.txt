@@ -2,12 +2,12 @@
 Poor items
 **********
 
-.. index:: Poor items managment
+.. index:: single: Poor items managment
 
 Sell Poor items
 ==================
 
-.. index:: Sell poor items
+.. index:: single: Sell poor items
 
 Sell poor items to current vendor ::
 
@@ -18,7 +18,7 @@ Sell poor items to current vendor ::
 Destroy Poor Items
 ==================
 
-.. index:: Destroy Poor Items
+.. index:: single: Destroy Poor Items
 
 Destroy poor items ::
 

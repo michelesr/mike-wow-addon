@@ -2,14 +2,14 @@
 Getting system information
 **************************
 
-.. index:: System information
+.. index:: single: System information
 
 Sometimes you would know about information such as latency, fps, or memory usage of addons, etc.
 
 Network statistics
 ==================
 
-.. index:: Network statistics
+.. index:: single: Network statistics
 
 Getting network informations ::
 
@@ -22,7 +22,7 @@ This will show outgoing and incoming bandwith in kB/s and communication latency 
 Frame per second (FPS)
 ======================
 
-.. index:: Frame per second (FPS)
+.. index:: single: Frame per second (FPS)
 
 Getting FPS ::
 
@@ -33,7 +33,7 @@ Getting FPS ::
 Memory Usage of Addons
 ======================
 
-.. index:: Memory Usage of Addons
+.. index:: single: Memory Usage of Addons
 
 Getting RAM usage of Addons ::
 
@@ -44,7 +44,7 @@ Getting RAM usage of Addons ::
 Player Position
 ===============
 
-.. index:: Player Position
+.. index:: single: Player Position
 
 Getting player zone and x,y coords::
 

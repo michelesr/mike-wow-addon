@@ -2,14 +2,14 @@
 Timer functions
 ***************
 
-.. index:: Timer
+.. index:: single: Timer
 
 Simple timing functions.
 
 Elapsed Time
 ============
 
-.. index:: Time elapsed
+.. index:: single: Time elapsed
 
 Get elapsed time since UI load or last time reset::
 
@@ -20,7 +20,7 @@ Get elapsed time since UI load or last time reset::
 Reset Timer
 ===========
 
-.. index:: Timer reset
+.. index:: single: Timer reset
 
 Reset the timer::
 

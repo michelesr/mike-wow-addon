@@ -2,7 +2,7 @@
 Macro framework
 ***************
 
-.. index:: Macro Framework
+.. index:: single: Macro Framework
 
 Following functions are suited for macro writing.
 
@@ -31,7 +31,7 @@ Following functions are suited for macro writing.
 Castsequence
 ============
 
-.. index:: Castsequence
+.. index:: single: Castsequence
 
 If you played latest version of WoW you sure have used at least one time /castsequence macro, but in vanilla there's not castsequence, so...
 
@@ -71,7 +71,7 @@ You **can't** set reset like reset=<number>, and also you always have to set it 
 Castrandom
 ==========
 
-.. index:: Castrandom
+.. index:: single: Castrandom
 
 ::
 
@@ -92,7 +92,7 @@ This will cast a random spell from the ones provided
 Spam heals based on HP
 ======================
 
-.. index:: Spam heals based on HP
+.. index:: single: Spam heals based on HP
 
 ::
 
@@ -166,7 +166,7 @@ This will cast the selected <spell> only if target's class match with classes pr
 Buff/Debuff spamming
 ====================
 
-.. index:: Buff/Debuff spamming
+.. index:: single: Buff/Debuff spamming
 
 You can write a macro to cast buff on nearest unbuffed player o debuff to nearest undebuffed unit.
 
@@ -196,7 +196,7 @@ This will cast <spell> on nearest enemy unit that is undebuffed with debuff repr
 Buff/Debuff based cast
 ======================
 
-.. index:: Buff/Debuff based cast
+.. index:: single: Buff/Debuff based cast
 
 You can write macro to cast spell based of target status (buffed/unbuffed with a specified buff/debuff)
 
@@ -239,7 +239,7 @@ This will cast "Shadow Word: Pain" if target is not debuffed with a debuff with 
 Cast spell based on target lvl
 ==============================
 
-.. index:: Cast spell based on target lvl
+.. index:: single: Cast spell based on target lvl
 
 ::
 
@@ -274,7 +274,7 @@ This will cast rank 6 if target is 50+, rank 5 if target is 38-49, rank 4 if tar
 Cast appropriate rank for a spell
 =================================
 
-.. index:: Cast appropriate rank for a spell
+.. index:: single: Cast appropriate rank for a spell
 
 ::
 
@@ -311,7 +311,7 @@ This will cast the appropriate spell rank based on target lvl.
 Mana based spell
 ================
 
-.. index:: Mana based spell
+.. index:: single: Mana based spell
 
 **HINT**: this macro should work with rage/energy too.
 
@@ -339,7 +339,7 @@ The second will cast Flash of Light: rank 2 if you have 200+ mana left, rank 1 e
 Mana percent based spell
 ========================
 
-.. index:: Mana percent based spell
+.. index:: single: Mana percent based spell
 
 **HINT**: this macro should work with rage/energy too.
 
