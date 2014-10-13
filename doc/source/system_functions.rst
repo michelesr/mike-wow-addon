@@ -17,6 +17,17 @@ This will reset istances for current party ::
 
 .. note:: You can't reset raid istances.
 
+Switch Fullscreen/Windowed mode
+===============================
+
+:index:`Fullscreen/Windowed mode switch"`
+
+This will switch from windowed mode and fullscreen mode ::
+
+	/mi window
+
+..
+
 Reloading User Interface
 ========================
 
