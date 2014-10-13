@@ -2,12 +2,12 @@
 Utilities
 *********
 
-:index:`Utilities`
+.. index:: Utilities
 
 Resetting istances
 ==================
 
-:index:`Resetting istances`
+.. index:: Resetting istances
 
 This will reset istances for current party ::
 
@@ -20,7 +20,7 @@ This will reset istances for current party ::
 Switch Fullscreen/Windowed mode
 ===============================
 
-:index:`Fullscreen/Windowed mode switch`
+.. index:: Fullscreen/Windowed mode switch
 
 This will switch from windowed mode and fullscreen mode ::
 
@@ -31,7 +31,7 @@ This will switch from windowed mode and fullscreen mode ::
 Reloading User Interface
 ========================
 
-:index:`Reload user interface`
+.. index:: Reload user interface
 
 This will reload user interface ::
 

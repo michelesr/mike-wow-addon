@@ -4,7 +4,7 @@ Getting Started
 
 :index:`Getting Started`
 
-The first thing to do after installation is see if the addon is loaded by World of Warcraft. In the Character Selection screen open the AddOn panel and check "Mike's Addon" to enable it. 
+The first thing to do after installation is see if the addon is loaded by World of Warcraft. In the Character Selection screen open the AddOn panel and check "Mike's Addon" to enable it.
 
 After login, you will be able to use slash command /mike or /mi to see the options aviable for the addon.
 

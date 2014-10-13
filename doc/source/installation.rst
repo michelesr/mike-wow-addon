@@ -2,7 +2,7 @@
 Installation
 ************
 
-:index:`Installation process`
+.. index:: Installation process
 
 The installation process is simple, and consist in the following step:
 

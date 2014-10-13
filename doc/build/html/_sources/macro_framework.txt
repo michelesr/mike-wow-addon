@@ -2,7 +2,7 @@
 Macro framework
 ***************
 
-:index:`Macro Framework`
+.. index:: Macro Framework
 
 Following functions are suited for macro writing.
 
@@ -12,7 +12,7 @@ Following functions are suited for macro writing.
 
 .. note:: <buff_icon_name> and <debuff_icon_name> can be client dependent (for example Mac client could be different from Windows client)
 
-.. note:: <spell> refers to spell name as you seen it in the tooltip, if rank is not specified will be cast the highest. 
+.. note:: <spell> refers to spell name as you seen it in the tooltip, if rank is not specified will be cast the highest.
 
 **HINT**: to specify rank for spell use this syntax
 
@@ -31,7 +31,7 @@ Following functions are suited for macro writing.
 Castsequence
 ============
 
-:index:`Castsequence`
+.. index:: Castsequence
 
 If you played latest version of WoW you sure have used at least one time /castsequence macro, but in vanilla there's not castsequence, so...
 
@@ -51,7 +51,7 @@ The <reset_time> is the number of second that have to pass before the macro will
 
 	/mi castsequence 10 Holy Fire, Mind Blast, Smite, Smite, Mind Blast
 	/mi castsequence noreset Smite, Mind Blast
-	/mi castsequence ilikepizza Sunder Armor, Heroic Strike 
+	/mi castsequence ilikepizza Sunder Armor, Heroic Strike
 	/mi castsequence 0 Renew, Power Word: Shield
 	/mi castsequence -5 Renew, Smite
 
@@ -66,12 +66,12 @@ All the above will cast in sequence without a reset time, except the first that 
 
 ..
 
-You **can't** set reset like reset=<number>, and also you always have to set it to a value (see HINT) 
+You **can't** set reset like reset=<number>, and also you always have to set it to a value (see HINT)
 
 Castrandom
 ==========
 
-:index:`Castrandom`
+.. index:: Castrandom
 
 ::
 
@@ -92,7 +92,7 @@ This will cast a random spell from the ones provided
 Spam heals based on HP
 ======================
 
-:index:`Spam heals based on HP`
+.. index:: Spam heals based on HP
 
 ::
 
@@ -116,7 +116,7 @@ The first will cast "Holy Light" on nearest friendly player with less than 50% H
 Cast spell based on HP
 ======================
 
-index:`Cast spell based on HP`
+index: Cast spell based on HP
 
 ::
 
@@ -134,7 +134,7 @@ This will check for your target HP, and will cast <spell1> if its HP percent is 
 
 ..
 
-The first will cast Execute if target has less than 20% HP, else Heroic Strike. 
+The first will cast Execute if target has less than 20% HP, else Heroic Strike.
 
 The second will cast Heal if target has less than 50% HP, else Lesser Heal.
 
@@ -143,7 +143,7 @@ The third will cast Flash Heal if target has less than 20% HP.
 Class based cast
 ================
 
-index:`Class based cast`
+index: Class based cast
 
 ::
 
@@ -166,7 +166,7 @@ This will cast the selected <spell> only if target's class match with classes pr
 Buff/Debuff spamming
 ====================
 
-:index:`Buff/Debuff spamming`
+.. index:: Buff/Debuff spamming
 
 You can write a macro to cast buff on nearest unbuffed player o debuff to nearest undebuffed unit.
 
@@ -196,7 +196,7 @@ This will cast <spell> on nearest enemy unit that is undebuffed with debuff repr
 Buff/Debuff based cast
 ======================
 
-:index:`Buff/Debuff based cast`
+.. index:: Buff/Debuff based cast
 
 You can write macro to cast spell based of target status (buffed/unbuffed with a specified buff/debuff)
 
@@ -212,7 +212,7 @@ This will cast <spell1> if target is not buffed with buff represented by <buff_i
 
 **Example** ::
 
-	/mi bcast Fortitude, Power Word: Fortitude, Power Word: Shield 
+	/mi bcast Fortitude, Power Word: Fortitude, Power Word: Shield
 
 ..
 
@@ -234,12 +234,12 @@ This will cast <spell1> if target is not debuffed with debuff represented by <de
 
 ..
 
-This will cast "Shadow Word: Pain" if target is not debuffed with a debuff with contains 'Pain' in its icon name, else will cast "Mind Blast" 
+This will cast "Shadow Word: Pain" if target is not debuffed with a debuff with contains 'Pain' in its icon name, else will cast "Mind Blast"
 
 Cast spell based on target lvl
 ==============================
 
-:index:`Cast spell based on target lvl`
+.. index:: Cast spell based on target lvl
 
 ::
 
@@ -274,7 +274,7 @@ This will cast rank 6 if target is 50+, rank 5 if target is 38-49, rank 4 if tar
 Cast appropriate rank for a spell
 =================================
 
-:index:`Cast appropriate rank for a spell`
+.. index:: Cast appropriate rank for a spell
 
 ::
 
@@ -311,7 +311,7 @@ This will cast the appropriate spell rank based on target lvl.
 Mana based spell
 ================
 
-:index:`Mana based spell`
+.. index:: Mana based spell
 
 **HINT**: this macro should work with rage/energy too.
 
@@ -339,7 +339,7 @@ The second will cast Flash of Light: rank 2 if you have 200+ mana left, rank 1 e
 Mana percent based spell
 ========================
 
-:index:`Mana percent based spell`
+.. index:: Mana percent based spell
 
 **HINT**: this macro should work with rage/energy too.
 

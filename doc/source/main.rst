@@ -1,20 +1,20 @@
 .. Mike WoW Addon documentation master file, created by
    sphinx-quickstart on Tue Oct  7 23:28:05 2014.
    You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+   contain the root  toctree  directive.
 
 **************
 Mike WoW Addon
 **************
 
-:index:`Main Page`
+.. index:: Main Page
 
-Welcome to Mike's WoW Addon documentation. 
+Welcome to Mike's WoW Addon documentation.
 
 Introduction
 ============
 
-:index:`Introduction`
+.. index:: Introduction
 
 Everything started when i wanted to write some macro for the game.
 
@@ -29,9 +29,9 @@ So i dediced to make an addon where i put all my script embedded in slash comman
 
 I hope you can find it useful, and if you need some information or wanna requests some feature feel free to write me at mikefender@cryptolab.net.
 
-This is **free** software, released under the *GNU GPL License Version 3*. 
+This is **free** software, released under the *GNU GPL License Version 3*.
 
-Source code is available on github at https://github.com/michelesr/mike-wow-addon. 
+Source code is available on github at https://github.com/michelesr/mike-wow-addon.
 
 Feel free to help adding or improving features.
 
@@ -40,7 +40,7 @@ That's all folks, enjoy!
 Contents
 ========
 
-:index:`Contents index`
+.. index:: Contents index
 
 .. toctree::
    :maxdepth: 2

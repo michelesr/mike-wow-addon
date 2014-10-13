@@ -1,7 +1,7 @@
 *******************
 Equipping functions
 *******************
-:index:`Equipping functions`
+.. index:: Equipping functions
 
 Here's a list of equipping functions.
 
@@ -17,7 +17,7 @@ Here's a list of equipping functions.
 Auto Equipping Items
 ====================
 
-:index:`Auto Equipping Items`
+.. index:: Auto Equipping Items
 
 
 This will equip items in the appropriate slots ::
@@ -33,7 +33,7 @@ This will equip items in the appropriate slots ::
 ..
 
 
-The command above search for the item in your inventory, if it finds them link will be prompted in the chat and items will be equipped (if possible) in the appropriate slots. 
+The command above search for the item in your inventory, if it finds them link will be prompted in the chat and items will be equipped (if possible) in the appropriate slots.
 
 **HINT**: you can also use this function to swap items, in fact, the "equip" function will not do nothing for item not found in your bags, so if you use /mi equip <item1>, <item2> and one of the two item is equipped, it will be swapped with the other item.
 
@@ -48,7 +48,7 @@ This will get the belt and the boots on the bag and swap with the ones equipped.
 Equipping weapons in right hand
 ===============================
 
-:index:`Equipping weapons in right hand`
+.. index:: Equipping weapons in right hand
 
 This will equip item1 on main hand and item2 on off hand ::
 
@@ -65,7 +65,7 @@ This will equip item1 on main hand and item2 on off hand ::
 Put Equipment in Containers
 ===========================
 
-:index:`Put Equipment in Containers`
+.. index::Put Equipment in Containers
 
 ::
 

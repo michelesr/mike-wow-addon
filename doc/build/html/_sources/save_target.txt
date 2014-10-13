@@ -2,7 +2,7 @@
 Target managment
 ****************
 
-:index:`Target managment`
+.. index:: Target managment
 
 This functions are used to save a particular target to restore that later.
 
@@ -11,7 +11,7 @@ This functions are used to save a particular target to restore that later.
 Save
 ====
 
-:index:`Target save`
+.. index:: Target save
 
 To save target ::
 
@@ -22,7 +22,7 @@ To save target ::
 Restore
 =======
 
-:index:`Target restore`
+.. index:: Target restore
 
 To restore target ::
 
@@ -33,7 +33,7 @@ To restore target ::
 Set custom target
 =================
 
-:index:`Target save custom`
+.. index:: Target save custom
 
 To save a custom target name ::
 
