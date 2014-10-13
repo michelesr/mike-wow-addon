@@ -23,11 +23,12 @@ License:
 
 local frame = CreateFrame("FRAME", "MikeAddonFrame")
 frame:RegisterEvent("PLAYER_TARGET_CHANGED")
-frame:RegisterEvent("PLAYER_LEAVE_COMBAT")
+frame:RegisterEvent("PLAYER_REGEN_ENABLED")
+frame:RegisterEvent("PLAYER_REGEN_DISABLED")
 local function mEventHandler(...)
   if event == "PLAYER_TARGET_CHANGED" then
     mTargetResetCastSequence()
-  elseif event == "PLAYER_LEAVE_COMBAT" then
+  elseif event == "PLAYER_REGEN_ENABLED" or event == "PLAYER_REGEN_DISABLED" then
     mCombatResetCastSequence()
   end
 end
