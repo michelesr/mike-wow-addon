@@ -37,6 +37,8 @@ function SlashCmdList.MIKE(msg, editbox)
     mFramerate()
   elseif m[1] == "pos" then
     mPrintPosition()
+  elseif m[1] == "window" then
+    mWindowSwitch()
   elseif m[1] == "timer" then
     mPrintElapsedTime()
   elseif m[1] == "treset" then
@@ -138,53 +140,54 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("Usage: /mike <arguments> OR /mi <arguments>")
     mPrint("[ ] are for optional (not mandatory) arguments");
     mPrint("System informations", 1, 1, 0)
-    mPrint("/mike net: print net stats")
-    mPrint("/mike fps: print framerate")
-    mPrint("/mike mem: print addons memory usage")
-    mPrint("/mike pos: print player position")
+    mPrint("/mi net: print net stats")
+    mPrint("/mi fps: print framerate")
+    mPrint("/mi mem: print addons memory usage")
+    mPrint("/mi pos: print player position")
     mPrint("Timer function", 1, 1, 0)
-    mPrint("/mike timer: get elapsed time from ui load or timer reset")
-    mPrint("/mike treset: reset timer")
+    mPrint("/mi timer: get elapsed time from ui load or timer reset")
+    mPrint("/mi treset: reset timer")
     mPrint("Target save & restore functions:", 1, 1, 0)
-    mPrint("/mike tsave: save current target name")
-    mPrint("/mike trestore: target unit with saved name")
-    mPrint("/mike tcustom <name>: set custom target to restore");
+    mPrint("/mi tsave: save current target name")
+    mPrint("/mi trestore: target unit with saved name")
+    mPrint("/mi tcustom <name>: set custom target to restore");
     mPrint("System functions", 1, 1, 0)
-    mPrint("/mike ireset: reset instances")
-    mPrint("/mike rl: reload user interface")
+    mPrint("/mi window: Switch between fullscreen and windowed mode")
+    mPrint("/mi ireset: reset instances")
+    mPrint("/mi rl: reload user interface")
     mPrint("Quest objective party sharing", 1, 1, 0)
-    mPrint("/mike qshare: share objectives of common quests in party")
-    mPrint("/mike qss: share objectives for the quest that is selected (highlighted) in the quest log")
+    mPrint("/mi qshare: share objectives of common quests in party")
+    mPrint("/mi qss: share objectives for the quest that is selected (highlighted) in the quest log")
     mPrint("Poor items management", 1, 1, 0)
-    mPrint("/mike psell: sell poor quality items")
-    mPrint("/mike pdestroy: destroy without confirm all poor quality items")
+    mPrint("/mi psell: sell poor quality items")
+    mPrint("/mi pdestroy: destroy without confirm all poor quality items")
     mPrint("Equipping function", 1, 1, 0)
-    mPrint("/mike equip <item1>[, <item2>, ..., <itemN>]: equips items")
-    mPrint("/mike wequip <w1>[, <w2>]: equip w1 on main hand and w2 on offhand")
-    mPrint("/mike strip: put your equip in the inventory")
+    mPrint("/mi equip <item1>[, <item2>, ..., <itemN>]: equips items")
+    mPrint("/mi wequip <w1>[, <w2>]: equip w1 on main hand and w2 on offhand")
+    mPrint("/mi strip: put your equip in the inventory")
     mPrint("Macro framework", 1, 1, 0)
-    mPrint("/mike castsequence <reset> <s1>, <s2>[, <s3>, ..., <sN>]: cast spell in sequence returning to first after last or after <reset> seconds (0 or less for no reset)")
-    mPrint("/mike castrandom <s1>, <s2>[, <s3>, ... <sN>]: cast a random spell from the list");
-    mPrint("/mike heal <percent> <spellname>: cast an healing spell on nearest player with hp% < percent")
-    mPrint("/mike lspell <percent> <s1>[, <s2>]: cast s1 if target %hp is < percent, else s2")
-    mPrint("/mike pbuff: print buff icon names (needed for pbuff) of your target (or you)")
-    mPrint("/mike pdebuff: print debuff icon names (needed for pdebuff) of your target (or you)")
-    mPrint("/mike mbuff <spell>, <buff_icon_name>: buff nearest unbuffed friendly player")
-    mPrint("/mike mdebuff <spell>, <buff_icon_name>: debuff nearest unbuffed enemy unit")
-    mPrint("/mike bcast <buff_icon_name>, <s1>[, <s2>]: cast on target s1 if not buffed, else s2");
-    mPrint("/mike dcast <debuff_icon_name>, <s1>[, <s2>]: cast on target s1 if not debuffed, else s2");
-    mPrint("/mike ccast <class1>[ <class2> ... <classN>], <spell>: cast <spell> on target if its class match"); 
-    mPrint("/mike lvlcast <min_lvl> <s1>[, <s2>]: cast spell if target lvl is major/equal <min_lvl>, else s2");
-    mPrint("/mike rcast <max_spell_rank> <spell>: check target lvl and cast appropriate rank of the spell");
-    mPrint("/mike manacast <min_mana> <s1>[, <s2>]: cast s1 if your mana is at least <min_mana>, else s2");
-    mPrint("/mike mpcast <mana_percent> <s1>[, <s2>]: cast s1 if your mana% is at least <percent>, else s2");
-    mPrint("/mike pcast <n> <spell>: cast spell party member number n")
+    mPrint("/mi castsequence <reset> <s1>, <s2>[, <s3>, ..., <sN>]: cast spell in sequence returning to first after last or after <reset> seconds (0 or less for no reset)")
+    mPrint("/mi castrandom <s1>, <s2>[, <s3>, ... <sN>]: cast a random spell from the list");
+    mPrint("/mi heal <percent> <spellname>: cast an healing spell on nearest player with hp% < percent")
+    mPrint("/mi lspell <percent> <s1>[, <s2>]: cast s1 if target %hp is < percent, else s2")
+    mPrint("/mi pbuff: print buff icon names (needed for pbuff) of your target (or you)")
+    mPrint("/mi pdebuff: print debuff icon names (needed for pdebuff) of your target (or you)")
+    mPrint("/mi mbuff <spell>, <buff_icon_name>: buff nearest unbuffed friendly player")
+    mPrint("/mi mdebuff <spell>, <buff_icon_name>: debuff nearest unbuffed enemy unit")
+    mPrint("/mi bcast <buff_icon_name>, <s1>[, <s2>]: cast on target s1 if not buffed, else s2");
+    mPrint("/mi dcast <debuff_icon_name>, <s1>[, <s2>]: cast on target s1 if not debuffed, else s2");
+    mPrint("/mi ccast <class1>[ <class2> ... <classN>], <spell>: cast <spell> on target if its class match"); 
+    mPrint("/mi lvlcast <min_lvl> <s1>[, <s2>]: cast spell if target lvl is major/equal <min_lvl>, else s2");
+    mPrint("/mi rcast <max_spell_rank> <spell>: check target lvl and cast appropriate rank of the spell");
+    mPrint("/mi manacast <min_mana> <s1>[, <s2>]: cast s1 if your mana is at least <min_mana>, else s2");
+    mPrint("/mi mpcast <mana_percent> <s1>[, <s2>]: cast s1 if your mana% is at least <percent>, else s2");
+    mPrint("/mi pcast <n> <spell>: cast spell party member number n")
     mPrint("Premade macro functions", 1, 1, 0)
-    mPrint("/mike tattack: target nearest enemy (like TAB) and auto-attack")
-    mPrint("/mike sunder: cast 'Sunder Armor' on nearest enemy not debuffed")
-    mPrint("/mike fortitude: cast 'Power Word: Fortitude' on nearest unbuffed friendly player")
-    mPrint("/mike wpain: cast 'Shadow Word: Pain' if not debuffed, else wand 'Shoot'")
-    mPrint("/mike apain: cast 'Shadow Word: Pain' on nearest enemy not debuffed")
-    mPrint("Documentation: https://michelesr.github.io/mike-wow-addon/doc/build/html/main.html", 1, 1, 0); 
+    mPrint("/mi tattack: target nearest enemy (like TAB) and auto-attack")
+    mPrint("/mi sunder: cast 'Sunder Armor' on nearest enemy not debuffed")
+    mPrint("/mi fortitude: cast 'Power Word: Fortitude' on nearest unbuffed friendly player")
+    mPrint("/mi wpain: cast 'Shadow Word: Pain' if not debuffed, else wand 'Shoot'")
+    mPrint("/mi apain: cast 'Shadow Word: Pain' on nearest enemy not debuffed")
+    mPrint("Documentation: https://michelesr.github.io/mi-wow-addon/doc/build/html/main.html", 1, 1, 0); 
   end
 end

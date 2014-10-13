@@ -27,6 +27,12 @@ local timer = GetTime()
 local savedTarget = nil
 local castSequences = {};
 
+-- switch windowed/fullscreen mode
+function mWindowSwitch()
+  SetCVar("gxWindow", mod(GetCVar("gxWindow") + 1, 2))
+  RestartGx()
+end
+
 -- reset timer
 function mResetTimer()
   timer = GetTime()
