@@ -11,7 +11,7 @@ Sell Poor items
 
 Sell poor items to current vendor ::
 
-	/mike psell
+	/mi psell
 
 ..
 
@@ -22,7 +22,7 @@ Destroy Poor Items
 
 Destroy poor items ::
 
-	/mike pdestroy
+	/mi pdestroy
 
 ..
 

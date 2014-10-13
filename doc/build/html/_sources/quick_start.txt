@@ -8,8 +8,6 @@ The first thing to do after installation is see if the addon is loaded by World 
 
 After login, you will be able to use slash command /mike or /mi to see the options aviable for the addon.
 
-.. note:: in every command reference and example i use the extended command (/mike) instead of /mi, but you can use /mi too to abbreviate commands.
-
 If you use an option more times and you need to use in real time you should bind it to a Macro and then to a key binding, and in particular, you should do that for commands from "Macro Framework" and "Premade Macro Commands" section.
 
 The "Premade Macro Commands" section is not so populated, because:

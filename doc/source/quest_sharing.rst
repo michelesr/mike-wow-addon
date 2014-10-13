@@ -13,7 +13,7 @@ Share objective for common quests in party
 
 To share objectives for common quests in party ::
 
-	/mike qshare
+	/mi qshare
 
 ..
 
@@ -26,7 +26,7 @@ Share objective for current selected quest
 
 To share quest objectives for selected quest ::
 
-	/mike qss
+	/mi qss
 
 ..
 

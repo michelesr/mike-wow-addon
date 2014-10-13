@@ -15,7 +15,7 @@ Save
 
 To save target ::
 
-	/mike tsave
+	/mi tsave
 
 ..
 
@@ -26,7 +26,7 @@ Restore
 
 To restore target ::
 
-	/mike trestore
+	/mi trestore
 
 ..
 
@@ -37,7 +37,7 @@ Set custom target
 
 To save a custom target name ::
 
-	/mike tcustom <name>
+	/mi tcustom <name>
 
 ..
 

@@ -13,7 +13,7 @@ Elapsed Time
 
 Get elapsed time since UI load or last time reset::
 
-	/mike timer
+	/mi timer
 
 ..
 
@@ -24,6 +24,6 @@ Reset Timer
 
 Reset the timer::
 
-	/mike treset
+	/mi treset
 
 ..

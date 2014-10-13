@@ -17,7 +17,7 @@ Target nearest & Attack
 
 ::
 
-	/mike tattack
+	/mi tattack
 
 ..
 
@@ -30,7 +30,7 @@ This will target nearest enemy unit (like if you pressed the tab key) and will a
 
 ::
 
-	/mike sunder
+	/mi sunder
 
 ..
 
@@ -43,7 +43,7 @@ This will search for nearest enemy with is not debuffed with "Sunder Armor" and 
 
 ::
 
-	/mike fortitude
+	/mi fortitude
 
 ..
 
@@ -56,7 +56,7 @@ This will cast "Power Word: Fortitude" on nearest unbuffed friendly player.
 
 ::
 
-	/mike wpain
+	/mi wpain
 
 ..
 
@@ -69,7 +69,7 @@ This will cast "Shadow Word: Pain" if target is not debuffed, else will Shoot wi
 
 ::
 
-	/mike apain
+	/mi apain
 
 ..
 

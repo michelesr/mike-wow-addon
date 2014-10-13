@@ -37,7 +37,7 @@ If you played latest version of WoW you sure have used at least one time /castse
 
 ::
 
-	/mike castsequence <reset_time> <spell1>, <spell2>[, <spell3>, ..., <spellN>]
+	/mi castsequence <reset_time> <spell1>, <spell2>[, <spell3>, ..., <spellN>]
 
 ..
 
@@ -49,11 +49,11 @@ The <reset_time> is the number of second that have to pass before the macro will
 
 **Example** ::
 
-	/mike castsequence 10 Holy Fire, Mind Blast, Smite, Smite, Mind Blast
-	/mike castsequence noreset Smite, Mind Blast
-	/mike castsequence ilikepizza Sunder Armor, Heroic Strike 
-	/mike castsequence 0 Renew, Power Word: Shield
-	/mike castsequence -5 Renew, Smite
+	/mi castsequence 10 Holy Fire, Mind Blast, Smite, Smite, Mind Blast
+	/mi castsequence noreset Smite, Mind Blast
+	/mi castsequence ilikepizza Sunder Armor, Heroic Strike 
+	/mi castsequence 0 Renew, Power Word: Shield
+	/mi castsequence -5 Renew, Smite
 
 ..
 
@@ -75,7 +75,7 @@ Castrandom
 
 ::
 
-	/mike castrandom <spell1>, <spell2>[, <spell3>, ..., <spellN>]
+	/mi castrandom <spell1>, <spell2>[, <spell3>, ..., <spellN>]
 
 ..
 
@@ -83,9 +83,9 @@ This will cast a random spell from the ones provided
 
 **Example** ::
 
-	/mike castrandom Smite, Mind Blast, Shadow Word: Pain
-	/mike castrandom Flash of Light, Holy Light
-	/mike castrandom Shadow Bolt, Curse of Agony
+	/mi castrandom Smite, Mind Blast, Shadow Word: Pain
+	/mi castrandom Flash of Light, Holy Light
+	/mi castrandom Shadow Bolt, Curse of Agony
 
 ..
 
@@ -96,7 +96,7 @@ Spam heals based on HP
 
 ::
 
-	/mike heal <percent> <spellname>
+	/mi heal <percent> <spellname>
 
 ..
 
@@ -104,8 +104,8 @@ This will cast the selected spell on nearest friendly player with HP percent inf
 
 **Example** ::
 
-	/mike heal 80 Flash Heal
-	/mike heal 50 Holy Light
+	/mi heal 80 Flash Heal
+	/mi heal 50 Holy Light
 
 ..
 
@@ -120,7 +120,7 @@ index:`Cast spell based on HP`
 
 ::
 
-	/mike lspell <percent> <spell1>[, <spell2>]
+	/mi lspell <percent> <spell1>[, <spell2>]
 
 ..
 
@@ -128,9 +128,9 @@ This will check for your target HP, and will cast <spell1> if its HP percent is 
 
 **Example** ::
 
-	/mike lspell 20 Execute, Heroic Strike
-	/mike lspell 50 Heal, Lesser Heal
-	/mike lspell 20 Flash Heal
+	/mi lspell 20 Execute, Heroic Strike
+	/mi lspell 50 Heal, Lesser Heal
+	/mi lspell 20 Flash Heal
 
 ..
 
@@ -147,7 +147,7 @@ index:`Class based cast`
 
 ::
 
-	/mike ccast <class1>[ <class2> ... <classN>], <spell>
+	/mi ccast <class1>[ <class2> ... <classN>], <spell>
 
 ..
 
@@ -155,9 +155,9 @@ This will cast the selected <spell> only if target's class match with classes pr
 
 **Example** ::
 
-	/mike ccast Warrior Rogue, Blessing of Might
-	/mike ccast Mage Warlock Priest, Blessing of Wisdom
-	/mike ccast Paladin, Blessing of Kings
+	/mi ccast Warrior Rogue, Blessing of Might
+	/mi ccast Mage Warlock Priest, Blessing of Wisdom
+	/mi ccast Paladin, Blessing of Kings
 
 ..
 
@@ -174,20 +174,20 @@ In order to do this, you must know how did Blizzard named the icon that represen
 
 Here you got 2 functions to help you with discovering buff/debuffs icon names ::
 
-	/mike pbuff
-	/mike pdebuff
+	/mi pbuff
+	/mi pdebuff
 
 ..
 
 These 2 functions will operate on your target (or you if you don't have a target) and will print on chat the list of buff/debuff names. You can use that names to write the following macros. ::
 
-	/mike mbuff <spell>, <buff_icon_name>
+	/mi mbuff <spell>, <buff_icon_name>
 
 ..
 
 This will cast <spell> on nearest friendly player that is unbuffed with buff represented by <buff_icon_name>. ::
 
-	/mike mdebuff <spell>, <debuff_icon_name>
+	/mi mdebuff <spell>, <debuff_icon_name>
 
 ..
 
@@ -204,7 +204,7 @@ See "Buff/Debuff spamming" for information about <buff_icon_name> and <debuff_ic
 
 ::
 
-	/mike bcast <buff_icon_name>, <spell1>[, <spell2>]
+	/mi bcast <buff_icon_name>, <spell1>[, <spell2>]
 
 ..
 
@@ -212,7 +212,7 @@ This will cast <spell1> if target is not buffed with buff represented by <buff_i
 
 **Example** ::
 
-	/mike bcast Fortitude, Power Word: Fortitude, Power Word: Shield 
+	/mi bcast Fortitude, Power Word: Fortitude, Power Word: Shield 
 
 ..
 
@@ -222,7 +222,7 @@ This will cast "Power Word: Fortitude" if target is unbuffed with a buff that co
 
 ::
 
-	/mike dcast <debuff_icon_name>, <spell1>[, <spell2>]
+	/mi dcast <debuff_icon_name>, <spell1>[, <spell2>]
 
 ..
 
@@ -230,7 +230,7 @@ This will cast <spell1> if target is not debuffed with debuff represented by <de
 
 **Example** ::
 
-	/mike dcast Pain, Shadow Word: Pain, Mind Blast
+	/mi dcast Pain, Shadow Word: Pain, Mind Blast
 
 ..
 
@@ -243,7 +243,7 @@ Cast spell based on target lvl
 
 ::
 
-	/mike lvlcast <min_lvl> <spell1>[, <spell2>]
+	/mi lvlcast <min_lvl> <spell1>[, <spell2>]
 
 ..
 
@@ -251,7 +251,7 @@ This will cast <spell1> if target lvl is major/equal <min_lvl>, else <spell2>.
 
 **Example** ::
 
-	/mike lvlcast 20 Smite
+	/mi lvlcast 20 Smite
 
 ..
 
@@ -261,9 +261,9 @@ This will cast "Smite" only if target is lvl 20+
 
 **Example** ::
 
-	/mike lvlcast 50 Power Word: Fortitude(Rank 6)
-	/mike lvlcast 38 Power Word: Fortitude(Rank 5)
-	/mike lvlcast 26 Power Word: Fortitude(Rank 4), Power Word: Fortitude(Rank 3)
+	/mi lvlcast 50 Power Word: Fortitude(Rank 6)
+	/mi lvlcast 38 Power Word: Fortitude(Rank 5)
+	/mi lvlcast 26 Power Word: Fortitude(Rank 4), Power Word: Fortitude(Rank 3)
 
 ..
 
@@ -278,7 +278,7 @@ Cast appropriate rank for a spell
 
 ::
 
-	/mike rcast <max_rank> <spell>
+	/mi rcast <max_rank> <spell>
 
 ..
 
@@ -304,7 +304,7 @@ This will cast the appropriate spell rank based on target lvl.
 
 **Example**::
 
-	/mike rcast 6 Power Word: Fortitude
+	/mi rcast 6 Power Word: Fortitude
 
 ..
 
@@ -317,7 +317,7 @@ Mana based spell
 
 ::
 
-	/mike manacast <min_mana> <spell1>[, <spell2>]
+	/mi manacast <min_mana> <spell1>[, <spell2>]
 
 ..
 
@@ -327,8 +327,8 @@ This will cast <spell1> if your remaining mana is major/equal <min_mana>, else <
 
 ::
 
-	/mike manacast 1000 Holy Light
-	/mike manacast 200 Flash of Light(Rank 2), Flash of Light(Rank 1)
+	/mi manacast 1000 Holy Light
+	/mi manacast 200 Flash of Light(Rank 2), Flash of Light(Rank 1)
 
 ..
 
@@ -347,7 +347,7 @@ Same as manacast but this time will be checked in <percent>.
 
 ::
 
-	/mike mpcast <mana_percent> <spell1>[, <spell2>]
+	/mi mpcast <mana_percent> <spell1>[, <spell2>]
 
 ..
 
@@ -355,8 +355,8 @@ Same as manacast but this time will be checked in <percent>.
 
 ::
 
-	/mike mpcast 70 Holy Light
-	/mike mpcast 50 Flash of Light(Rank 2), Flash of Light(Rank 1)
+	/mi mpcast 70 Holy Light
+	/mi mpcast 50 Flash of Light(Rank 2), Flash of Light(Rank 1)
 
 ..
 

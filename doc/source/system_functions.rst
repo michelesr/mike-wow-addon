@@ -11,7 +11,7 @@ Resetting istances
 
 This will reset istances for current party ::
 
-	/mike ireset
+	/mi ireset
 
 ..
 
@@ -24,6 +24,6 @@ Reloading User Interface
 
 This will reload user interface ::
 
-	/mike rl
+	/mi rl
 
 ..

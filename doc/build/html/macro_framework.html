@@ -81,18 +81,18 @@
 <h2>Castsequence<a class="headerlink" href="#castsequence" title="Permalink to this headline">¶</a></h2>
 <p><span class="target" id="index-1"></span>Castsequence</p>
 <p>If you played latest version of WoW you sure have used at least one time /castsequence macro, but in vanilla there&#8217;s not castsequence, so...</p>
-<div class="highlight-python"><div class="highlight"><pre>/mike castsequence &lt;reset_time&gt; &lt;spell1&gt;, &lt;spell2&gt;[, &lt;spell3&gt;, ..., &lt;spellN&gt;]
+<div class="highlight-python"><div class="highlight"><pre>/mi castsequence &lt;reset_time&gt; &lt;spell1&gt;, &lt;spell2&gt;[, &lt;spell3&gt;, ..., &lt;spellN&gt;]
 </pre></div>
 </div>
 <p>This will cast &lt;spell1&gt;, then &lt;spell2&gt;, then ..., then &lt;spellN&gt; then again &lt;spell1&gt;, etc.</p>
 <p>The &lt;reset_time&gt; is the number of second that have to pass before the macro will restart casting from &lt;spell1&gt;, however, if you cast all the spell before that time you will restart from spell1 even if time is not expired.</p>
 <p><strong>HINT</strong>: set &lt;reset_time&gt; to a word (like <em>noreset</em> or <em>whateryouwant</em>) or to 0 or to a negative number to <strong>disable</strong> auto reset.</p>
 <p><strong>Example</strong></p>
-<div class="highlight-python"><div class="highlight"><pre>/mike castsequence 10 Holy Fire, Mind Blast, Smite, Smite, Mind Blast
-/mike castsequence noreset Smite, Mind Blast
-/mike castsequence ilikepizza Sunder Armor, Heroic Strike
-/mike castsequence 0 Renew, Power Word: Shield
-/mike castsequence -5 Renew, Smite
+<div class="highlight-python"><div class="highlight"><pre>/mi castsequence 10 Holy Fire, Mind Blast, Smite, Smite, Mind Blast
+/mi castsequence noreset Smite, Mind Blast
+/mi castsequence ilikepizza Sunder Armor, Heroic Strike
+/mi castsequence 0 Renew, Power Word: Shield
+/mi castsequence -5 Renew, Smite
 </pre></div>
 </div>
 <p>All the above will cast in sequence without a reset time, except the first that will reset after 10 seconds.</p>
@@ -108,27 +108,27 @@
 <div class="section" id="castrandom">
 <h2>Castrandom<a class="headerlink" href="#castrandom" title="Permalink to this headline">¶</a></h2>
 <p><span class="target" id="index-2"></span>Castrandom</p>
-<div class="highlight-python"><div class="highlight"><pre>/mike castrandom &lt;spell1&gt;, &lt;spell2&gt;[, &lt;spell3&gt;, ..., &lt;spellN&gt;]
+<div class="highlight-python"><div class="highlight"><pre>/mi castrandom &lt;spell1&gt;, &lt;spell2&gt;[, &lt;spell3&gt;, ..., &lt;spellN&gt;]
 </pre></div>
 </div>
 <p>This will cast a random spell from the ones provided</p>
 <p><strong>Example</strong></p>
-<div class="highlight-python"><div class="highlight"><pre>/mike castrandom Smite, Mind Blast, Shadow Word: Pain
-/mike castrandom Flash of Light, Holy Light
-/mike castrandom Shadow Bolt, Curse of Agony
+<div class="highlight-python"><div class="highlight"><pre>/mi castrandom Smite, Mind Blast, Shadow Word: Pain
+/mi castrandom Flash of Light, Holy Light
+/mi castrandom Shadow Bolt, Curse of Agony
 </pre></div>
 </div>
 </div>
 <div class="section" id="spam-heals-based-on-hp">
 <h2>Spam heals based on HP<a class="headerlink" href="#spam-heals-based-on-hp" title="Permalink to this headline">¶</a></h2>
 <p><span class="target" id="index-3"></span>Spam heals based on HP</p>
-<div class="highlight-python"><div class="highlight"><pre>/mike heal &lt;percent&gt; &lt;spellname&gt;
+<div class="highlight-python"><div class="highlight"><pre>/mi heal &lt;percent&gt; &lt;spellname&gt;
 </pre></div>
 </div>
 <p>This will cast the selected spell on nearest friendly player with HP percent inferior to &lt;percent&gt;.</p>
 <p><strong>Example</strong></p>
-<div class="highlight-python"><div class="highlight"><pre>/mike heal 80 Flash Heal
-/mike heal 50 Holy Light
+<div class="highlight-python"><div class="highlight"><pre>/mi heal 80 Flash Heal
+/mi heal 50 Holy Light
 </pre></div>
 </div>
 <p>The first will cast &#8220;Flash Heal&#8221; on nearest friendly player with less than 80% HP.</p>
@@ -137,14 +137,14 @@
 <div class="section" id="cast-spell-based-on-hp">
 <h2>Cast spell based on HP<a class="headerlink" href="#cast-spell-based-on-hp" title="Permalink to this headline">¶</a></h2>
 <p>index:<cite>Cast spell based on HP</cite></p>
-<div class="highlight-python"><div class="highlight"><pre>/mike lspell &lt;percent&gt; &lt;spell1&gt;[, &lt;spell2&gt;]
+<div class="highlight-python"><div class="highlight"><pre>/mi lspell &lt;percent&gt; &lt;spell1&gt;[, &lt;spell2&gt;]
 </pre></div>
 </div>
 <p>This will check for your target HP, and will cast &lt;spell1&gt; if its HP percent is inferior to &lt;percent&gt;, otherwise, will cast &lt;spell2&gt;.</p>
 <p><strong>Example</strong></p>
-<div class="highlight-python"><div class="highlight"><pre>/mike lspell 20 Execute, Heroic Strike
-/mike lspell 50 Heal, Lesser Heal
-/mike lspell 20 Flash Heal
+<div class="highlight-python"><div class="highlight"><pre>/mi lspell 20 Execute, Heroic Strike
+/mi lspell 50 Heal, Lesser Heal
+/mi lspell 20 Flash Heal
 </pre></div>
 </div>
 <p>The first will cast Execute if target has less than 20% HP, else Heroic Strike.</p>
@@ -154,14 +154,14 @@
 <div class="section" id="class-based-cast">
 <h2>Class based cast<a class="headerlink" href="#class-based-cast" title="Permalink to this headline">¶</a></h2>
 <p>index:<cite>Class based cast</cite></p>
-<div class="highlight-python"><div class="highlight"><pre>/mike ccast &lt;class1&gt;[ &lt;class2&gt; ... &lt;classN&gt;], &lt;spell&gt;
+<div class="highlight-python"><div class="highlight"><pre>/mi ccast &lt;class1&gt;[ &lt;class2&gt; ... &lt;classN&gt;], &lt;spell&gt;
 </pre></div>
 </div>
 <p>This will cast the selected &lt;spell&gt; only if target&#8217;s class match with classes provided.</p>
 <p><strong>Example</strong></p>
-<div class="highlight-python"><div class="highlight"><pre>/mike ccast Warrior Rogue, Blessing of Might
-/mike ccast Mage Warlock Priest, Blessing of Wisdom
-/mike ccast Paladin, Blessing of Kings
+<div class="highlight-python"><div class="highlight"><pre>/mi ccast Warrior Rogue, Blessing of Might
+/mi ccast Mage Warlock Priest, Blessing of Wisdom
+/mi ccast Paladin, Blessing of Kings
 </pre></div>
 </div>
 <p><strong>HINT</strong>: you can put multiple ccast in a single macro, to cast different spell on different classes, like i did on the example.</p>
@@ -172,16 +172,16 @@
 <p>You can write a macro to cast buff on nearest unbuffed player o debuff to nearest undebuffed unit.</p>
 <p>In order to do this, you must know how did Blizzard named the icon that represents the buff/debuff.</p>
 <p>Here you got 2 functions to help you with discovering buff/debuffs icon names</p>
-<div class="highlight-python"><div class="highlight"><pre>/mike pbuff
-/mike pdebuff
+<div class="highlight-python"><div class="highlight"><pre>/mi pbuff
+/mi pdebuff
 </pre></div>
 </div>
 <p>These 2 functions will operate on your target (or you if you don&#8217;t have a target) and will print on chat the list of buff/debuff names. You can use that names to write the following macros.</p>
-<div class="highlight-python"><div class="highlight"><pre>/mike mbuff &lt;spell&gt;, &lt;buff_icon_name&gt;
+<div class="highlight-python"><div class="highlight"><pre>/mi mbuff &lt;spell&gt;, &lt;buff_icon_name&gt;
 </pre></div>
 </div>
 <p>This will cast &lt;spell&gt; on nearest friendly player that is unbuffed with buff represented by &lt;buff_icon_name&gt;.</p>
-<div class="highlight-python"><div class="highlight"><pre>/mike mdebuff &lt;spell&gt;, &lt;debuff_icon_name&gt;
+<div class="highlight-python"><div class="highlight"><pre>/mi mdebuff &lt;spell&gt;, &lt;debuff_icon_name&gt;
 </pre></div>
 </div>
 <p>This will cast &lt;spell&gt; on nearest enemy unit that is undebuffed with debuff represented by &lt;debuff_icon_name&gt;.</p>
@@ -191,12 +191,12 @@
 <p><span class="target" id="index-5"></span>Buff/Debuff based cast</p>
 <p>You can write macro to cast spell based of target status (buffed/unbuffed with a specified buff/debuff)</p>
 <p>See &#8220;Buff/Debuff spamming&#8221; for information about &lt;buff_icon_name&gt; and &lt;debuff_icon_name&gt;</p>
-<div class="highlight-python"><div class="highlight"><pre>/mike bcast &lt;buff_icon_name&gt;, &lt;spell1&gt;[, &lt;spell2&gt;]
+<div class="highlight-python"><div class="highlight"><pre>/mi bcast &lt;buff_icon_name&gt;, &lt;spell1&gt;[, &lt;spell2&gt;]
 </pre></div>
 </div>
 <p>This will cast &lt;spell1&gt; if target is not buffed with buff represented by &lt;buff_icon_name&gt;, else &lt;spell2&gt;.</p>
 <p><strong>Example</strong></p>
-<div class="highlight-python"><div class="highlight"><pre>/mike bcast Fortitude, Power Word: Fortitude, Power Word: Shield
+<div class="highlight-python"><div class="highlight"><pre>/mi bcast Fortitude, Power Word: Fortitude, Power Word: Shield
 </pre></div>
 </div>
 <p>This will cast &#8220;Power Word: Fortitude&#8221; if target is unbuffed with a buff that contains &#8216;Fortitude&#8217; in its icon name, else &#8220;Power Word: Shield&#8221;</p>
@@ -204,12 +204,12 @@
 <p class="first admonition-title">Note</p>
 <p class="last">in this example, i used &#8216;Fortitude&#8217; as &lt;buff_icon_name&gt; instead of the entire icon name, you can do it if you want (this will also check for Prayer of Fortitude buffs) !</p>
 </div>
-<div class="highlight-python"><div class="highlight"><pre>/mike dcast &lt;debuff_icon_name&gt;, &lt;spell1&gt;[, &lt;spell2&gt;]
+<div class="highlight-python"><div class="highlight"><pre>/mi dcast &lt;debuff_icon_name&gt;, &lt;spell1&gt;[, &lt;spell2&gt;]
 </pre></div>
 </div>
 <p>This will cast &lt;spell1&gt; if target is not debuffed with debuff represented by &lt;debuff_icon_name&gt;, else &lt;spell2&gt;</p>
 <p><strong>Example</strong></p>
-<div class="highlight-python"><div class="highlight"><pre>/mike dcast Pain, Shadow Word: Pain, Mind Blast
+<div class="highlight-python"><div class="highlight"><pre>/mi dcast Pain, Shadow Word: Pain, Mind Blast
 </pre></div>
 </div>
 <p>This will cast &#8220;Shadow Word: Pain&#8221; if target is not debuffed with a debuff with contains &#8216;Pain&#8217; in its icon name, else will cast &#8220;Mind Blast&#8221;</p>
@@ -217,20 +217,20 @@
 <div class="section" id="cast-spell-based-on-target-lvl">
 <h2>Cast spell based on target lvl<a class="headerlink" href="#cast-spell-based-on-target-lvl" title="Permalink to this headline">¶</a></h2>
 <p><span class="target" id="index-6"></span>Cast spell based on target lvl</p>
-<div class="highlight-python"><div class="highlight"><pre>/mike lvlcast &lt;min_lvl&gt; &lt;spell1&gt;[, &lt;spell2&gt;]
+<div class="highlight-python"><div class="highlight"><pre>/mi lvlcast &lt;min_lvl&gt; &lt;spell1&gt;[, &lt;spell2&gt;]
 </pre></div>
 </div>
 <p>This will cast &lt;spell1&gt; if target lvl is major/equal &lt;min_lvl&gt;, else &lt;spell2&gt;.</p>
 <p><strong>Example</strong></p>
-<div class="highlight-python"><div class="highlight"><pre>/mike lvlcast 20 Smite
+<div class="highlight-python"><div class="highlight"><pre>/mi lvlcast 20 Smite
 </pre></div>
 </div>
 <p>This will cast &#8220;Smite&#8221; only if target is lvl 20+</p>
 <p><strong>HINT</strong>: you can chain this commands in a macro to cast different spells on target of different level range</p>
 <p><strong>Example</strong></p>
-<div class="highlight-python"><div class="highlight"><pre>/mike lvlcast 50 Power Word: Fortitude(Rank 6)
-/mike lvlcast 38 Power Word: Fortitude(Rank 5)
-/mike lvlcast 26 Power Word: Fortitude(Rank 4), Power Word: Fortitude(Rank 3)
+<div class="highlight-python"><div class="highlight"><pre>/mi lvlcast 50 Power Word: Fortitude(Rank 6)
+/mi lvlcast 38 Power Word: Fortitude(Rank 5)
+/mi lvlcast 26 Power Word: Fortitude(Rank 4), Power Word: Fortitude(Rank 3)
 </pre></div>
 </div>
 <p>This will cast rank 6 if target is 50+, rank 5 if target is 38-49, rank 4 if target is 26-37, rank 3 else.</p>
@@ -242,7 +242,7 @@
 <div class="section" id="cast-appropriate-rank-for-a-spell">
 <h2>Cast appropriate rank for a spell<a class="headerlink" href="#cast-appropriate-rank-for-a-spell" title="Permalink to this headline">¶</a></h2>
 <p><span class="target" id="index-7"></span>Cast appropriate rank for a spell</p>
-<div class="highlight-python"><div class="highlight"><pre>/mike rcast &lt;max_rank&gt; &lt;spell&gt;
+<div class="highlight-python"><div class="highlight"><pre>/mi rcast &lt;max_rank&gt; &lt;spell&gt;
 </pre></div>
 </div>
 <p>This will cast the appropriate spell rank based on target lvl.</p>
@@ -279,7 +279,7 @@
 </tbody>
 </table>
 <p><strong>Example</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre>/mike rcast 6 Power Word: Fortitude
+<div class="highlight-python"><div class="highlight"><pre>/mi rcast 6 Power Word: Fortitude
 </pre></div>
 </div>
 </div>
@@ -287,13 +287,13 @@
 <h2>Mana based spell<a class="headerlink" href="#mana-based-spell" title="Permalink to this headline">¶</a></h2>
 <p><span class="target" id="index-8"></span>Mana based spell</p>
 <p><strong>HINT</strong>: this macro should work with rage/energy too.</p>
-<div class="highlight-python"><div class="highlight"><pre>/mike manacast &lt;min_mana&gt; &lt;spell1&gt;[, &lt;spell2&gt;]
+<div class="highlight-python"><div class="highlight"><pre>/mi manacast &lt;min_mana&gt; &lt;spell1&gt;[, &lt;spell2&gt;]
 </pre></div>
 </div>
 <p>This will cast &lt;spell1&gt; if your remaining mana is major/equal &lt;min_mana&gt;, else &lt;spell2&gt;</p>
 <p><strong>Example</strong></p>
-<div class="highlight-python"><div class="highlight"><pre>/mike manacast 1000 Holy Light
-/mike manacast 200 Flash of Light(Rank 2), Flash of Light(Rank 1)
+<div class="highlight-python"><div class="highlight"><pre>/mi manacast 1000 Holy Light
+/mi manacast 200 Flash of Light(Rank 2), Flash of Light(Rank 1)
 </pre></div>
 </div>
 <p>The first will cast Holy Light if you have 1000 or more mana left.</p>
@@ -304,12 +304,12 @@
 <p><span class="target" id="index-9"></span>Mana percent based spell</p>
 <p><strong>HINT</strong>: this macro should work with rage/energy too.</p>
 <p>Same as manacast but this time will be checked in &lt;percent&gt;.</p>
-<div class="highlight-python"><div class="highlight"><pre>/mike mpcast &lt;mana_percent&gt; &lt;spell1&gt;[, &lt;spell2&gt;]
+<div class="highlight-python"><div class="highlight"><pre>/mi mpcast &lt;mana_percent&gt; &lt;spell1&gt;[, &lt;spell2&gt;]
 </pre></div>
 </div>
 <p><strong>Example</strong></p>
-<div class="highlight-python"><div class="highlight"><pre>/mike mpcast 70 Holy Light
-/mike mpcast 50 Flash of Light(Rank 2), Flash of Light(Rank 1)
+<div class="highlight-python"><div class="highlight"><pre>/mi mpcast 70 Holy Light
+/mi mpcast 50 Flash of Light(Rank 2), Flash of Light(Rank 1)
 </pre></div>
 </div>
 <p>The first will cast Holy Light if you have 70% or more mana left.</p>

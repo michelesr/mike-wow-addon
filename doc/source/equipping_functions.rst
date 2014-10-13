@@ -22,13 +22,13 @@ Auto Equipping Items
 
 This will equip items in the appropriate slots ::
 
-	/mike equip <item1>[, <item2>, ..., <itemN>]
+	/mi equip <item1>[, <item2>, ..., <itemN>]
 
 ..
 
 **Example** ::
 
-	/mike equip Avenger's Breastplate, Belt of Might, Avenger's Crown
+	/mi equip Avenger's Breastplate, Belt of Might, Avenger's Crown
 
 ..
 
@@ -39,7 +39,7 @@ The command above search for the item in your inventory, if it finds them link w
 
 **Example** ::
 
-	/mike equip Belt of Might, Belt of The Fallen Emperor, Acid Inscribed Greaves, Avenger's Greaves
+	/mi equip Belt of Might, Belt of The Fallen Emperor, Acid Inscribed Greaves, Avenger's Greaves
 
 ..
 
@@ -52,13 +52,13 @@ Equipping weapons in right hand
 
 This will equip item1 on main hand and item2 on off hand ::
 
-	/mike wequip <mainweapon>[, <offweapon>]
+	/mi wequip <mainweapon>[, <offweapon>]
 
 ..
 
 **Example** ::
 
-	/mike wequip Argent Custodian, Ebon Hand
+	/mi wequip Argent Custodian, Ebon Hand
 
 ..
 
@@ -69,7 +69,7 @@ Put Equipment in Containers
 
 ::
 
-	/mike strip
+	/mi strip
 
 ..
 

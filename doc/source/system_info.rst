@@ -13,7 +13,7 @@ Network statistics
 
 Getting network informations ::
 
-	/mike net
+	/mi net
 
 ..
 
@@ -26,7 +26,7 @@ Frame per second (FPS)
 
 Getting FPS ::
 
-	/mike fps
+	/mi fps
 
 ..
 
@@ -37,7 +37,7 @@ Memory Usage of Addons
 
 Getting RAM usage of Addons ::
 	
-	/mike mem
+	/mi mem
 
 ..
 
@@ -48,6 +48,6 @@ Player Position
 
 Getting player zone and x,y coords::
 	
-	/mike pos
+	/mi pos
 
 ..
