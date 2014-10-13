@@ -76,9 +76,27 @@
 <div class="highlight-python"><div class="highlight"><pre>Smite(Rank 2)
 </pre></div>
 </div>
+<div class="section" id="stance-switch">
+<h2>Stance switch<a class="headerlink" href="#stance-switch" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python" id="index-1"><div class="highlight"><pre>/mi stance &lt;stance1&gt;, &lt;stance2&gt;[, &lt;stance3&gt;, ..., &lt;stanceN&gt;]
+</pre></div>
+</div>
+<p>This will check your active stance and change to the next one.</p>
+<p>If the active stance is the last, or is not in the list, will cast &lt;stance1&gt;.</p>
+<p><strong>Example</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>/mi stance Battle Stance, Defensive Stance, Berserker Stance
+/mi stance Berserker, Battle
+/mi stance Ber, Def, Bat
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">this should work also for druid forms, but i don&#8217;t tested that yet</p>
+</div>
+</div>
 <div class="section" id="castsequence">
 <h2>Castsequence<a class="headerlink" href="#castsequence" title="Permalink to this headline">¶</a></h2>
-<p id="index-1">If you played latest version of WoW you sure have used at least one time /castsequence macro, but in vanilla there&#8217;s not castsequence, so...</p>
+<p id="index-2">If you played latest version of WoW you sure have used at least one time /castsequence macro, but in vanilla there&#8217;s not castsequence, so...</p>
 <div class="highlight-python"><div class="highlight"><pre>/mi castsequence [reset=&lt;sec&gt;/combat/target] &lt;spell1&gt;, &lt;spell2&gt;[, &lt;spell3&gt;, ..., &lt;spellN&gt;]
 </pre></div>
 </div>
@@ -108,7 +126,7 @@
 </div>
 <div class="section" id="castrandom">
 <h2>Castrandom<a class="headerlink" href="#castrandom" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python" id="index-2"><div class="highlight"><pre>/mi castrandom &lt;spell1&gt;, &lt;spell2&gt;[, &lt;spell3&gt;, ..., &lt;spellN&gt;]
+<div class="highlight-python" id="index-3"><div class="highlight"><pre>/mi castrandom &lt;spell1&gt;, &lt;spell2&gt;[, &lt;spell3&gt;, ..., &lt;spellN&gt;]
 </pre></div>
 </div>
 <p>This will cast a random spell from the ones provided</p>
@@ -121,7 +139,7 @@
 </div>
 <div class="section" id="spam-heals-based-on-hp">
 <h2>Spam heals based on HP<a class="headerlink" href="#spam-heals-based-on-hp" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python" id="index-3"><div class="highlight"><pre>/mi heal &lt;percent&gt; &lt;spellname&gt;
+<div class="highlight-python" id="index-4"><div class="highlight"><pre>/mi heal &lt;percent&gt; &lt;spellname&gt;
 </pre></div>
 </div>
 <p>This will cast the selected spell on nearest friendly player with HP percent inferior to &lt;percent&gt;.</p>
@@ -167,7 +185,7 @@
 </div>
 <div class="section" id="buff-debuff-spamming">
 <h2>Buff/Debuff spamming<a class="headerlink" href="#buff-debuff-spamming" title="Permalink to this headline">¶</a></h2>
-<p id="index-4">You can write a macro to cast buff on nearest unbuffed player o debuff to nearest undebuffed unit.</p>
+<p id="index-5">You can write a macro to cast buff on nearest unbuffed player o debuff to nearest undebuffed unit.</p>
 <p>In order to do this, you must know how did Blizzard named the icon that represents the buff/debuff.</p>
 <p>Here you got 2 functions to help you with discovering buff/debuffs icon names</p>
 <div class="highlight-python"><div class="highlight"><pre>/mi pbuff
@@ -186,7 +204,7 @@
 </div>
 <div class="section" id="buff-debuff-based-cast">
 <h2>Buff/Debuff based cast<a class="headerlink" href="#buff-debuff-based-cast" title="Permalink to this headline">¶</a></h2>
-<p id="index-5">You can write macro to cast spell based of target status (buffed/unbuffed with a specified buff/debuff)</p>
+<p id="index-6">You can write macro to cast spell based of target status (buffed/unbuffed with a specified buff/debuff)</p>
 <p>See &#8220;Buff/Debuff spamming&#8221; for information about &lt;buff_icon_name&gt; and &lt;debuff_icon_name&gt;</p>
 <div class="highlight-python"><div class="highlight"><pre>/mi bcast &lt;buff_icon_name&gt;, &lt;spell1&gt;[, &lt;spell2&gt;]
 </pre></div>
@@ -213,7 +231,7 @@
 </div>
 <div class="section" id="cast-spell-based-on-target-lvl">
 <h2>Cast spell based on target lvl<a class="headerlink" href="#cast-spell-based-on-target-lvl" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python" id="index-6"><div class="highlight"><pre>/mi lvlcast &lt;min_lvl&gt; &lt;spell1&gt;[, &lt;spell2&gt;]
+<div class="highlight-python" id="index-7"><div class="highlight"><pre>/mi lvlcast &lt;min_lvl&gt; &lt;spell1&gt;[, &lt;spell2&gt;]
 </pre></div>
 </div>
 <p>This will cast &lt;spell1&gt; if target lvl is major/equal &lt;min_lvl&gt;, else &lt;spell2&gt;.</p>
@@ -237,7 +255,7 @@
 </div>
 <div class="section" id="cast-appropriate-rank-for-a-spell">
 <h2>Cast appropriate rank for a spell<a class="headerlink" href="#cast-appropriate-rank-for-a-spell" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python" id="index-7"><div class="highlight"><pre>/mi rcast &lt;max_rank&gt; &lt;spell&gt;
+<div class="highlight-python" id="index-8"><div class="highlight"><pre>/mi rcast &lt;max_rank&gt; &lt;spell&gt;
 </pre></div>
 </div>
 <p>This will cast the appropriate spell rank based on target lvl.</p>
@@ -280,7 +298,7 @@
 </div>
 <div class="section" id="mana-based-spell">
 <h2>Mana based spell<a class="headerlink" href="#mana-based-spell" title="Permalink to this headline">¶</a></h2>
-<p id="index-8"><strong>HINT</strong>: this macro should work with rage/energy too.</p>
+<p id="index-9"><strong>HINT</strong>: this macro should work with rage/energy too.</p>
 <div class="highlight-python"><div class="highlight"><pre>/mi manacast &lt;min_mana&gt; &lt;spell1&gt;[, &lt;spell2&gt;]
 </pre></div>
 </div>
@@ -295,7 +313,7 @@
 </div>
 <div class="section" id="mana-percent-based-spell">
 <h2>Mana percent based spell<a class="headerlink" href="#mana-percent-based-spell" title="Permalink to this headline">¶</a></h2>
-<p id="index-9"><strong>HINT</strong>: this macro should work with rage/energy too.</p>
+<p id="index-10"><strong>HINT</strong>: this macro should work with rage/energy too.</p>
 <p>Same as manacast but this time will be checked in &lt;percent&gt;.</p>
 <div class="highlight-python"><div class="highlight"><pre>/mi mpcast &lt;mana_percent&gt; &lt;spell1&gt;[, &lt;spell2&gt;]
 </pre></div>
@@ -319,6 +337,7 @@
   <h3><a href="main.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Macro framework</a><ul>
+<li><a class="reference internal" href="#stance-switch">Stance switch</a></li>
 <li><a class="reference internal" href="#castsequence">Castsequence</a></li>
 <li><a class="reference internal" href="#castrandom">Castrandom</a></li>
 <li><a class="reference internal" href="#spam-heals-based-on-hp">Spam heals based on HP</a></li>

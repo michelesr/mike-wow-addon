@@ -28,6 +28,31 @@ Following functions are suited for macro writing.
 
 ..
 
+Stance switch
+=============
+
+.. index:: single: Stance switch
+
+::
+
+	/mi stance <stance1>, <stance2>[, <stance3>, ..., <stanceN>]
+
+..
+
+This will check your active stance and change to the next one. 
+
+If the active stance is the last, or is not in the list, will cast <stance1>.
+
+**Example** ::
+
+	/mi stance Battle Stance, Defensive Stance, Berserker Stance
+	/mi stance Berserker, Battle
+	/mi stance Ber, Def, Bat
+
+..
+
+.. note:: this should work also for druid forms, but i don't tested that yet
+
 Castsequence
 ============
 
