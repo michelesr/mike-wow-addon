@@ -1,7 +1,7 @@
 --[[
 
 Mike's WoW Addon 
-Version: 1.0.3
+Version: 1.0.4
 Application Main CLI UI
 
 License:
@@ -169,7 +169,7 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mi wequip <w1>[, <w2>]: equip w1 on main hand and w2 on offhand")
     mPrint("/mi strip: put your equip in the inventory")
     mPrint("Macro framework", 1, 1, 0)
-    mPrint("/mi castsequence <reset> <s1>, <s2>[, <s3>, ..., <sN>]: cast spell in sequence returning to first after last or after <reset> seconds (0 or less for no reset)")
+    mPrint("/mi castsequence [reset=<sec>/combat/target] <s1>, <s2>[, <s3>, ..., <sN>]: cast spell in sequence")
     mPrint("/mi castrandom <s1>, <s2>[, <s3>, ... <sN>]: cast a random spell from the list");
     mPrint("/mi heal <percent> <spellname>: cast an healing spell on nearest player with hp% < percent")
     mPrint("/mi lspell <percent> <s1>[, <s2>]: cast s1 if target %hp is < percent, else s2")

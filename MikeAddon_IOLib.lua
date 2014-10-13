@@ -1,7 +1,7 @@
 --[[
 
 Mike's WoW Addon
-Version: 1.0.3
+Version: 1.0.4
 I/O Utilities
 
 License:

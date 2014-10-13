@@ -1,8 +1,8 @@
 ## Interface: 11200
 ## Title: Mike's Addon
 ## Author: MicheleSr
-## Notes: Simple collection of scripts (License GPLv3).
-## Version: 1.0.3
+## Notes: Macro improving framework and command line tools (License GPLv3).
+## Version: 1.0.4
 MikeAddon_IOLib.lua
 MikeAddon_Core.lua
 MikeAddon_Main.lua
