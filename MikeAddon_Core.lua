@@ -413,6 +413,18 @@ function mTargetAttack()
   AttackTarget()
 end
 
+-- target nearest enemy and cast spell
+function mTargetEnemyCast(spell)
+  TargetNearestEnemy()
+  CastSpellByName(spell)
+end
+
+-- target nearest friend and cast spell
+function mTargetFriendCast(spell)
+  TargetNearestFriend()
+  CastSpellByName(spell)
+end
+
 -- cast spell on party member n
 function mPartyMemberCast(n, spell)
   TargetUnit("party" .. n)

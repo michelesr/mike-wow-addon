@@ -129,6 +129,10 @@ function SlashCmdList.MIKE(msg, editbox)
     mMassDebuff("Sunder Armor", "Sunder")
   elseif m[1] == "tattack" then
     mTargetAttack()
+  elseif m[1] == "tcast" then
+    mTargetEnemyCast(mGetSubArgs(m))
+  elseif m[1] == "ftcast" then
+    mTargetFriendCast(mGetSubArgs(m))
   elseif m[1] == "pbuff" then
     if UnitName("target") then
       mPrintBuff("target")
@@ -178,6 +182,8 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mi wequip <w1>[, <w2>]: equip w1 on main hand and w2 on offhand")
     mPrint("/mi strip: put your equip in the inventory")
     mPrint("Macro framework", 1, 1, 0)
+    mPrint("/mi tcast <spell>: target nearest enemy unit and cast a spell")
+    mPrint("/mi ftcast <spell>: target nearest friendly unit and cast a spell")
     mPrint("/mi castsequence [reset=<sec>/combat/target] <s1>, <s2>[, <s3>, ..., <sN>]: cast spell in sequence")
     mPrint("/mi castrandom <s1>, <s2>[, <s3>, ..., <sN>]: cast a random spell from the list");
     mPrint("/mi stance <s1>, <s2>[, <s3>, ..., <sN>]: cast stance that follow active in the list (or first if last is active or there is no active)")
