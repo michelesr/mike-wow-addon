@@ -73,7 +73,7 @@ This will target nearest friendly unit (like CTRL-TAB usually does) and cast <sp
 Stance switch
 =============
 
-Even if you can use castsequence to cast stances in sequence, a check on current active stance can be usefull to get to the right stance in one key press.
+Even if you can use castsequence to change stances in sequence, a check on current active stance help to get to the right stance in one key press.
 
 .. index:: single: Stance switch
 
@@ -95,7 +95,7 @@ If the active stance is the last, or is not in the list, will cast <stance1>.
 
 ..
 
-.. note:: this should work also for druid forms, but i don't tested that yet
+.. note:: this should work also for druid forms and paladin auras, but i don't tested that yet
 
 Stance random switch
 ====================
@@ -119,7 +119,7 @@ If list is not provided, switch to a random stance from all the player's one.
 
 ..
 
-.. note:: this should work also for druid forms, but i don't tested that yet
+.. note:: this should work also for druid forms and paladin auras, but i don't tested that yet
 
 Castsequence
 ============
@@ -405,7 +405,7 @@ Mana based spell
 
 .. index:: single: Mana based spell
 
-**HINT**: this macro should work with rage/energy too.
+.. note:: this macro should work with rage/energy too.
 
 ::
 
@@ -433,7 +433,7 @@ Mana percent based spell
 
 .. index:: single: Mana percent based spell
 
-**HINT**: this macro should work with rage/energy too.
+.. note:: this macro should work with rage/energy too.
 
 Same as manacast but this time will be checked in <percent>.
 
