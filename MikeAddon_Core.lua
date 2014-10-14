@@ -534,7 +534,7 @@ function mEquipItems(items)
 end
 
 -- return stance index by name or nil if not found
-function mSearchStanceByName(name)
+function mGetStanceByName(name)
   for i=1,GetNumShapeshiftForms() do
     local a,b = GetShapeshiftFormInfo(i)
     if string.find(b, name) then
@@ -543,12 +543,18 @@ function mSearchStanceByName(name)
   end
 end
 
--- stance switch
-function mStanceSwitch(stances)
+-- return a list of indexes from a list of stance names
+function mGetStancesIndex(stances)
   local s = {}
   for x in stances do
-    s[x] = mSearchStanceByName(stances[x])
+    s[x] = mGetStanceByName(stances[x])
   end
+  return s
+end
+
+-- stance switch
+function mStanceSwitch(stances)
+  local s = mGetStancesIndex(stances)
   for x in s do
     local a,b,c,d = GetShapeshiftFormInfo(s[x])
     if c == 1 then
@@ -557,6 +563,33 @@ function mStanceSwitch(stances)
     end
   end
   CastShapeshiftForm(s[1])
+end
+
+-- cast a random stance from the player ones
+local function mStanceRandomNoArg()
+  local a,b,c,n,f
+  n = GetNumShapeshiftForms()
+  while not f or c do
+    f = math.random(1, n)
+    a,b,c = GetShapeshiftFormInfo(f)
+  end
+  CastShapeshiftForm(f)
+end
+
+-- cast a random stance from list o from all
+function mStanceRandom(stances)
+  if stances then
+    local n, x, y, z, a
+    local s = mGetStancesIndex(stances)
+    n = getn(s)
+    while not x or a do
+      x = math.random(1, n)
+      y,z,a = GetShapeshiftFormInfo(s[x]) 
+    end
+    CastShapeshiftForm(s[x])
+  else
+    mStanceRandomNoArg()
+  end
 end
 
 -- print netstats 
