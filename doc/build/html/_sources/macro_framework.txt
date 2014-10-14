@@ -31,6 +31,8 @@ Following functions are suited for macro writing.
 Stance switch
 =============
 
+Even if you can use castsequence to cast stances in sequence, a check on current active stance can be usefull to get to the right stance in one key press.
+
 .. index:: single: Stance switch
 
 ::
@@ -39,7 +41,7 @@ Stance switch
 
 ..
 
-This will check your active stance and change to the next one. 
+This will check your active stance and change to the next one from the list. 
 
 If the active stance is the last, or is not in the list, will cast <stance1>.
 
@@ -48,6 +50,30 @@ If the active stance is the last, or is not in the list, will cast <stance1>.
 	/mi stance Battle Stance, Defensive Stance, Berserker Stance
 	/mi stance Berserker, Battle
 	/mi stance Ber, Def, Bat
+
+..
+
+.. note:: this should work also for druid forms, but i don't tested that yet
+
+Stance random switch
+====================
+
+.. index:: Stance random switch
+
+::
+
+	/mi stancerandom [<stance1>, ..., <stanceN>]
+
+..
+
+Switch to a random stance from list.
+
+If list is not provided, switch to a random stance from all the player's one.
+
+**Example** ::
+
+	/mi stancerandom
+	/mi stancerandom Cat Form, Bear Form, Travel Form 
 
 ..
 
