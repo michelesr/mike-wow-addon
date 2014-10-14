@@ -6,7 +6,7 @@ Premade macro commands
 
 This one are premade macros script, that i wrote to simplify even more commands for some macro.
 
-.. note:: all these functions (except tattack) are implementable using commands from "Macro Framework" section.
+.. note:: all these functions are implementable using commands from "Macro Framework" section.
 
 .. note:: if you want your premade macro, write me at mikefender@cryptolab.net and I'll add it.
 

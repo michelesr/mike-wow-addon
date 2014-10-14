@@ -28,6 +28,48 @@ Following functions are suited for macro writing.
 
 ..
 
+Target nearest enemy and cast
+=============================
+
+.. index:: single: Target enemy and cast
+
+::
+
+	/mi tcast <spell>
+
+..
+
+This will target nearest enemy unit (like TAB usually does) and cast <spell>
+
+**Example** ::
+
+	/tcast Attack
+	/tcast Shoot
+	/tcast Shadow Word: Pain
+	/tcast Hamstring
+
+..
+
+Target nearest friend and cast
+==============================
+
+.. index:: single: Target friend and cast
+
+::
+
+	/mi ftcast <spell>
+
+..
+
+This will target nearest friendly unit (like CTRL-TAB usually does) and cast <spell>
+
+**Example** ::
+
+	/mi ftcast Renew
+	/mi ftcast Flash of Light
+
+..
+
 Stance switch
 =============
 
@@ -106,7 +148,7 @@ You can mix up them using / as separator
 	/mi castsequence reset=10 Renew, Lesser Heal
 	/mi castsequence reset=target Renew, Lesser Heal
 	/mi castsequence reset=combat Renew, Lesser Heal
-	/mi castsequence reset=combat/target Heroic Strike, Harmstring
+	/mi castsequence reset=combat/target Heroic Strike, Hamstring
 	/mi castsequence reset=5/combat/target Mind Blast, Smite, Shadow Word Word: Pain
 
 ..
