@@ -578,7 +578,7 @@ end
 
 -- cast a random stance from list o from all
 function mStanceRandom(stances)
-  if stances then
+  if stances and getn(stances) > 1 then
     local n, x, y, z, a
     local s = mGetStancesIndex(stances)
     n = getn(s)
