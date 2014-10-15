@@ -21,12 +21,16 @@ License:
 
 ]]
 
+local version = "1.0.4"
 local frame = CreateFrame("FRAME", "MikeAddonFrame")
 frame:RegisterEvent("PLAYER_TARGET_CHANGED")
 frame:RegisterEvent("PLAYER_REGEN_ENABLED")
 frame:RegisterEvent("PLAYER_REGEN_DISABLED")
+frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 local function mEventHandler(...)
-  if event == "PLAYER_TARGET_CHANGED" then
+  if event == "PLAYER_ENTERING_WORLD" then
+    mPrint("Mike's Addon v" .. version .. " loaded", 1, 1, 0)
+  elseif event == "PLAYER_TARGET_CHANGED" then
     mTargetResetCastSequence()
   elseif event == "PLAYER_REGEN_ENABLED" or event == "PLAYER_REGEN_DISABLED" then
     mCombatResetCastSequence()

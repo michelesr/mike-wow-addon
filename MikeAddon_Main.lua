@@ -21,7 +21,7 @@ License:
 
 ]]
 
-local version = "1.0.3"
+local version = "1.0.4"
 
 -- slash command
 SLASH_MIKE1, SLASH_MIKE2 = '/mike', '/mi'
