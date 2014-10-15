@@ -455,3 +455,10 @@ Same as manacast but this time will be checked in <percent>.
 The first will cast Holy Light if you have 70% or more mana left.
 
 The second will cast Flash of Light: rank 2 if you have 50%+ mana left, rank 1 else
+
+Macro extender
+==============
+
+I found this project that implements other macro extending feature.
+
+Check it out: https://github.com/PROXiCiDE/MacroExtender
