@@ -62,10 +62,6 @@
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">&lt;buff_icon_name&gt; and &lt;debuff_icon_name&gt; can be client dependent (for example Mac client could be different from Windows client)</p>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
 <p class="last">&lt;spell&gt; refers to spell name as you seen it in the tooltip, if rank is not specified will be cast the highest.</p>
 </div>
 <p><strong>HINT</strong>: to specify rank for spell use this syntax</p>
@@ -75,6 +71,10 @@
 <p><strong>Example</strong>:</p>
 <div class="highlight-python"><div class="highlight"><pre>Smite(Rank 2)
 </pre></div>
+</div>
+<div class="section" id="command-chain">
+<h2>Command chain<a class="headerlink" href="#command-chain" title="Permalink to this headline">¶</a></h2>
+<p>You can chain more commands into a single macro. All the commands will be executed, but if there are more cast only the first will be casted (due to global cooldown).</p>
 </div>
 <div class="section" id="target-nearest-enemy-and-cast">
 <h2>Target nearest enemy and cast<a class="headerlink" href="#target-nearest-enemy-and-cast" title="Permalink to this headline">¶</a></h2>
@@ -392,6 +392,7 @@
   <h3><a href="main.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Macro framework</a><ul>
+<li><a class="reference internal" href="#command-chain">Command chain</a></li>
 <li><a class="reference internal" href="#target-nearest-enemy-and-cast">Target nearest enemy and cast</a></li>
 <li><a class="reference internal" href="#target-nearest-friend-and-cast">Target nearest friend and cast</a></li>
 <li><a class="reference internal" href="#stance-switch">Stance switch</a></li>

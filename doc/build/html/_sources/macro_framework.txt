@@ -10,8 +10,6 @@ Following functions are suited for macro writing.
 
 .. note:: watch out for spaces after comma!
 
-.. note:: <buff_icon_name> and <debuff_icon_name> can be client dependent (for example Mac client could be different from Windows client)
-
 .. note:: <spell> refers to spell name as you seen it in the tooltip, if rank is not specified will be cast the highest.
 
 **HINT**: to specify rank for spell use this syntax
@@ -27,6 +25,11 @@ Following functions are suited for macro writing.
 	Smite(Rank 2)
 
 ..
+
+Command chain
+=============
+
+You can chain more commands into a single macro. All the commands will be executed, but if there are more cast only the first will be casted (due to global cooldown).
 
 Target nearest enemy and cast
 =============================
