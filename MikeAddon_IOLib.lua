@@ -23,7 +23,7 @@ License:
 
 -- chat print (rgb colors intensity from 0 to 1)
 function mPrint(s, r, g, b)
-  ChatFrame1:AddMessage(s, r, g, b)
+  DEFAULT_CHAT_FRAME:AddMessage(s, r, g, b)
 end
 
 -- return an array of strings using sep as separator
