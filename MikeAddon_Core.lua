@@ -33,6 +33,11 @@ function mWindowSwitch()
   RestartGx()
 end
 
+function mWindowMaximizeSwitch()
+  SetCVar("gxMaximize", mod(GetCVar("gxMaximize") + 1, 2))
+  RestartGx()
+end
+
 -- reset timer
 function mResetTimer()
   timer = GetTime()

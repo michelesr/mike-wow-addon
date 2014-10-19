@@ -39,6 +39,8 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrintPosition()
   elseif m[1] == "window" then
     mWindowSwitch()
+  elseif m[1] == "winmax" then
+    mWindowMaximizeSwitch()
   elseif m[1] == "timer" then
     mPrintElapsedTime()
   elseif m[1] == "treset" then
@@ -169,6 +171,7 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mi tcustom <name>: set custom target to restore");
     mPrint("System functions", 1, 1, 0)
     mPrint("/mi window: Switch between fullscreen and windowed mode")
+    mPrint("/mi winmax: Switch maximize window mode on/off")
     mPrint("/mi ireset: reset instances")
     mPrint("/mi rl: reload user interface")
     mPrint("Quest objective party sharing", 1, 1, 0)
@@ -208,6 +211,6 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mi fortitude: cast 'Power Word: Fortitude' on nearest unbuffed friendly player")
     mPrint("/mi wpain: cast 'Shadow Word: Pain' if not debuffed, else wand 'Shoot'")
     mPrint("/mi apain: cast 'Shadow Word: Pain' on nearest enemy not debuffed")
-    mPrint("Documentation: https://michelesr.github.io/mi-wow-addon/doc/build/html/main.html", 1, 1, 0); 
+    mPrint("Documentation: https://michelesr.github.io/mike-wow-addon/doc/build/html/main.html", 1, 1, 0); 
   end
 end
