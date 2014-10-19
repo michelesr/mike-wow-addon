@@ -26,7 +26,6 @@ local frame = CreateFrame("FRAME", "MikeAddonFrame")
 frame:RegisterEvent("PLAYER_TARGET_CHANGED")
 frame:RegisterEvent("PLAYER_REGEN_ENABLED")
 frame:RegisterEvent("PLAYER_REGEN_DISABLED")
-frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 frame:RegisterEvent("ADDON_LOADED")
 local function mEventHandler(...)
   if event == "ADDON_LOADED" and arg1 == "MikeAddon" then
