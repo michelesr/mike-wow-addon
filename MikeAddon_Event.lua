@@ -27,9 +27,10 @@ frame:RegisterEvent("PLAYER_TARGET_CHANGED")
 frame:RegisterEvent("PLAYER_REGEN_ENABLED")
 frame:RegisterEvent("PLAYER_REGEN_DISABLED")
 frame:RegisterEvent("PLAYER_ENTERING_WORLD")
+frame:RegisterEvent("ADDON_LOADED")
 local function mEventHandler(...)
-  if event == "PLAYER_ENTERING_WORLD" then
-    mPrint("Mike's Addon v" .. version .. " loaded", 1, 1, 0)
+  if event == "ADDON_LOADED" and arg1 == "MikeAddon" then
+    mPrint("Mike's Addon v" .. version .. " loaded. See options with /mi", 1, 1, 0)
   elseif event == "PLAYER_TARGET_CHANGED" then
     mTargetResetCastSequence()
   elseif event == "PLAYER_REGEN_ENABLED" or event == "PLAYER_REGEN_DISABLED" then
