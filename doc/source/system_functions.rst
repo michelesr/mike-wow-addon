@@ -28,6 +28,17 @@ This will switch from windowed mode and fullscreen mode ::
 
 ..
 
+Switch Maximized Window mode on/off
+===================================
+
+.. index:: single: Maximized window mode switch
+
+This will switch Maximized mode on/off while in Windowed mode ::
+
+	/mi winmax
+
+..
+
 Reloading User Interface
 ========================
 
