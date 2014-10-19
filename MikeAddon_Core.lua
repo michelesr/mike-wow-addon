@@ -612,7 +612,7 @@ end
 -- print netstats 
 function mNetStats()
   local a,b,c = GetNetStats()
-  mPrint(string.format("Incoming bandwidth: %.4f kB/s\nOutgoing bandwith: %.4f kB/s\nLatency: %d ms", a, b,c))
+  mPrint(string.format("Incoming bandwidth: %.4f kB/s\nOutgoing bandwidth: %.4f kB/s\nLatency: %d ms", a, b,c))
 end
 
 -- print mem usage
