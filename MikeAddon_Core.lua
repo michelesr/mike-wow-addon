@@ -61,6 +61,7 @@ end
 -- save target
 function mSaveTarget()
   savedTarget = UnitName("target")
+  mPrint("Saved Target: " .. savedTarget)
 end
 
 -- set custom target
@@ -68,6 +69,7 @@ function mSetTarget(name)
   if name then
     savedTarget = name
   end
+  mPrint("Saved Target: " .. savedTarget)
 end
 
 -- restore target
