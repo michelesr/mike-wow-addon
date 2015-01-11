@@ -611,6 +611,38 @@ function mStanceRandom(stances)
   end
 end
 
+-- search item in the Auction House
+function mSearchContainerItemAuction(bag,slot)
+  local itemLink = GetContainerItemLink(bag,slot)
+  if itemLink then
+    local name = mGetItemName(itemLink)
+    mPrint("Searching: " .. name) 
+    QueryAuctionItems(name)
+  end
+end
+
+local bagIndex = 0
+local slotIndex = 1
+
+-- reset search indexes (see below)
+function mResetSearchIndex()
+  mPrint("Resetting auction search index")
+  bagIndex = 0
+  slotIndex = 1
+end
+
+
+-- search next container item in the Auction House
+function mIncrementalAuctionSearch()
+  mPrint("Opening bag " .. bagIndex .. ", slot .. " .. slotIndex)
+  mSearchContainerItemAuction(bagIndex, slotIndex)
+  slotIndex = slotIndex + 1
+  if slotIndex > GetContainerNumSlots(bagIndex) then
+    slotIndex = 1
+    bagIndex = mod(bagIndex + 1, 5)
+  end
+end
+
 -- print netstats 
 function mNetStats()
   local a,b,c = GetNetStats()

@@ -80,3 +80,9 @@ function mGetSubArgs(a, i, j)
   j = j or table.getn(a)
   return (mAToString(mSubTable(a, i, j)))
 end
+
+-- return name parsed from item link
+function mGetItemName(itemLink)
+  local s = mSplit(itemLink, '|')[4]
+  return string.sub(s, 3, string.len(s) - 1)
+end

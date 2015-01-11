@@ -153,6 +153,10 @@ function SlashCmdList.MIKE(msg, editbox)
   elseif m[1] == "mdebuff" then
     local x = mSplit(mGetSubArgs(m, 2), ", ")
     mMassDebuff(x[1], x[2])
+  elseif m[1] == "auc" then
+    mIncrementalAuctionSearch()
+  elseif m[1] == "aucreset" then
+    mResetSearchIndex()
   else 
     mPrint("Mike's Addon v" .. version, 1, 1, 0)
     mPrint("Usage: /mike <arguments> OR /mi <arguments>")
@@ -169,6 +173,9 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mi tsave: save current target name")
     mPrint("/mi trestore: target unit with saved name")
     mPrint("/mi tcustom <name>: set custom target to restore");
+    mPrint("Auction House", 1, 1, 0)
+    mPrint("/mi auc: search next container item in auction house")
+    mPrint("/mi aucreset: reset current item to bag 0 slot 1")
     mPrint("System functions", 1, 1, 0)
     mPrint("/mi window: Switch between fullscreen and windowed mode")
     mPrint("/mi winmax: Switch maximize window mode on/off")
