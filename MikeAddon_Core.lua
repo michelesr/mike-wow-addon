@@ -282,10 +282,10 @@ function mCastIfBuffed(buff, s1, s2)
       x = true
     end i=i+1
   end
-  if x and s2 then
-    CastSpellByName(s2)
-  elseif s1 then
+  if not x and s1 then
     CastSpellByName(s1)
+  elseif s2 then
+    CastSpellByName(s2)
   end
 end
 
@@ -299,10 +299,10 @@ function mCastIfDebuffed(debuff, s1, s2)
       x = true
     end i=i+1
   end
-  if x and s2 then
-    CastSpellByName(s2)
-  elseif s1 then
+  if not x and s1 then
     CastSpellByName(s1)
+  elseif s2 then
+    CastSpellByName(s2)
   end
 end
 
