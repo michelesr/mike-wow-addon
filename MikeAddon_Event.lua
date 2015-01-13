@@ -23,17 +23,29 @@ License:
 
 local version = "1.0.4"
 local frame = CreateFrame("FRAME", "MikeAddonFrame")
+local debug = false
 frame:RegisterEvent("PLAYER_TARGET_CHANGED")
 frame:RegisterEvent("PLAYER_REGEN_ENABLED")
 frame:RegisterEvent("PLAYER_REGEN_DISABLED")
 frame:RegisterEvent("ADDON_LOADED")
 local function mEventHandler(...)
+  if debug then
+    mPrint(event .. " " .. tostring(arg1) .. " " ..  tostring(arg2) ..  " " .. tostring(arg3) .. " " .. tostring(arg4) .. " " .. 
+           tostring(arg5) .. " " .. tostring(arg6) .. " " .. tostring(arg7) .. " " .. tostring(arg8) .. " " .. tostring(arg9) .. " " ..
+           tostring (arg10))
+  end
   if event == "ADDON_LOADED" and arg1 == "MikeAddon" then
     mPrint("Mike's Addon v" .. version .. " loaded. See options with /mi", 1, 1, 0)
+    if UnitClass("player") == "Warrior" and UnitLevel("player") >= 12 then
+      frame:RegisterEvent("UNIT_COMBAT")
+    end
   elseif event == "PLAYER_TARGET_CHANGED" then
     mTargetResetCastSequence()
   elseif event == "PLAYER_REGEN_ENABLED" or event == "PLAYER_REGEN_DISABLED" then
     mCombatResetCastSequence()
+  elseif event == "UNIT_COMBAT" and arg1 == "target" and arg2 == "DODGE" then
+    mPrint("Your target dodged!")
+    PlaySound("RaidWarning")
   end
 end
 frame:SetScript("OnEvent", mEventHandler)
