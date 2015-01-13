@@ -26,6 +26,10 @@ function mPrint(s, r, g, b)
   DEFAULT_CHAT_FRAME:AddMessage(s, r, g, b)
 end
 
+function mEPrint(s, r, g, b)
+  UIErrorsFrame:AddMessage(s, r, g, b)
+end
+
 -- return an array of strings using sep as separator
 function mSplit(s, sep) 
   sep = sep or " "

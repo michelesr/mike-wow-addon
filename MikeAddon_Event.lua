@@ -44,7 +44,7 @@ local function mEventHandler(...)
   elseif event == "PLAYER_REGEN_ENABLED" or event == "PLAYER_REGEN_DISABLED" then
     mCombatResetCastSequence()
   elseif event == "UNIT_COMBAT" and arg1 == "target" and arg2 == "DODGE" then
-    mPrint("Your target dodged!")
+    mEPrint("<Overpower>", 1, 1, 0)
     PlaySound("RaidWarning")
   end
 end
