@@ -203,7 +203,7 @@ end
 -- cast spell in sequence
 function mCastSequence(args, spells)
   local reset, combat, target = mParseResetArgs(args)
-  mPrint(tostring(reset) .. " " .. tostring(combat) .. " " .. tostring(target))
+  --mPrint(tostring(reset) .. " " .. tostring(combat) .. " " .. tostring(target))
   local s = mGetCastSequence(reset, combat, target, spells)
   -- reset if time expired or index out of range
   if s["reset"] > 0 and (GetTime() - s["start"]) > s["reset"] or s["index"] > getn(s["spells"]) then
