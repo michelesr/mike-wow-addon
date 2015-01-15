@@ -24,11 +24,15 @@ License:
 local version = "1.0.4"
 local frame = CreateFrame("FRAME", "MikeAddonFrame")
 local debug = false
+
+local ATK_DOD = "You attack. (.+) dodges."
+local SPL_DOD = "Your (.+) was dodged"
+
 frame:RegisterEvent("PLAYER_TARGET_CHANGED")
 frame:RegisterEvent("PLAYER_REGEN_ENABLED")
 frame:RegisterEvent("PLAYER_REGEN_DISABLED")
 frame:RegisterEvent("ADDON_LOADED")
-local function mEventHandler(...)
+local function mEventHandler()
   if debug then
     mPrint(event .. " " .. tostring(arg1) .. " " ..  tostring(arg2) ..  " " .. tostring(arg3) .. " " .. tostring(arg4) .. " " .. 
            tostring(arg5) .. " " .. tostring(arg6) .. " " .. tostring(arg7) .. " " .. tostring(arg8) .. " " .. tostring(arg9) .. " " ..
@@ -37,14 +41,18 @@ local function mEventHandler(...)
   if event == "ADDON_LOADED" and arg1 == "MikeAddon" then
     mPrint("Mike's Addon v" .. version .. " loaded. See options with /mi", 1, 1, 0)
     if UnitClass("player") == "Warrior" and UnitLevel("player") >= 12 then
-      frame:RegisterEvent("UNIT_COMBAT")
+      frame:RegisterEvent("CHAT_MSG_COMBAT_SELF_MISSES")
+      frame:RegisterEvent("CHAT_MSG_SPELL_SELF_DAMAGE")
+      mPrint("Overpower script loaded", 1, 1, 0)
     end
   elseif event == "PLAYER_TARGET_CHANGED" then
     mTargetResetCastSequence()
   elseif event == "PLAYER_REGEN_ENABLED" or event == "PLAYER_REGEN_DISABLED" then
     mCombatResetCastSequence()
-  elseif event == "UNIT_COMBAT" and arg1 == "target" and arg2 == "DODGE" then
+  elseif (event == "CHAT_MSG_SPELL_SELF_DAMAGE" and string.find(arg1, SPL_DOD)) or
+         (event == "CHAT_MSG_COMBAT_SELF_MISSES" and string.find(arg1, ATK_DOD)) then
     mEPrint("<Overpower>", 1, 1, 0)
+    mPrint("Your target has dodged! Use Overpower", 1, 1, 0)
     PlaySound("RaidWarning")
   end
 end
