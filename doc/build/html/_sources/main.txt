@@ -53,6 +53,8 @@ Contents
    system_functions
    quest_sharing
    poor_items
+   auction_house
    equipping_functions
+   overpower
    macro_framework
    premade_macros
