@@ -1,6 +1,7 @@
 ## Interface: 11200
 ## Title: Mike's Addon
 ## Author: MicheleSr
+## SavedVariables: MIKE_OP
 ## Notes: Macro improving framework and command line tools (License GPLv3).
 ## Version: 1.0.4
 MikeAddon_IOLib.lua

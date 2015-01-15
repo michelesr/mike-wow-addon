@@ -28,10 +28,11 @@ local debug = false
 local ATK_DOD = "You attack. (.+) dodges."
 local SPL_DOD = "Your (.+) was dodged"
 
+frame:RegisterEvent("ADDON_LOADED")
 frame:RegisterEvent("PLAYER_TARGET_CHANGED")
 frame:RegisterEvent("PLAYER_REGEN_ENABLED")
 frame:RegisterEvent("PLAYER_REGEN_DISABLED")
-frame:RegisterEvent("ADDON_LOADED")
+
 local function mEventHandler()
   if debug then
     mPrint(event .. " " .. tostring(arg1) .. " " ..  tostring(arg2) ..  " " .. tostring(arg3) .. " " .. tostring(arg4) .. " " .. 
@@ -40,19 +41,24 @@ local function mEventHandler()
   end
   if event == "ADDON_LOADED" and arg1 == "MikeAddon" then
     mPrint("Mike's Addon v" .. version .. " loaded. See options with /mi", 1, 1, 0)
-    if UnitClass("player") == "Warrior" and UnitLevel("player") >= 12 then
-      frame:RegisterEvent("CHAT_MSG_COMBAT_SELF_MISSES")
-      frame:RegisterEvent("CHAT_MSG_SPELL_SELF_DAMAGE")
-      mPrint("Overpower script loaded", 1, 1, 0)
+    if UnitClass("player") == "Warrior" then
+      if MIKE_OP then
+        frame:RegisterEvent("CHAT_MSG_COMBAT_SELF_MISSES")
+        frame:RegisterEvent("CHAT_MSG_SPELL_SELF_DAMAGE")
+        mPrint("Mike's Addon: Overpower script loaded", 1, 1, 0)
+      else
+        mPrint("Mike's Addon: Overpower script not loaded, load with /mi op on", 1, 1, 0)
+      end
     end
   elseif event == "PLAYER_TARGET_CHANGED" then
     mTargetResetCastSequence()
   elseif event == "PLAYER_REGEN_ENABLED" or event == "PLAYER_REGEN_DISABLED" then
     mCombatResetCastSequence()
-  elseif (event == "CHAT_MSG_SPELL_SELF_DAMAGE" and string.find(arg1, SPL_DOD)) or
-         (event == "CHAT_MSG_COMBAT_SELF_MISSES" and string.find(arg1, ATK_DOD)) then
+  elseif (event == "CHAT_MSG_SPELL_SELF_DAMAGE"  and string.find(arg1, SPL_DOD) or
+          event == "CHAT_MSG_COMBAT_SELF_MISSES" and string.find(arg1, ATK_DOD)) and
+         UnitLevel("player") >= 12 then
     mEPrint("<Overpower>", 1, 1, 0)
-    mPrint("Your target has dodged! Use Overpower", 1, 1, 0)
+    mPrint("Your target has dodged! Overpower!", 1, 1, 0)
     PlaySound("RaidWarning")
   end
 end

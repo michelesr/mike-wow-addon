@@ -157,6 +157,14 @@ function SlashCmdList.MIKE(msg, editbox)
     mIncrementalAuctionSearch()
   elseif m[1] == "aucreset" then
     mResetSearchIndex()
+  elseif m[1] == "op" then
+    if m[2] == "on" then
+      mEnableOverpower()
+    elseif m[2] == "off" then
+      mDisableOverpower()
+    else
+      mPrintOverpowerStatus()
+    end
   else 
     mPrint("Mike's Addon v" .. version, 1, 1, 0)
     mPrint("Usage: /mike <arguments> OR /mi <arguments>")
@@ -191,6 +199,9 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mi equip <item1>[, <item2>, ..., <itemN>]: equips items")
     mPrint("/mi wequip <w1>[, <w2>]: equip w1 on main hand and w2 on offhand")
     mPrint("/mi strip: put your equip in the inventory")
+    mPrint("Overpower", 1, 1, 0)
+    mPrint("/mi op: get overpower script status")
+    mPrint("/mi op <on/off>: enable/disable overpower script and reload UI")
     mPrint("Macro framework", 1, 1, 0)
     mPrint("/mi tcast <spell>: target nearest enemy unit and cast a spell")
     mPrint("/mi ftcast <spell>: target nearest friendly unit and cast a spell")

@@ -666,3 +666,26 @@ end
 function mReloadUI()
   ReloadUI()
 end
+
+-- enable overpower warning
+function mEnableOverpower()
+  MIKE_OP = true
+  mReloadUI()
+end
+
+-- disable overpower warning
+function mDisableOverpower()
+  MIKE_OP = false
+  mReloadUI()
+end
+
+-- print overpower script status on console
+function mPrintOverpowerStatus()
+  local s
+  if MIKE_OP then
+    s = "ON"
+  else
+    s = "OFF"
+  end
+  mPrint("Overpower script is " .. s)
+end
