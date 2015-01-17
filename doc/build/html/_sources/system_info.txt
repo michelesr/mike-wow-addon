@@ -51,3 +51,14 @@ Getting player zone and x,y coords::
 	/mi pos
 
 ..
+
+Target stats
+===========
+
+.. index:: single: Player stats
+
+Print target stats::
+
+	/mi tstats
+
+..
