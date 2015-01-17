@@ -689,3 +689,11 @@ function mPrintOverpowerStatus()
   end
   mPrint("Overpower script is " .. s)
 end
+
+function mPrintUnitStats(unit)
+  if UnitName(unit) then
+    mPrint(UnitName(unit) .. " "  .. UnitLevel(unit) .. " " ..  UnitClass(unit))
+    mPrint("HP: " .. UnitHealth(unit) .. "/" ..  UnitHealthMax(unit))
+    mPrint("MP: " .. UnitMana(unit) .. "/" .. UnitManaMax(unit))
+  end
+end

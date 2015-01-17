@@ -165,6 +165,8 @@ function SlashCmdList.MIKE(msg, editbox)
     else
       mPrintOverpowerStatus()
     end
+  elseif m[1] == "tstats" then
+    mPrintUnitStats("target")
   else 
     mPrint("Mike's Addon v" .. version, 1, 1, 0)
     mPrint("Usage: /mike <arguments> OR /mi <arguments>")
@@ -174,6 +176,7 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mi fps: print framerate")
     mPrint("/mi mem: print addons memory usage")
     mPrint("/mi pos: print player position")
+    mPrint("/mi tstats: print target stats")
     mPrint("Timer function", 1, 1, 0)
     mPrint("/mi timer: get elapsed time from ui load or timer reset")
     mPrint("/mi treset: reset timer")
