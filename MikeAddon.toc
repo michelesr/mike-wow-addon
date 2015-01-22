@@ -3,7 +3,7 @@
 ## Author: MicheleSr
 ## SavedVariables: MIKE_OP
 ## Notes: Macro improving framework and command line tools (License GPLv3).
-## Version: 1.0.4
+## Version: 1.0.5
 MikeAddon_IOLib.lua
 MikeAddon_Core.lua
 MikeAddon_Main.lua

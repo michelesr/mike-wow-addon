@@ -506,7 +506,7 @@ function mGetContainerItemsByName(item, printString)
 end
 
 -- return bag and slot index of item matching string
-function mGetContainerItemByName(item, printString) 
+function mGetContainerItemByName(item, printString)
   local x =  mGetContainerItemsByName(item, printString)[1]
   if x then return x[1], x[2] end
 end
