@@ -274,12 +274,19 @@ function mPrintDebuff(unit)
   mBDPrint(false, unit)
 end
 
+-- conditional cast
+function mConditionalCast(cond, s1, s2)
+  if s1 and cond then
+    CastSpellByName(s1)
+  elseif s2 then
+    CastSpellByName(s2)
+  end
+end
+
 -- cast spell if class match
 function mClassCast(classes, spell)
   local c = UnitClass("target")
-  if spell and c and string.find(classes, c) then
-    CastSpellByName(spell)
-  end
+  mConditionalCast(c and string.find(classes, c), spell)
 end
 
 function mHasBD(isBuff, unit, buff)
@@ -303,11 +310,7 @@ function mHasDebuff(unit, debuff)
 end
 
 function mCastIfBD(isBuff, buff, s1, s2)
-  if not mHasBD(isBuff,"target", buff) and s1 then
-    CastSpellByName(s1)
-  elseif s2 then
-    CastSpellByName(s2)
-  end
+  mConditionalCast(not mHasBD(isBuff,"target", buff), s1, s2)
 end
 
 -- cast s1 if target isn't buffed, else s2
@@ -362,20 +365,12 @@ end
 -- cast s1 if lvl is major/equal minLvl, else s2
 function mLevelCast(minLvl, s1 , s2)
   local lvl = UnitLevel("target");
-  if s1 and lvl and lvl >= minLvl then
-    CastSpellByName(s1);
-  elseif s2 then
-    CastSpellByName(s2);
-  end
+  mConditionalCast(lvl and lvl >= minLvl, s1, s2)
 end
 
 -- cast spell1 if mana is >= than minMana, else s2
 function mManaCast(minMana, s1, s2)
-  if s1 and UnitMana("player") >= minMana then
-    CastSpellByName(s1);
-  elseif s2 then
-    CastSpellByName(s2);
-  end
+  mConditionalCast(UnitMana("player") >= minMana, s1, s2)
 end
 
 -- cast spell1 if mana% is >= percent, else s2
@@ -437,11 +432,7 @@ end
 
 -- cast s1 if hp is < perc, else s2
 function mLifeSpell(perc, s1, s2) 
-  if s1 and mCheckHp(perc) then
-    CastSpellByName(s1)
-  elseif s2 then
-    CastSpellByName(s2)
-  end
+  mConditionalCast(mCheckHp(perc), s1, s2)
 end
 
 -- target nearest enemy and attack
@@ -496,20 +487,6 @@ function mGetNaked()
   end
 end
 
--- return bag and slot index of item matching string
-function mGetContainerItemByName(item, printString) 
-  printString = printString or "Found Item: "
-  for bag = 0,4,1 do
-    for slot = 1, GetContainerNumSlots(bag) do
-      local name = GetContainerItemLink(bag, slot)
-      if name and string.find(name, item) then
-        mPrint(printString .. name)
-        return bag, slot 
-      end
-    end
-  end
-end
-
 -- return an array of {bag, slot} of items matching string
 function mGetContainerItemsByName(item, printString) 
   printString = printString or "Found item: "
@@ -526,6 +503,12 @@ function mGetContainerItemsByName(item, printString)
     end
   end
   return t
+end
+
+-- return bag and slot index of item matching string
+function mGetContainerItemByName(item, printString) 
+  local x =  mGetContainerItemsByName(item, printString)[1]
+  if x then return x[1], x[2] end
 end
 
 -- sell poor quality items to a vendor
