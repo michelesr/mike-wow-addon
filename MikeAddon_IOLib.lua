@@ -90,3 +90,12 @@ function mGetItemName(itemLink)
   local s = mSplit(itemLink, '|')[4]
   return string.sub(s, 3, string.len(s) - 1)
 end
+
+-- return x op y with op in {'<', '>'}
+function mOrdinalOperation(op, x, y)
+  if op == '<' then
+    return (x < y)
+  elseif op == '>' then
+    return (x > y)
+  end
+end

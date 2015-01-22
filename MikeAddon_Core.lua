@@ -27,6 +27,11 @@ local timer = GetTime()
 local savedTarget = nil
 local castSequences = {};
 
+-- trigger UI reload
+function mReloadUI()
+  ReloadUI()
+end
+
 -- switch windowed/fullscreen mode
 function mWindowSwitch()
   SetCVar("gxWindow", mod(GetCVar("gxWindow") + 1, 2))
@@ -173,25 +178,25 @@ function mParseResetArgs(args)
   return rtime, combat, target
 end
 
--- reset cast sequence to call on target change
-function mTargetResetCastSequence()
+function mTriggerResetCastSequence(trigger)
   for x in castSequences do
     local s = castSequences[x]
-    if s["target"] then
+    if s[trigger] then
       mCastSequenceReset(s)
     end
   end
+
+end
+
+-- reset cast sequence to call on target change
+function mTargetResetCastSequence()
+  mTriggerResetCastSequence("target")
 end
 
 
--- reset cast sequence to call on combat leave
+-- reset cast sequence to call on combat enter/leave
 function mCombatResetCastSequence() 
-  for x in castSequences do
-    local s = castSequences[x]
-    if s["combat"] then
-      mCastSequenceReset(s)
-    end
-  end
+  mTriggerResetCastSequence("combat")
 end
 
 -- reset cast sequence
@@ -220,48 +225,53 @@ function mCastRandom(spells)
   CastSpellByName(spells[math.random(1, n)])
 end
 
--- count buffs on a unit
-function mBuffCount(unit)
+-- return UnitBuff function ifBuff, else UnitDebuff function
+function mUnitBD(isBuff)
+  if isBuff then
+    return UnitBuff
+  else
+    return UnitDebuff
+  end
+end
+
+function mBDCount(isBuff, unit)
   local i=1 
-  while UnitBuff(unit, i) do 
+  while mUnitBD(isBuff)(unit, i) do
     i=i+1
   end
   return i-1
+end
+
+-- count buffs on a unit
+function mBuffCount(unit)
+  return mBDCount(true, unit)
 end
 
 -- count debuffs on a target
 function mDebuffCount(unit)
-  local i=1 
-  while UnitDebuff(unit, i) do 
-    i=i+1
+  return mBDCount(false, unit)
+end
+
+function mBDPrint(isBuff, unit)
+  for i=1,mBDCount(isBuff, unit) do
+    local x = mUnitBD(isBuff)(unit, i)
+    local y = mPathSplit(x)
+    if y then
+      mPrint(y[3])
+    else
+      mPrint(x)
+    end
   end
-  return i-1
 end
 
 -- print target buff icons name
 function mPrintBuff(unit)
-  for i=1,mBuffCount(unit) do
-    local x = UnitBuff(unit, i)
-    local y = mPathSplit(x)
-    if y then
-      mPrint(y[3])
-    else
-      mPrint(x)
-    end
-  end
+  mBDPrint(true, unit)
 end
 
 -- print target debuff icons name
 function mPrintDebuff(unit)
-  for i=1,mDebuffCount(unit) do
-    local x = UnitDebuff(unit, i)
-    local y = mPathSplit(x)
-    if y then
-      mPrint(y[3])
-    else
-      mPrint(x)
-    end
-  end
+  mBDPrint(false, unit)
 end
 
 -- cast spell if class match
@@ -272,38 +282,66 @@ function mClassCast(classes, spell)
   end
 end
 
--- cast s1 if target isn't buffed, else s2
-function mCastIfBuffed(buff, s1, s2)
-  local n = mBuffCount("target")+1
+function mHasBD(isBuff, unit, buff)
+  local n = mBDCount(isBuff, unit)+1
   local i = 1
-  local x = false
   while i < n do
-    if string.find(UnitBuff("target", i), buff) then
-      x = true
+    if string.find(mUnitBD(isBuff)(unit, i), buff) then
+      return i
     end i=i+1
   end
-  if not x and s1 then
+end
+
+-- return buff index or nil
+function mHasBuff(unit, buff)
+  return mBDCount(true, unit, buff)
+end
+
+-- return debuff index or nil
+function mHasDebuff(unit, debuff)
+  return mBDCount(false, unit, debuff)
+end
+
+function mCastIfBD(isBuff, buff, s1, s2)
+  if not mHasBD(isBuff,"target", buff) and s1 then
     CastSpellByName(s1)
   elseif s2 then
     CastSpellByName(s2)
   end
 end
 
+-- cast s1 if target isn't buffed, else s2
+function mCastIfBuffed(buff, s1, s2)
+  mCastIfBD(true, buff, s1, s2)
+end
+
 -- cast s1 if target isn't debuffed, else s2
 function mCastIfDebuffed(debuff, s1, s2)
-  local n = mDebuffCount("target")+1
-  local i = 1
-  local x = false
-  while i < n do
-    if string.find(UnitDebuff("target", i), debuff) then
-      x = true
-    end i=i+1
+  mCastIfBD(false, debuff, s1, s2)
+end
+
+-- cast s1 if buff/debuff is found and is major/minor of count
+-- op can be '<' or '>'
+function mCastIfBDCount(isBuff, buff, op, count, s1, s2)
+  local i = mHasBD(isBuff, "target", buff)
+  if i then
+    local b, c = mUnitBD(isBuff)("target", i)
+    if b and c and mOrdinalOperation(op, c, count) and s1 then
+      CastSpellByName(s1)
+      return
+    end
   end
-  if not x and s1 then
-    CastSpellByName(s1)
-  elseif s2 then
-    CastSpellByName(s2)
+  if s2 then
+      CastSpellByName(s2)
   end
+end
+
+function mCastIfBuffCount(buff, op, count, s1, s2)
+  mCastIfBDCount(true, buff, op, count, s1, s2)
+end
+
+function mCastIfDebuffCount(debuff, op, count, s1, s2)
+  mCastIfBDCount(false, debuff, op, count, s1, s2)
 end
 
 -- cast spell with rank appropriate for target lvl
@@ -345,38 +383,20 @@ function mManaPercentCast(percent, s1, s2)
   mManaCast(UnitManaMax("player") * percent / 100.0, s1, s2); 
 end
 
--- buff nearest unbuffed friendly unit with a spell
-function mMassBuff(spellName, checkString)
+function mMassBD(isBuff, spellName, checkString)
   ClearTarget()
   for i=1,N do
     i=i+1
-    TargetNearestFriend()
+    if isBuff then
+      TargetNearestFriend()
+    else
+      TargetNearestEnemy()
+    end
     local x = true
-    local n = mBuffCount("target")+1
+    local n = mBDCount(isBuff, "target")+1
     local k = 1
     while k < n do
-      if string.find(UnitBuff("target", k),checkString) then
-        x=false
-      end k=k+1
-    end
-    if spellName and  x == true and UnitIsPlayer("target") then
-      CastSpellByName(spellName)
-      return nil
-    end
-  end 
-end
-
--- cast debuff spell on nearest enemy undebuffed unit
-function mMassDebuff(spellName, checkString)
-  ClearTarget()
-  for i=1,N do
-    i=i+1
-    TargetNearestEnemy()
-    local x = true
-    local n = mDebuffCount("target")+1
-    local k = 1
-    while k < n do
-      if string.find(UnitDebuff("target", k),checkString) then
+      if string.find(mUnitBD(isBuff)("target", k),checkString) then
         x=false
       end k=k+1
     end
@@ -385,6 +405,16 @@ function mMassDebuff(spellName, checkString)
       return nil
     end
   end 
+end
+
+-- buff nearest unbuffed friendly unit with a spell
+function mMassBuff(spellName, checkString)
+  mMassBD(true, spellName, checkString)
+end
+
+-- cast debuff spell on nearest enemy undebuffed unit
+function mMassDebuff(spellName, checkString)
+  mMassBD(false, spellName, checkString)
 end
 
 -- hp check, return true if hp < perc
@@ -660,11 +690,6 @@ end
 -- print fps
 function mFramerate()
   mPrint(string.format("FPS: %.4f", GetFramerate()))
-end
-
--- trigger UI reload
-function mReloadUI()
-  ReloadUI()
 end
 
 -- enable overpower warning
