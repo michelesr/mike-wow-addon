@@ -288,6 +288,8 @@ This will cast <spell> on nearest friendly player that is unbuffed with buff rep
 
 This will cast <spell> on nearest enemy unit that is undebuffed with debuff represented by <debuff_icon_name>.
 
+Available *operators* are: <, >, !=, ==, <=, >=
+
 Buff/Debuff based cast
 ======================
 
