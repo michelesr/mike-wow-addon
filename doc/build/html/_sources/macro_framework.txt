@@ -331,6 +331,42 @@ This will cast <spell1> if target is not debuffed with debuff represented by <de
 
 This will cast "Shadow Word: Pain" if target is not debuffed with a debuff with contains 'Pain' in its icon name, else will cast "Mind Blast"
 
+===================================
+Buff/Debuff stacks count based cast
+===================================
+
+.. index:: single: Buff/Debuff stacks count based cast
+
+You can write macro that will cast a spell if the target is buffed/debuffed and has a particular number of stacks of that debuff.
+
+::
+
+	/mi bccast <buff_icon_name>, <operator>, <count>, <spell1>[, <spell2>]
+
+..
+
+**Example** ::
+
+	/mi bccast InnerFire, >=, 20, Power Word: Fortitude, Inner Fire 
+
+..
+
+The example above will cast Fortitude only if the target has a number major or equal to 20 of inner fire stacks, in all the other cases will cast Inner Fire.
+
+::
+
+	/mi dccast <debuff_icon_name>, <operator>, <count>, <spell1>[, <spell2>]
+
+..
+
+**Example** ::
+
+	/mi dccast Spell_Shadow_BlackPlague, >=, 4, Mind Flay, Mind Flay(Rank 1)
+
+..
+
+The example above is useful if you want to use a lower rank of Mind Flay to apply stacks of "Shadow Vulnerability".
+
 Cast spell based on target lvl
 ==============================
 
