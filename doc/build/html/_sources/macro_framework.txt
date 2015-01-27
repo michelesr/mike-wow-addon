@@ -288,7 +288,6 @@ This will cast <spell> on nearest friendly player that is unbuffed with buff rep
 
 This will cast <spell> on nearest enemy unit that is undebuffed with debuff represented by <debuff_icon_name>.
 
-Available *operators* are: <, >, !=, ==, <=, >=
 
 Buff/Debuff based cast
 ======================
@@ -368,6 +367,8 @@ The example above will cast Fortitude only if the target has a number major or e
 ..
 
 The example above is useful if you want to use a lower rank of Mind Flay to apply stacks of "Shadow Vulnerability".
+
+Available *operators* are: **<**, **>**, **!=**, **==**, **<=**, **>=**
 
 Cast spell based on target lvl
 ==============================
