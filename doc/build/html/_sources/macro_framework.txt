@@ -332,7 +332,6 @@ This will cast <spell1> if target is not debuffed with debuff represented by <de
 
 This will cast "Shadow Word: Pain" if target is not debuffed with a debuff with contains 'Pain' in its icon name, else will cast "Mind Blast"
 
-===================================
 Buff/Debuff stacks count based cast
 ===================================
 
