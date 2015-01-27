@@ -105,6 +105,12 @@ function SlashCmdList.MIKE(msg, editbox)
   elseif m[1] == "dcast" then
     local x = mSplit(mGetSubArgs(m, 2), ", ")
     mCastIfDebuffed(x[1], x[2], x[3]);
+  elseif m[1] == "bccast" then
+    local x = mSplit(mGetSubArgs(m, 2), ", ")
+    mCastIfBuffCount(x[1], x[2], tonumber(x[3]), x[4], x[5])
+  elseif m[1] == "dccast" then
+    local x = mSplit(mGetSubArgs(m, 2), ", ")
+    mCastIfDebuffCount(x[1], x[2], tonumber(x[3]), x[4], x[5])
   elseif m[1] == "ccast" then
     local x = mSplit(mGetSubArgs(m, 2), ", ")
     mClassCast(x[1], x[2])
@@ -220,6 +226,8 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mi mdebuff <spell>, <buff_icon_name>: debuff nearest unbuffed enemy unit")
     mPrint("/mi bcast <buff_icon_name>, <s1>[, <s2>]: cast on target s1 if not buffed, else s2");
     mPrint("/mi dcast <debuff_icon_name>, <s1>[, <s2>]: cast on target s1 if not debuffed, else s2");
+    mPrint("/mi bccast <buff_icon_name>, <op>, <count>, <s1>, [, <s2>]: cast on target s1 if has a value of buff stacks </<=/>/>=/==/!=/ of count, else s2")
+    mPrint("/mi dccast <debuff_icon_name>, <op>, <count>, <s1>, [, <s2>]: cast on target s1 if has a value of debuff stacks </>/<=/>=/!=/== of count, else s2")
     mPrint("/mi ccast <class1>[ <class2> ... <classN>], <spell>: cast <spell> on target if its class match"); 
     mPrint("/mi lvlcast <min_lvl> <s1>[, <s2>]: cast spell if target lvl is major/equal <min_lvl>, else s2");
     mPrint("/mi rcast <max_spell_rank> <spell>: check target lvl and cast appropriate rank of the spell");
