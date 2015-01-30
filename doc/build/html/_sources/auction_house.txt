@@ -14,7 +14,7 @@ To post your next container item in the "Auction Item" slot in the "Auction" tab
 
 ..
 
-This is useful when you want to sell fast items. Bind the command to a key, launch it, and click on "Create Auction" to create the auction for your next container item. If you use Auctioneer the price will be autoset, so is only a matter of pressing the key and clicking the button)
+This is useful when you want to sell a lot of items fast. Bind the command to a key, launch it, and click on "Create Auction" to create the auction for your next container item. If you use Auctioneer the price will be autoset, so is only a matter of pressing the key and clicking the button.
 
 To start from the begin::
 
