@@ -387,7 +387,7 @@ function mMassBD(isBuff, spellName, checkString)
     else
       TargetNearestEnemy()
     end
-    local x = true
+    local x = not isBuff or isBuff and UnitIsPlayer("target")
     local n = mBDCount(isBuff, "target")+1
     local k = 1
     while k < n do
@@ -395,7 +395,7 @@ function mMassBD(isBuff, spellName, checkString)
         x=false
       end k=k+1
     end
-    if spellName and x == true then
+    if spellName and x then
       CastSpellByName(spellName)
       return nil
     end
@@ -644,16 +644,26 @@ function mResetSearchIndex()
   slotIndex = 1
 end
 
-
--- search next container item in the Auction House
-function mIncrementalAuctionSearch()
-  mPrint("Opening bag " .. bagIndex .. ", slot .. " .. slotIndex)
-  mSearchContainerItemAuction(bagIndex, slotIndex)
+-- update the index to get next item
+function mUpdateAuctionIndex()
   slotIndex = slotIndex + 1
   if slotIndex > GetContainerNumSlots(bagIndex) then
     slotIndex = 1
     bagIndex = mod(bagIndex + 1, 5)
   end
+end
+
+-- search next container item in the Auction House
+function mIncrementalAuctionSearch()
+  mSearchContainerItemAuction(bagIndex, slotIndex)
+  mUpdateAuctionIndex()
+end
+
+-- post next container item in the Auction House post slot
+function mIncrementalAuctionPost()
+  PickupContainerItem(bagIndex, slotIndex)
+  ClickAuctionSellItemButton()
+  mUpdateAuctionIndex()
 end
 
 -- print netstats 

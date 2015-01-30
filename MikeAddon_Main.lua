@@ -161,6 +161,8 @@ function SlashCmdList.MIKE(msg, editbox)
     mMassDebuff(x[1], x[2])
   elseif m[1] == "auc" then
     mIncrementalAuctionSearch()
+  elseif m[1] == "aucpost" then
+    mIncrementalAuctionPost()
   elseif m[1] == "aucreset" then
     mResetSearchIndex()
   elseif m[1] == "op" then
@@ -192,6 +194,7 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mi tcustom <name>: set custom target to restore");
     mPrint("Auction House", 1, 1, 0)
     mPrint("/mi auc: search next container item in auction house")
+    mPrint("/mi aucpost: post next container item in auction house post slot")
     mPrint("/mi aucreset: reset current item to bag 0 slot 1")
     mPrint("System functions", 1, 1, 0)
     mPrint("/mi window: Switch between fullscreen and windowed mode")
