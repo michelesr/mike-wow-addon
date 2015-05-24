@@ -1,4 +1,4 @@
-## Interface: 11200
+## Interface: 20400
 ## Title: Mike's Addon
 ## Author: MicheleSr
 ## SavedVariables: MIKE_OP

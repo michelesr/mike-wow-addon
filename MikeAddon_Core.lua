@@ -126,7 +126,7 @@ end
 function mGetCastSequence(reset, combat, target, spells)
   local b = false
   local n = getn(spells)
-  for x in castSequences do
+  for x,y in pairs(castSequences) do
     local s = castSequences[x]
     if s["reset"] and s["reset"] == reset and getn(s["spells"]) == n and
        s["combat"] == combat and s["target"] == target then
@@ -163,7 +163,7 @@ function mParseResetArgs(args)
     args = mSplit(args, "=")[2]
   end
   args = mSplit(args, "/")
-  for x in args do
+  for x,y in pairs(args) do
     if args[x] == "combat" then
       combat = true
     elseif args[x] == "target" then
@@ -179,7 +179,7 @@ function mParseResetArgs(args)
 end
 
 function mTriggerResetCastSequence(trigger)
-  for x in castSequences do
+  for x,y in pairs(castSequences) do
     local s = castSequences[x]
     if s[trigger] then
       mCastSequenceReset(s)
@@ -520,7 +520,7 @@ function mPoorSellOrDestroy(destroy)
     printString = "Selling item: "
   end
   local items = mGetContainerItemsByName("ff9d9d9d", printString)
-  for x in items do
+  for x,y in pairs(items) do
     if destroy then
       PickupContainerItem(items[x][1], items[x][2])
       DeleteCursorItem()
@@ -555,7 +555,7 @@ end
 
 -- equips items on the appropriate slots 
 function mEquipItems(items) 
-  for i in items do
+  for i,j in pairs(items) do
     local x,y
     x,y = mGetContainerItemByName(items[i], "Equipping item: ")
     if x and y then
@@ -578,7 +578,7 @@ end
 -- return a list of indexes from a list of stance names
 function mGetStancesIndex(stances)
   local s = {}
-  for x in stances do
+  for x,y in pairs(stances) do
     s[x] = mGetStanceByName(stances[x])
   end
   return s
@@ -587,7 +587,7 @@ end
 -- stance switch
 function mStanceSwitch(stances)
   local s = mGetStancesIndex(stances)
-  for x in s do
+  for x,y in pairs(s) do
     local a,b,c,d = GetShapeshiftFormInfo(s[x])
     if c == 1 then
       CastShapeshiftForm(s[mod(x, getn(s)) + 1])
