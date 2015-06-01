@@ -80,9 +80,9 @@ local function mEventHandler()
   end
   if MikeConfig.fishing then
     if event == "COMBAT_TEXT_UPDATE" then
-      if arg1 == "SPELL_CAST" and arg2 == "Fishing" then
+      if arg1 == "SPELL_AURA_START" and arg2 == "Fishing" then
         mStartFishing()
-      else
+      elseif arg1 ~= "SPELL_AURA_END" then
         mStopFishing()
       end
     elseif event == "UI_ERROR_MESSAGE" or event == "UI_INFO_MESSAGE" then
