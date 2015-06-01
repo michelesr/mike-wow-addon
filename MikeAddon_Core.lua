@@ -26,6 +26,8 @@ local N=10
 local timer = GetTime()
 local savedTarget = nil
 local castSequences = {};
+local fishing = { active = false }
+local debug = false
 
 -- trigger UI reload
 function mReloadUI()
@@ -60,7 +62,7 @@ function mPrintElapsedTime()
   local h = mod(t/3600, 60)
   local m = mod(t/60, 60)
   local s = mod(t, 60)
-  mPrint(string.format("Elapsed time --  %.2d:%.2d:%.2d", h, m, s)) 
+  mPrint(string.format("Elapsed time --  %.2d:%.2d:%.2d", h, m, s))
 end
 
 -- save target
@@ -93,7 +95,7 @@ end
 
 -- share objective of quest in party chat
 function mShareQuestObjective(i)
-  local s = "Objectives for quest " ..  GetQuestLogTitle(i) .. ": " 
+  local s = "Objectives for quest " ..  GetQuestLogTitle(i) .. ": "
   SelectQuestLogEntry(i)
   for j=1,GetNumQuestLeaderBoards(i) do
     s = s .. GetQuestLogLeaderBoard(j) .. "; "
@@ -107,7 +109,7 @@ function mShareQuestObjectives()
     local j=1
     local b=false
     while (j <= 4 and not b) do
-      b = IsUnitOnQuest(i, "party" .. j) 
+      b = IsUnitOnQuest(i, "party" .. j)
       j = j + 1
     end
     if b then
@@ -132,8 +134,8 @@ function mGetCastSequence(reset, combat, target, spells)
        s["combat"] == combat and s["target"] == target then
       local i = 1
       while i <= n and s["spells"][i] == spells[i] do i=i+1 end
-      if i > n then 
-        return s 
+      if i > n then
+        return s
       end
     end
   end
@@ -195,7 +197,7 @@ end
 
 
 -- reset cast sequence to call on combat enter/leave
-function mCombatResetCastSequence() 
+function mCombatResetCastSequence()
   mTriggerResetCastSequence("combat")
 end
 
@@ -235,7 +237,7 @@ function mUnitBD(isBuff)
 end
 
 function mBDCount(isBuff, unit)
-  local i=1 
+  local i=1
   while mUnitBD(isBuff)(unit, i) do
     i=i+1
   end
@@ -375,7 +377,7 @@ end
 
 -- cast spell1 if mana% is >= percent, else s2
 function mManaPercentCast(percent, s1, s2)
-  mManaCast(UnitManaMax("player") * percent / 100.0, s1, s2); 
+  mManaCast(UnitManaMax("player") * percent / 100.0, s1, s2);
 end
 
 function mMassBD(isBuff, spellName, checkString)
@@ -399,7 +401,7 @@ function mMassBD(isBuff, spellName, checkString)
       CastSpellByName(spellName)
       return nil
     end
-  end 
+  end
 end
 
 -- buff nearest unbuffed friendly unit with a spell
@@ -413,7 +415,7 @@ function mMassDebuff(spellName, checkString)
 end
 
 -- hp check, return true if hp < perc
-function mCheckHp(perc) 
+function mCheckHp(perc)
   return (UnitHealth("target")/UnitHealthMax("target")) < (perc/100.0)
 end
 
@@ -431,7 +433,7 @@ function mMassHeal(spellName, perc)
 end
 
 -- cast s1 if hp is < perc, else s2
-function mLifeSpell(perc, s1, s2) 
+function mLifeSpell(perc, s1, s2)
   mConditionalCast(mCheckHp(perc), s1, s2)
 end
 
@@ -465,7 +467,7 @@ end
 -- put your gear in your bag
 function mGetNaked()
   local k=1
-  local bag=0 
+  local bag=0
   while (k <= 18 and bag <= 4) do
     local slot=1 local max=GetContainerNumSlots(bag)
     while (slot <= max and k <= 18) do
@@ -488,7 +490,7 @@ function mGetNaked()
 end
 
 -- return an array of {bag, slot} of items matching string
-function mGetContainerItemsByName(item, printString) 
+function mGetContainerItemsByName(item, printString)
   printString = printString or "Found item: "
   local t = {}
   local i = 1
@@ -497,8 +499,8 @@ function mGetContainerItemsByName(item, printString)
       local name = GetContainerItemLink(bag, slot)
       if name and string.find(name, item) then
         mPrint(printString .. name)
-        t[i] = {bag, slot} 
-        i = i + 1 
+        t[i] = {bag, slot}
+        i = i + 1
       end
     end
   end
@@ -541,7 +543,7 @@ end
 
 -- equip w1 on main hand and w2 on off hand
 function mEquipHandWeapons(w)
-  for i=1,2 do 
+  for i=1,2 do
     local x,y
     if w[i] then
       x,y = mGetContainerItemByName(w[i], "Equipping item: ")
@@ -553,8 +555,8 @@ function mEquipHandWeapons(w)
   end
 end
 
--- equips items on the appropriate slots 
-function mEquipItems(items) 
+-- equips items on the appropriate slots
+function mEquipItems(items)
   for i,j in pairs(items) do
     local x,y
     x,y = mGetContainerItemByName(items[i], "Equipping item: ")
@@ -616,7 +618,7 @@ function mStanceRandom(stances)
     n = getn(s)
     while not x or a do
       x = math.random(1, n)
-      y,z,a = GetShapeshiftFormInfo(s[x]) 
+      y,z,a = GetShapeshiftFormInfo(s[x])
     end
     CastShapeshiftForm(s[x])
   else
@@ -629,7 +631,7 @@ function mSearchContainerItemAuction(bag,slot)
   local itemLink = GetContainerItemLink(bag,slot)
   if itemLink then
     local name = mGetItemName(itemLink)
-    mPrint("Searching: " .. name) 
+    mPrint("Searching: " .. name)
     QueryAuctionItems(name)
   end
 end
@@ -666,7 +668,7 @@ function mIncrementalAuctionPost()
   mUpdateAuctionIndex()
 end
 
--- print netstats 
+-- print netstats
 function mNetStats()
   local a,b,c = GetNetStats()
   mPrint(string.format("Incoming bandwidth: %.4f kB/s\nOutgoing bandwidth: %.4f kB/s\nLatency: %d ms", a, b,c))
@@ -687,20 +689,20 @@ end
 
 -- enable overpower warning
 function mEnableOverpower()
-  MIKE_OP = true
+  MikeConfig.overpower = true
   mReloadUI()
 end
 
 -- disable overpower warning
 function mDisableOverpower()
-  MIKE_OP = false
+  MikeConfig.overpower = false
   mReloadUI()
 end
 
 -- print overpower script status on console
 function mPrintOverpowerStatus()
   local s
-  if MIKE_OP then
+  if MikeConfig.overpower then
     s = "ON"
   else
     s = "OFF"
@@ -708,10 +710,77 @@ function mPrintOverpowerStatus()
   mPrint("Overpower script is " .. s)
 end
 
+-- enable fishing warning
+function mEnableFishing()
+  MikeConfig.fishing = true
+  mReloadUI()
+end
+
+-- disable fishing warning
+function mDisableFishing()
+  MikeConfig.fishing = false
+  mReloadUI()
+end
+
+-- print fishing script status on console
+function mPrintFishingStatus()
+  local s
+  if MikeConfig.fishing then
+    s = "ON"
+  else
+    s = "OFF"
+  end
+  mPrint("Fishing script is " .. s)
+end
+
+-- print unit stats
 function mPrintUnitStats(unit)
   if UnitName(unit) then
     mPrint(UnitName(unit) .. " "  .. UnitLevel(unit) .. " " ..  UnitClass(unit))
     mPrint("HP: " .. UnitHealth(unit) .. "/" ..  UnitHealthMax(unit))
     mPrint("MP: " .. UnitMana(unit) .. "/" .. UnitManaMax(unit))
   end
+end
+
+-- print fish stats
+function mFishStats()
+  mPrint("Fishes: " .. tostring(MikeData.fishing.fishes))
+  mPrint("Points: " .. tostring(MikeData.fishing.points))
+  mPrint("Fishes per points: " .. tostring(MikeData.fishing.fishes / MikeData.fishing.points))
+end
+
+-- start tracking loots for fishing
+function mStartFishing()
+  if debug then
+    mPrint("Fishing started")
+  end
+    fishing.active = true
+end
+
+-- stop tracking loots for fishing
+function mStopFishing()
+  if debug then
+    mPrint("Fishing stopped")
+  end
+    fishing.active = false
+end
+
+-- launch when a fish is catched
+function mOnFishCatch()
+  if fishing.active then
+    MikeData.fishing.fishes = MikeData.fishing.fishes + 1
+    mFishStats()
+    mStopFishing()
+  end
+end
+
+-- launch when a fishing skill point is earned
+function mOnFishPointGain()
+    MikeData.fishing.points = MikeData.fishing.points + 1
+end
+
+-- reset fish stats
+function mFishReset()
+    MikeData.fishing.points = 0
+    MikeData.fishing.fishes = 0
 end

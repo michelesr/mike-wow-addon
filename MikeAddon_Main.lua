@@ -1,6 +1,6 @@
 --[[
 
-Mike's WoW Addon 
+Mike's WoW Addon
 Version: 1.0.4
 Application Main CLI UI
 
@@ -67,10 +67,10 @@ function SlashCmdList.MIKE(msg, editbox)
   elseif m[1] == "strip" then
     mGetNaked()
   elseif m[1] == "equip" then
-    mEquipItems(mSplit(mGetSubArgs(m, 2), ", ")) 
+    mEquipItems(mSplit(mGetSubArgs(m, 2), ", "))
   elseif m[1] == "wequip" then
     local w = mSplit(mGetSubArgs(m, 2), ", ")
-    mEquipHandWeapons({w[1], w[2]}) 
+    mEquipHandWeapons({w[1], w[2]})
   elseif m[1] == "print" then
     mPrint(mGetSubArgs(m))
   elseif m[1] == "fortitude" then
@@ -173,9 +173,21 @@ function SlashCmdList.MIKE(msg, editbox)
     else
       mPrintOverpowerStatus()
     end
+  elseif m[1] == "fishing" then
+    if m[2] == "on" then
+      mEnableFishing()
+    elseif m[2] == "off" then
+      mDisableFishing()
+    elseif m[2] == "stats" then
+      mFishStats()
+    elseif m[2] == "reset" then
+      mFishReset()
+    else
+      mPrintFishingStatus()
+    end
   elseif m[1] == "tstats" then
     mPrintUnitStats("target")
-  else 
+  else
     mPrint("Mike's Addon v" .. version, 1, 1, 0)
     mPrint("Usage: /mike <arguments> OR /mi <arguments>")
     mPrint("[ ] are for optional (not mandatory) arguments");
@@ -214,6 +226,11 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("Overpower", 1, 1, 0)
     mPrint("/mi op: get overpower script status")
     mPrint("/mi op <on/off>: enable/disable overpower script and reload UI")
+    mPrint("Fishing", 1, 1, 0)
+    mPrint("/mi fishing: get fishing script status")
+    mPrint("/mi fishing <on/off>: enable/disable fishing script and reload UI")
+    mPrint("/mi fishing stats: show fishing stats")
+    mPrint("/mi fishing reset: reset fishing stats")
     mPrint("Macro framework", 1, 1, 0)
     mPrint("/mi tcast <spell>: target nearest enemy unit and cast a spell")
     mPrint("/mi ftcast <spell>: target nearest friendly unit and cast a spell")
@@ -231,7 +248,7 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mi dcast <debuff_icon_name>, <s1>[, <s2>]: cast on target s1 if not debuffed, else s2");
     mPrint("/mi bccast <buff_icon_name>, <op>, <count>, <s1>, [, <s2>]: cast on target s1 if has a value of buff stacks </<=/>/>=/==/!=/ of count, else s2")
     mPrint("/mi dccast <debuff_icon_name>, <op>, <count>, <s1>, [, <s2>]: cast on target s1 if has a value of debuff stacks </>/<=/>=/!=/== of count, else s2")
-    mPrint("/mi ccast <class1>[ <class2> ... <classN>], <spell>: cast <spell> on target if its class match"); 
+    mPrint("/mi ccast <class1>[ <class2> ... <classN>], <spell>: cast <spell> on target if its class match");
     mPrint("/mi lvlcast <min_lvl> <s1>[, <s2>]: cast spell if target lvl is major/equal <min_lvl>, else s2");
     mPrint("/mi rcast <max_spell_rank> <spell>: check target lvl and cast appropriate rank of the spell");
     mPrint("/mi manacast <min_mana> <s1>[, <s2>]: cast s1 if your mana is at least <min_mana>, else s2");
@@ -243,6 +260,6 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mi fortitude: cast 'Power Word: Fortitude' on nearest unbuffed friendly player")
     mPrint("/mi wpain: cast 'Shadow Word: Pain' if not debuffed, else wand 'Shoot'")
     mPrint("/mi apain: cast 'Shadow Word: Pain' on nearest enemy not debuffed")
-    mPrint("Documentation: https://michelesr.github.io/mike-wow-addon/doc/build/html/main.html", 1, 1, 0); 
+    mPrint("Documentation: https://michelesr.github.io/mike-wow-addon/doc/build/html/main.html", 1, 1, 0);
   end
 end
