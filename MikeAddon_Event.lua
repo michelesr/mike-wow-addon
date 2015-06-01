@@ -40,9 +40,14 @@ local function mEventHandler()
            tostring (arg10))
   end
   if event == "ADDON_LOADED" and arg1 == "MikeAddon" then
+    if not MikeConfig then
+        MikeConfig = {
+            overpower = false
+        }
+    end
     mPrint("Mike's Addon v" .. version .. " loaded. See options with /mi", 1, 1, 0)
     if UnitClass("player") == "Warrior" then
-      if MIKE_OP then
+      if MikeConfig.overpower then
         frame:RegisterEvent("CHAT_MSG_COMBAT_SELF_MISSES")
         frame:RegisterEvent("CHAT_MSG_SPELL_SELF_DAMAGE")
         mPrint("Mike's Addon: Overpower script loaded", 1, 1, 0)

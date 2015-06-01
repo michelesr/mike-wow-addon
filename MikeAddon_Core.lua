@@ -687,20 +687,20 @@ end
 
 -- enable overpower warning
 function mEnableOverpower()
-  MIKE_OP = true
+  MikeConfig.overpower = true
   mReloadUI()
 end
 
 -- disable overpower warning
 function mDisableOverpower()
-  MIKE_OP = false
+  MikeConfig.overpower = false
   mReloadUI()
 end
 
 -- print overpower script status on console
 function mPrintOverpowerStatus()
   local s
-  if MIKE_OP then
+  if MikeConfig.overpower then
     s = "ON"
   else
     s = "OFF"

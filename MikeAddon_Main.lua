@@ -21,6 +21,12 @@ License:
 
 ]]
 
+if not MikeConfig then
+    MikeConfig = {
+        overpower = false
+    }
+end
+
 local version = "1.0.4"
 
 -- slash command
