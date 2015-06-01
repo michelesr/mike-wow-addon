@@ -27,6 +27,7 @@ local debug = false
 
 local ATK_DOD = "You attack. (.+) dodges."
 local SPL_DOD = "Your (.+) was dodged"
+local FISH_MSG = "Your skill in Fishing has increased to (.+)"
 
 frame:RegisterEvent("ADDON_LOADED")
 frame:RegisterEvent("PLAYER_TARGET_CHANGED")
@@ -35,14 +36,17 @@ frame:RegisterEvent("PLAYER_REGEN_DISABLED")
 
 local function mEventHandler()
   if debug then
-    mPrint(event .. " " .. tostring(arg1) .. " " ..  tostring(arg2) ..  " " .. tostring(arg3) .. " " .. tostring(arg4) .. " " .. 
+    mPrint(event .. " " .. tostring(arg1) .. " " ..  tostring(arg2) ..  " " .. tostring(arg3) .. " " .. tostring(arg4) .. " " ..
            tostring(arg5) .. " " .. tostring(arg6) .. " " .. tostring(arg7) .. " " .. tostring(arg8) .. " " .. tostring(arg9) .. " " ..
            tostring (arg10))
   end
   if event == "ADDON_LOADED" and arg1 == "MikeAddon" then
     if not MikeConfig then
-        MikeConfig = {
-            overpower = false
+        MikeConfig = { overpower = false, fishing = false }
+    end
+    if not MikeData then
+        MikeData = {
+            fishing = { fishes = 0, points = 0 }
         }
     end
     mPrint("Mike's Addon v" .. version .. " loaded. See options with /mi", 1, 1, 0)
@@ -55,6 +59,14 @@ local function mEventHandler()
         mPrint("Mike's Addon: Overpower script not loaded, load with /mi op on", 1, 1, 0)
       end
     end
+    if MikeConfig.fishing then
+      frame:RegisterEvent("CHAT_MSG_SKILL")
+      frame:RegisterEvent("CHAT_MSG_LOOT")
+      frame:RegisterEvent("COMBAT_TEXT_UPDATE")
+      frame:RegisterEvent("UI_ERROR_MESSAGE")
+      frame:RegisterEvent("UI_INFO_MESSAGE")
+      mPrint("Mike's Addon: Fishing script loaded", 1, 1, 0)
+    end
   elseif event == "PLAYER_TARGET_CHANGED" then
     mTargetResetCastSequence()
   elseif event == "PLAYER_REGEN_ENABLED" or event == "PLAYER_REGEN_DISABLED" then
@@ -66,5 +78,21 @@ local function mEventHandler()
     mPrint("Your target has dodged! Overpower!", 1, 1, 0)
     PlaySound("RaidWarning")
   end
+  if MikeConfig.fishing then
+    if event == "COMBAT_TEXT_UPDATE" then
+      if arg1 == "SPELL_CAST" and arg2 == "Fishing" then
+        mStartFishing()
+      else
+        mStopFishing()
+      end
+    elseif event == "UI_ERROR_MESSAGE" or event == "UI_INFO_MESSAGE" then
+      mStopFishing()
+    elseif event == "CHAT_MSG_LOOT" then
+      mOnFishCatch()
+    elseif event == "CHAT_MSG_SKILL" and string.find(arg1, FISH_MSG) then
+      mOnFishPointGain()
+    end
+  end
 end
+
 frame:SetScript("OnEvent", mEventHandler)
