@@ -173,6 +173,16 @@ function SlashCmdList.MIKE(msg, editbox)
     else
       mPrintOverpowerStatus()
     end
+  elseif m[1] == "ad" then
+    if m[2] == "on" then
+      mEnableAutoDismount()
+    elseif m[2] == "off" then
+      mDisableAutoDismount()
+    elseif m[2] == "mount" then
+      mSetPlayerMount(m[3])
+    else
+      mPrintAutoDismountStatus()
+    end
   elseif m[1] == "fishing" then
     if m[2] == "on" then
       mEnableFishing()
@@ -226,6 +236,10 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("Overpower", 1, 1, 0)
     mPrint("/mi op: get overpower script status")
     mPrint("/mi op <on/off>: enable/disable overpower script and reload UI")
+    mPrint("Auto dismount", 1, 1, 0)
+    mPrint("/mi ap: get autodismount script status")
+    mPrint("/mi ap <on/off>: enable/disable script and reload UI")
+    mPrint("/mi ap mount <mountBuff>: set the mountBuff to cancel for dismount")
     mPrint("Fishing", 1, 1, 0)
     mPrint("/mi fishing: get fishing script status")
     mPrint("/mi fishing <on/off>: enable/disable fishing script and reload UI")

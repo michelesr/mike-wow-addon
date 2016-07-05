@@ -28,6 +28,7 @@ local debug = false
 local ATK_DOD = "You attack. (.+) dodges."
 local SPL_DOD = "Your (.+) was dodged"
 local FISH_MSG = "Your skill in Fishing has increased to (.+)"
+local MOUNT_MSG = "ounted"
 
 frame:RegisterEvent("ADDON_LOADED")
 frame:RegisterEvent("PLAYER_TARGET_CHANGED")
@@ -42,7 +43,10 @@ local function mEventHandler()
   end
   if event == "ADDON_LOADED" and arg1 == "MikeAddon" then
     if not MikeConfig then
-        MikeConfig = { overpower = false, fishing = false }
+        MikeConfig = { overpower = false, fishing = false, autodismount = false }
+    end
+    if not MikePlayerConfig then
+        MikePlayerConfig = { mount = "NULL" }
     end
     if not MikeData then
         MikeData = {
@@ -66,6 +70,10 @@ local function mEventHandler()
       frame:RegisterEvent("UI_ERROR_MESSAGE")
       frame:RegisterEvent("UI_INFO_MESSAGE")
       mPrint("Mike's Addon: Fishing script loaded", 1, 1, 0)
+    end
+    if MikeConfig.autodismount then
+      frame:RegisterEvent("UI_ERROR_MESSAGE")
+      mPrint("Mike's Addon: Auto dismount loaded", 1, 1, 0)
     end
   elseif event == "PLAYER_TARGET_CHANGED" then
     mTargetResetCastSequence()
@@ -91,6 +99,13 @@ local function mEventHandler()
       mOnFishCatch()
     elseif event == "CHAT_MSG_SKILL" and string.find(arg1, FISH_MSG) then
       mOnFishPointGain()
+    end
+  end
+  if MikeConfig.autodismount then
+    if event == "UI_ERROR_MESSAGE" and string.find(arg1, MOUNT_MSG) then
+      if MikePlayerConfig.mount then
+        mCancelPlayerBuff(MikePlayerConfig.mount)
+      end
     end
   end
 end
