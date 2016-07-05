@@ -8,7 +8,7 @@
     
     <title>Getting system information &mdash; Mike WoW Addon 1.0.4 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -23,12 +23,12 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mike WoW Addon 1.0.4 documentation" href="index.html" />
+    <link rel="top" title="Mike WoW Addon 1.0.4 documentation" href="main.html" />
     <link rel="next" title="Timer functions" href="timer_functions.html" />
     <link rel="prev" title="Getting Started" href="quick_start.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +40,14 @@
         <li class="right" >
           <a href="quick_start.html" title="Getting Started"
              accesskey="P">previous</a> |</li>
-        <li><a href="main.html">Mike WoW Addon 1.0.4 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="main.html">Mike WoW Addon 1.0.4 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="getting-system-information">
 <h1>Getting system information<a class="headerlink" href="#getting-system-information" title="Permalink to this headline">¶</a></h1>
@@ -55,7 +55,7 @@
 <div class="section" id="network-statistics">
 <h2>Network statistics<a class="headerlink" href="#network-statistics" title="Permalink to this headline">¶</a></h2>
 <p id="index-1">Getting network informations</p>
-<div class="highlight-python"><div class="highlight"><pre>/mi net
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">net</span>
 </pre></div>
 </div>
 <p>This will show outgoing and incoming bandwith in kB/s and communication latency in ms.</p>
@@ -63,28 +63,28 @@
 <div class="section" id="frame-per-second-fps">
 <h2>Frame per second (FPS)<a class="headerlink" href="#frame-per-second-fps" title="Permalink to this headline">¶</a></h2>
 <p id="index-2">Getting FPS</p>
-<div class="highlight-python"><div class="highlight"><pre>/mi fps
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">fps</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="memory-usage-of-addons">
 <h2>Memory Usage of Addons<a class="headerlink" href="#memory-usage-of-addons" title="Permalink to this headline">¶</a></h2>
 <p id="index-3">Getting RAM usage of Addons</p>
-<div class="highlight-python"><div class="highlight"><pre>/mi mem
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">mem</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="player-position">
 <h2>Player Position<a class="headerlink" href="#player-position" title="Permalink to this headline">¶</a></h2>
 <p id="index-4">Getting player zone and x,y coords:</p>
-<div class="highlight-python"><div class="highlight"><pre>/mi pos
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">pos</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="target-stats">
 <h2>Target stats<a class="headerlink" href="#target-stats" title="Permalink to this headline">¶</a></h2>
 <p id="index-5">Print target stats:</p>
-<div class="highlight-python"><div class="highlight"><pre>/mi tstats
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">tstats</span>
 </pre></div>
 </div>
 </div>
@@ -94,7 +94,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="main.html">Table Of Contents</a></h3>
   <ul>
@@ -114,29 +114,28 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="timer_functions.html"
                         title="next chapter">Timer functions</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/system_info.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/system_info.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -148,12 +147,12 @@
         <li class="right" >
           <a href="quick_start.html" title="Getting Started"
              >previous</a> |</li>
-        <li><a href="main.html">Mike WoW Addon 1.0.4 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="main.html">Mike WoW Addon 1.0.4 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, MicheleSr.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.4.
     </div>
   </body>
 </html>

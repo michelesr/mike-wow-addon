@@ -8,7 +8,7 @@
     
     <title>Premade macro commands &mdash; Mike WoW Addon 1.0.4 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -23,11 +23,11 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mike WoW Addon 1.0.4 documentation" href="index.html" />
+    <link rel="top" title="Mike WoW Addon 1.0.4 documentation" href="main.html" />
     <link rel="prev" title="Macro framework" href="macro_framework.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -36,14 +36,14 @@
         <li class="right" >
           <a href="macro_framework.html" title="Macro framework"
              accesskey="P">previous</a> |</li>
-        <li><a href="main.html">Mike WoW Addon 1.0.4 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="main.html">Mike WoW Addon 1.0.4 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="premade-macro-commands">
 <h1>Premade macro commands<a class="headerlink" href="#premade-macro-commands" title="Permalink to this headline">¶</a></h1>
@@ -58,35 +58,35 @@
 </div>
 <div class="section" id="target-nearest-attack">
 <h2>Target nearest &amp; Attack<a class="headerlink" href="#target-nearest-attack" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python" id="index-1"><div class="highlight"><pre>/mi tattack
+<div class="highlight-default" id="index-1"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">tattack</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="sunder-armor-on-nearest-enemy-unsunded">
 <h2>Sunder armor on nearest enemy unsunded<a class="headerlink" href="#sunder-armor-on-nearest-enemy-unsunded" title="Permalink to this headline">¶</a></h2>
 <p id="index-2">This will target nearest enemy unit (like if you pressed the tab key) and will auto-attack it.</p>
-<div class="highlight-python"><div class="highlight"><pre>/mi sunder
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">sunder</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="fortitude-on-nearest-friend-unbuffed">
 <h2>Fortitude on nearest friend unbuffed<a class="headerlink" href="#fortitude-on-nearest-friend-unbuffed" title="Permalink to this headline">¶</a></h2>
 <p id="index-3">This will search for nearest enemy with is not debuffed with &#8220;Sunder Armor&#8221; and will cast on it. This could be useful for a tank that want to put a stack of Sunder Armor on every enemies to improve aggro keeping.</p>
-<div class="highlight-python"><div class="highlight"><pre>/mi fortitude
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">fortitude</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="shadow-word-pain-wand-shoot">
 <h2>Shadow Word: Pain &amp; Wand Shoot<a class="headerlink" href="#shadow-word-pain-wand-shoot" title="Permalink to this headline">¶</a></h2>
 <p id="index-4">This will cast &#8220;Power Word: Fortitude&#8221; on nearest unbuffed friendly player.</p>
-<div class="highlight-python"><div class="highlight"><pre>/mi wpain
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">wpain</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="shadow-word-pain-on-nearest-unpained-enemy">
 <h2>Shadow Word: Pain on nearest unpained enemy<a class="headerlink" href="#shadow-word-pain-on-nearest-unpained-enemy" title="Permalink to this headline">¶</a></h2>
 <p id="index-5">This will cast &#8220;Shadow Word: Pain&#8221; if target is not debuffed, else will Shoot with Wand.</p>
-<div class="highlight-python"><div class="highlight"><pre>/mi apain
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">apain</span>
 </pre></div>
 </div>
 <p>This will cast &#8220;Shadow Word: Pain&#8221; on nearest enemy unit not debuffed.</p>
@@ -97,7 +97,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="main.html">Table Of Contents</a></h3>
   <ul>
@@ -114,29 +114,28 @@
   <h4>Previous topic</h4>
   <p class="topless"><a href="macro_framework.html"
                         title="previous chapter">Macro framework</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/premade_macros.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/premade_macros.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -145,12 +144,12 @@
         <li class="right" >
           <a href="macro_framework.html" title="Macro framework"
              >previous</a> |</li>
-        <li><a href="main.html">Mike WoW Addon 1.0.4 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="main.html">Mike WoW Addon 1.0.4 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, MicheleSr.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.4.
     </div>
   </body>
 </html>

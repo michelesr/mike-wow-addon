@@ -56,5 +56,6 @@ Contents
    auction_house
    equipping_functions
    overpower
+   autodismount
    macro_framework
    premade_macros

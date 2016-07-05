@@ -8,7 +8,7 @@
     
     <title>Equipping functions &mdash; Mike WoW Addon 1.0.4 documentation</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -23,12 +23,12 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mike WoW Addon 1.0.4 documentation" href="index.html" />
+    <link rel="top" title="Mike WoW Addon 1.0.4 documentation" href="main.html" />
     <link rel="next" title="Overpower" href="overpower.html" />
     <link rel="prev" title="Auction House" href="auction_house.html" /> 
   </head>
-  <body>
-    <div class="related">
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -40,14 +40,14 @@
         <li class="right" >
           <a href="auction_house.html" title="Auction House"
              accesskey="P">previous</a> |</li>
-        <li><a href="main.html">Mike WoW Addon 1.0.4 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="main.html">Mike WoW Addon 1.0.4 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="equipping-functions">
 <h1>Equipping functions<a class="headerlink" href="#equipping-functions" title="Permalink to this headline">¶</a></h1>
@@ -71,17 +71,17 @@
 <div class="section" id="auto-equipping-items">
 <h2>Auto Equipping Items<a class="headerlink" href="#auto-equipping-items" title="Permalink to this headline">¶</a></h2>
 <p id="index-1">This will equip items in the appropriate slots</p>
-<div class="highlight-python"><div class="highlight"><pre>/mi equip &lt;item1&gt;[, &lt;item2&gt;, ..., &lt;itemN&gt;]
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">equip</span> <span class="o">&lt;</span><span class="n">item1</span><span class="o">&gt;</span><span class="p">[,</span> <span class="o">&lt;</span><span class="n">item2</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">itemN</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p><strong>Example</strong></p>
-<div class="highlight-python"><div class="highlight"><pre>/mi equip Avenger&#39;s Breastplate, Belt of Might, Avenger&#39;s Crown
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">equip</span> <span class="n">Avenger</span><span class="s1">&#39;s Breastplate, Belt of Might, Avenger&#39;</span><span class="n">s</span> <span class="n">Crown</span>
 </pre></div>
 </div>
 <p>The command above search for the item in your inventory, if it finds them link will be prompted in the chat and items will be equipped (if possible) in the appropriate slots.</p>
 <p><strong>HINT</strong>: you can also use this function to swap items, in fact, the &#8220;equip&#8221; function will not do nothing for item not found in your bags, so if you use /mi equip &lt;item1&gt;, &lt;item2&gt; and one of the two item is equipped, it will be swapped with the other item.</p>
 <p><strong>Example</strong></p>
-<div class="highlight-python"><div class="highlight"><pre>/mi equip Belt of Might, Belt of The Fallen Emperor, Acid Inscribed Greaves, Avenger&#39;s Greaves
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">equip</span> <span class="n">Belt</span> <span class="n">of</span> <span class="n">Might</span><span class="p">,</span> <span class="n">Belt</span> <span class="n">of</span> <span class="n">The</span> <span class="n">Fallen</span> <span class="n">Emperor</span><span class="p">,</span> <span class="n">Acid</span> <span class="n">Inscribed</span> <span class="n">Greaves</span><span class="p">,</span> <span class="n">Avenger</span><span class="s1">&#39;s Greaves</span>
 </pre></div>
 </div>
 <p>This will get the belt and the boots on the bag and swap with the ones equipped.</p>
@@ -89,17 +89,17 @@
 <div class="section" id="equipping-weapons-in-right-hand">
 <h2>Equipping weapons in right hand<a class="headerlink" href="#equipping-weapons-in-right-hand" title="Permalink to this headline">¶</a></h2>
 <p id="index-2">This will equip item1 on main hand and item2 on off hand</p>
-<div class="highlight-python"><div class="highlight"><pre>/mi wequip &lt;mainweapon&gt;[, &lt;offweapon&gt;]
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">wequip</span> <span class="o">&lt;</span><span class="n">mainweapon</span><span class="o">&gt;</span><span class="p">[,</span> <span class="o">&lt;</span><span class="n">offweapon</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
 </div>
 <p><strong>Example</strong></p>
-<div class="highlight-python"><div class="highlight"><pre>/mi wequip Argent Custodian, Ebon Hand
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">wequip</span> <span class="n">Argent</span> <span class="n">Custodian</span><span class="p">,</span> <span class="n">Ebon</span> <span class="n">Hand</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="put-equipment-in-containers">
 <h2>Put Equipment in Containers<a class="headerlink" href="#put-equipment-in-containers" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python" id="index-3"><div class="highlight"><pre>/mi strip
+<div class="highlight-default" id="index-3"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">strip</span>
 </pre></div>
 </div>
 <p>This will strip you, putting all your equipment in your containers.</p>
@@ -114,7 +114,7 @@
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="main.html">Table Of Contents</a></h3>
   <ul>
@@ -132,29 +132,28 @@
   <h4>Next topic</h4>
   <p class="topless"><a href="overpower.html"
                         title="next chapter">Overpower</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/equipping_functions.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/equipping_functions.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -166,12 +165,12 @@
         <li class="right" >
           <a href="auction_house.html" title="Auction House"
              >previous</a> |</li>
-        <li><a href="main.html">Mike WoW Addon 1.0.4 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="main.html">Mike WoW Addon 1.0.4 documentation</a> &raquo;</li> 
       </ul>
     </div>
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2014, MicheleSr.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.4.
     </div>
   </body>
 </html>

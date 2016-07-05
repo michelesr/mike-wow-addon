@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Timer functions &mdash; Mike WoW Addon 1.0.4 documentation</title>
+    <title>Auto Dismount &mdash; Mike WoW Addon 1.0.4 documentation</title>
     
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,8 +24,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="Mike WoW Addon 1.0.4 documentation" href="main.html" />
-    <link rel="next" title="Target managment" href="save_target.html" />
-    <link rel="prev" title="Getting system information" href="system_info.html" /> 
+    <link rel="next" title="Macro framework" href="macro_framework.html" />
+    <link rel="prev" title="Overpower" href="overpower.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
@@ -35,10 +35,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="save_target.html" title="Target managment"
+          <a href="macro_framework.html" title="Macro framework"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="system_info.html" title="Getting system information"
+          <a href="overpower.html" title="Overpower"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="main.html">Mike WoW Addon 1.0.4 documentation</a> &raquo;</li> 
       </ul>
@@ -49,22 +49,37 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="timer-functions">
-<h1>Timer functions<a class="headerlink" href="#timer-functions" title="Permalink to this headline">¶</a></h1>
-<p id="index-0">Simple timing functions.</p>
-<div class="section" id="elapsed-time">
-<h2>Elapsed Time<a class="headerlink" href="#elapsed-time" title="Permalink to this headline">¶</a></h2>
-<p id="index-1">Get elapsed time since UI load or last time reset:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">timer</span>
+  <div class="section" id="auto-dismount">
+<h1>Auto Dismount<a class="headerlink" href="#auto-dismount" title="Permalink to this headline">¶</a></h1>
+<p id="index-0">The auto dismount script can be used in order to auto dismount when an action
+can&#8217;t be performed mounted.</p>
+<p>In order to work properly it must be enabled and a mount has to be setted.</p>
+<p>The state of the script and the setted mount can be seen with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">ad</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="reset-timer">
-<h2>Reset Timer<a class="headerlink" href="#reset-timer" title="Permalink to this headline">¶</a></h2>
-<p id="index-2">Reset the timer:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">treset</span>
+<p>To enable it use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">ad</span> <span class="n">on</span>
 </pre></div>
 </div>
+<p>To disable:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">ad</span> <span class="n">off</span>
+</pre></div>
+</div>
+<p>To set the mount:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">ad</span> <span class="n">mount</span> <span class="o">&lt;</span><span class="n">mountBuff</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Where mountBuff is the name, for the current character, of the buff to dispel in
+order to dismount.</p>
+<p>Example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">ad</span> <span class="n">mount</span> <span class="n">Ability_Mount_RidingHorse</span>
+</pre></div>
+</div>
+<p><strong>HINT</strong>: you can find mountBuff by printing all your buffs, running this
+command with yourself selected as target:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">pbuff</span>
+</pre></div>
 </div>
 </div>
 
@@ -74,25 +89,16 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="main.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Timer functions</a><ul>
-<li><a class="reference internal" href="#elapsed-time">Elapsed Time</a></li>
-<li><a class="reference internal" href="#reset-timer">Reset Timer</a></li>
-</ul>
-</li>
-</ul>
-
   <h4>Previous topic</h4>
-  <p class="topless"><a href="system_info.html"
-                        title="previous chapter">Getting system information</a></p>
+  <p class="topless"><a href="overpower.html"
+                        title="previous chapter">Overpower</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="save_target.html"
-                        title="next chapter">Target managment</a></p>
+  <p class="topless"><a href="macro_framework.html"
+                        title="next chapter">Macro framework</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/timer_functions.txt"
+      <li><a href="_sources/autodismount.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -117,10 +123,10 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="save_target.html" title="Target managment"
+          <a href="macro_framework.html" title="Macro framework"
              >next</a> |</li>
         <li class="right" >
-          <a href="system_info.html" title="Getting system information"
+          <a href="overpower.html" title="Overpower"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="main.html">Mike WoW Addon 1.0.4 documentation</a> &raquo;</li> 
       </ul>
