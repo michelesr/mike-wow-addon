@@ -741,7 +741,11 @@ function mPrintAutoDismountStatus()
     s = "OFF"
   end
   mPrint("Auto dismount script is " .. s)
-  mPrint("Mount is " .. MikePlayerConfig.mount)
+  if MikePlayerConfig.mount then
+    mPrint("Mount is " .. MikePlayerConfig.mount)
+  else
+    mPrint("Mount not setted")
+  end
 end
 
 -- set the mount buff name to use in dismount

@@ -46,7 +46,7 @@ local function mEventHandler()
         MikeConfig = { overpower = false, fishing = false, autodismount = false }
     end
     if not MikePlayerConfig then
-        MikePlayerConfig = { mount = "NULL" }
+        MikePlayerConfig = { mount = nil }
     end
     if not MikeData then
         MikeData = {
@@ -105,6 +105,9 @@ local function mEventHandler()
     if event == "UI_ERROR_MESSAGE" and string.find(arg1, MOUNT_MSG) then
       if MikePlayerConfig.mount then
         mCancelPlayerBuff(MikePlayerConfig.mount)
+      else
+        mPrint("Mike's Addon: auto dismount is enabled but mount isn't setted, " ..
+               'use "/mi ad mount <mountBuff>" to set the mount for this player', 1, 1, 0)
       end
     end
   end
