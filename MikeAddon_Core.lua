@@ -787,6 +787,29 @@ function mPrintFishingStatus()
   mPrint("Fishing script is " .. s)
 end
 
+-- enable tracker warning
+function mEnableTrackerWarning()
+  MikePlayerConfig.trackerWarning = true
+  mReloadUI()
+end
+
+-- disable tracker warning
+function mDisableTrackerWarning()
+  MikePlayerConfig.trackerWarning = false
+  mReloadUI()
+end
+
+-- print tracker warning script status on console
+function mPrintTrackerWarningStatus()
+  local s
+  if MikePlayerConfig.trackerWarning then
+    s = "ON"
+  else
+    s = "OFF"
+  end
+  mPrint("Tracker warning script is " .. s)
+end
+
 -- print unit stats
 function mPrintUnitStats(unit)
   if UnitName(unit) then
@@ -837,4 +860,13 @@ end
 function mFishReset()
     MikeData.fishing.points = 0
     MikeData.fishing.fishes = 0
+end
+
+-- print tracker warning
+function mTrackerWarning()
+  local msg = "Don't forget to enable your tracker!"
+  if not UnitIsDeadOrGhost("player") then
+    mEPrint(msg, 1, 1, 0)
+    mPrint(msg, 1, 1, 0)
+  end
 end

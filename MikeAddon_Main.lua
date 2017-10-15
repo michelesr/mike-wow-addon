@@ -195,6 +195,14 @@ function SlashCmdList.MIKE(msg, editbox)
     else
       mPrintFishingStatus()
     end
+  elseif m[1] == "tw" then
+    if m[2] == "on" then
+      mEnableTrackerWarning()
+    elseif m[2] == "off" then
+      mDisableTrackerWarning()
+    else
+      mPrintTrackerWarningStatus()
+    end
   elseif m[1] == "tstats" then
     mPrintUnitStats("target")
   else
@@ -245,6 +253,9 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("/mi fishing <on/off>: enable/disable fishing script and reload UI")
     mPrint("/mi fishing stats: show fishing stats")
     mPrint("/mi fishing reset: reset fishing stats")
+    mPrint("Tracker warning", 1, 1, 0)
+    mPrint("/mi tw: get tracker warning script status")
+    mPrint("/mi tw <on/off>: enable/disable tracker warning script and reload UI")
     mPrint("Macro framework", 1, 1, 0)
     mPrint("/mi tcast <spell>: target nearest enemy unit and cast a spell")
     mPrint("/mi ftcast <spell>: target nearest friendly unit and cast a spell")

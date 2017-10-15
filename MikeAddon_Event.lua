@@ -46,7 +46,7 @@ local function mEventHandler()
         MikeConfig = { overpower = false, fishing = false, autodismount = false }
     end
     if not MikePlayerConfig then
-        MikePlayerConfig = { mount = nil }
+        MikePlayerConfig = { mount = nil, trackerWarning = false }
     end
     if not MikeData then
         MikeData = {
@@ -74,6 +74,11 @@ local function mEventHandler()
     if MikeConfig.autodismount then
       frame:RegisterEvent("UI_ERROR_MESSAGE")
       mPrint("Mike's Addon: Auto dismount loaded", 1, 1, 0)
+    end
+    if MikePlayerConfig.trackerWarning then
+      frame:RegisterEvent("PLAYER_UNGHOST")
+      frame:RegisterEvent("PLAYER_ALIVE")
+      mPrint("Mike's Addon: tracker warning loaded", 1, 1, 0)
     end
   elseif event == "PLAYER_TARGET_CHANGED" then
     mTargetResetCastSequence()
@@ -109,6 +114,11 @@ local function mEventHandler()
         mPrint("Mike's Addon: auto dismount is enabled but mount isn't setted, " ..
                'use "/mi ad mount <mountBuff>" to set the mount for this player', 1, 1, 0)
       end
+    end
+  end
+  if MikePlayerConfig.trackerWarning then
+    if event == "PLAYER_ALIVE" or event == "PLAYER_UNGHOST" then
+      mTrackerWarning()
     end
   end
 end
