@@ -76,6 +76,8 @@ local function mEventHandler()
       mPrint("Mike's Addon: Auto dismount loaded", 1, 1, 0)
     end
     if MikePlayerConfig.trackerWarning then
+      local playerIsDead = UnitIsDeadOrGhost("player")
+      frame:RegisterEvent("PLAYER_DEAD")
       frame:RegisterEvent("PLAYER_UNGHOST")
       frame:RegisterEvent("PLAYER_ALIVE")
       mPrint("Mike's Addon: tracker warning loaded", 1, 1, 0)
@@ -117,7 +119,10 @@ local function mEventHandler()
     end
   end
   if MikePlayerConfig.trackerWarning then
-    if event == "PLAYER_ALIVE" or event == "PLAYER_UNGHOST" then
+    if event == "PLAYER_DEAD" then
+      playerIsDead = true
+    end
+    if playerIsDead and (event == "PLAYER_ALIVE" or event == "PLAYER_UNGHOST") then
       mTrackerWarning()
     end
   end
