@@ -1,33 +1,32 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Macro framework &mdash; Mike WoW Addon 1.0.4 documentation</title>
-    
+    <title>Macro framework &#8212; Mike WoW Addon 1.0.4 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '1.0.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Mike WoW Addon 1.0.4 documentation" href="main.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Premade macro commands" href="premade_macros.html" />
-    <link rel="prev" title="Auto Dismount" href="autodismount.html" /> 
+    <link rel="prev" title="Tracker warning" href="tracker_warning.html" /> 
   </head>
-  <body role="document">
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -38,9 +37,9 @@
           <a href="premade_macros.html" title="Premade macro commands"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="autodismount.html" title="Auto Dismount"
+          <a href="tracker_warning.html" title="Tracker warning"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="main.html">Mike WoW Addon 1.0.4 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="main.html">Mike WoW Addon 1.0.4 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -118,7 +117,7 @@
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">this should work also for druid forms and paladin auras, but i don&#8217;t tested that yet</p>
+<p class="last">this should work also for druid forms and paladin auras, but i don’t tested that yet</p>
 </div>
 </div>
 <div class="section" id="stance-random-switch">
@@ -127,7 +126,7 @@
 </pre></div>
 </div>
 <p>Switch to a random stance from list.</p>
-<p>If list is not provided, switch to a random stance from all the player&#8217;s one.</p>
+<p>If list is not provided, switch to a random stance from all the player’s one.</p>
 <p><strong>Example</strong></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">stancerandom</span>
 <span class="o">/</span><span class="n">mi</span> <span class="n">stancerandom</span> <span class="n">Cat</span> <span class="n">Form</span><span class="p">,</span> <span class="n">Bear</span> <span class="n">Form</span><span class="p">,</span> <span class="n">Travel</span> <span class="n">Form</span>
@@ -135,16 +134,16 @@
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">this should work also for druid forms and paladin auras, but i don&#8217;t tested that yet</p>
+<p class="last">this should work also for druid forms and paladin auras, but i don’t tested that yet</p>
 </div>
 </div>
 <div class="section" id="castsequence">
 <h2>Castsequence<a class="headerlink" href="#castsequence" title="Permalink to this headline">¶</a></h2>
-<p id="index-5">If you played latest version of WoW you sure have used at least one time /castsequence macro, but in vanilla there&#8217;s not castsequence, so...</p>
+<p id="index-5">If you played latest version of WoW you sure have used at least one time /castsequence macro, but in vanilla there’s not castsequence, so…</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">castsequence</span> <span class="p">[</span><span class="n">reset</span><span class="o">=&lt;</span><span class="n">sec</span><span class="o">&gt;/</span><span class="n">combat</span><span class="o">/</span><span class="n">target</span><span class="p">]</span> <span class="o">&lt;</span><span class="n">spell1</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">spell2</span><span class="o">&gt;</span><span class="p">[,</span> <span class="o">&lt;</span><span class="n">spell3</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">spellN</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>This will cast &lt;spell1&gt;, then &lt;spell2&gt;, then ..., then &lt;spellN&gt; then again &lt;spell1&gt;, etc.</p>
+<p>This will cast &lt;spell1&gt;, then &lt;spell2&gt;, then …, then &lt;spellN&gt; then again &lt;spell1&gt;, etc.</p>
 <ul class="simple">
 <li>reset=combat will reset when you enter or exit combat</li>
 <li>reset=target will reset when you change target</li>
@@ -192,8 +191,8 @@
 <span class="o">/</span><span class="n">mi</span> <span class="n">heal</span> <span class="mi">50</span> <span class="n">Holy</span> <span class="n">Light</span>
 </pre></div>
 </div>
-<p>The first will cast &#8220;Flash Heal&#8221; on nearest friendly player with less than 80% HP.</p>
-<p>The first will cast &#8220;Holy Light&#8221; on nearest friendly player with less than 50% HP.</p>
+<p>The first will cast “Flash Heal” on nearest friendly player with less than 80% HP.</p>
+<p>The first will cast “Holy Light” on nearest friendly player with less than 50% HP.</p>
 </div>
 <div class="section" id="cast-spell-based-on-hp">
 <h2>Cast spell based on HP<a class="headerlink" href="#cast-spell-based-on-hp" title="Permalink to this headline">¶</a></h2>
@@ -218,7 +217,7 @@
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">ccast</span> <span class="o">&lt;</span><span class="n">class1</span><span class="o">&gt;</span><span class="p">[</span> <span class="o">&lt;</span><span class="n">class2</span><span class="o">&gt;</span> <span class="o">...</span> <span class="o">&lt;</span><span class="n">classN</span><span class="o">&gt;</span><span class="p">],</span> <span class="o">&lt;</span><span class="n">spell</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>This will cast the selected &lt;spell&gt; only if target&#8217;s class match with classes provided.</p>
+<p>This will cast the selected &lt;spell&gt; only if target’s class match with classes provided.</p>
 <p><strong>Example</strong></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">ccast</span> <span class="n">Warrior</span> <span class="n">Rogue</span><span class="p">,</span> <span class="n">Blessing</span> <span class="n">of</span> <span class="n">Might</span>
 <span class="o">/</span><span class="n">mi</span> <span class="n">ccast</span> <span class="n">Mage</span> <span class="n">Warlock</span> <span class="n">Priest</span><span class="p">,</span> <span class="n">Blessing</span> <span class="n">of</span> <span class="n">Wisdom</span>
@@ -236,7 +235,7 @@
 <span class="o">/</span><span class="n">mi</span> <span class="n">pdebuff</span>
 </pre></div>
 </div>
-<p>These 2 functions will operate on your target (or you if you don&#8217;t have a target) and will print on chat the list of buff/debuff names. You can use that names to write the following macros.</p>
+<p>These 2 functions will operate on your target (or you if you don’t have a target) and will print on chat the list of buff/debuff names. You can use that names to write the following macros.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">mbuff</span> <span class="o">&lt;</span><span class="n">spell</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">buff_icon_name</span><span class="o">&gt;</span>
 </pre></div>
 </div>
@@ -249,7 +248,7 @@
 <div class="section" id="buff-debuff-based-cast">
 <h2>Buff/Debuff based cast<a class="headerlink" href="#buff-debuff-based-cast" title="Permalink to this headline">¶</a></h2>
 <p id="index-9">You can write macro to cast spell based of target status (buffed/unbuffed with a specified buff/debuff)</p>
-<p>See &#8220;Buff/Debuff spamming&#8221; for information about &lt;buff_icon_name&gt; and &lt;debuff_icon_name&gt;</p>
+<p>See “Buff/Debuff spamming” for information about &lt;buff_icon_name&gt; and &lt;debuff_icon_name&gt;</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">bcast</span> <span class="o">&lt;</span><span class="n">buff_icon_name</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">spell1</span><span class="o">&gt;</span><span class="p">[,</span> <span class="o">&lt;</span><span class="n">spell2</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -258,10 +257,10 @@
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">bcast</span> <span class="n">Fortitude</span><span class="p">,</span> <span class="n">Power</span> <span class="n">Word</span><span class="p">:</span> <span class="n">Fortitude</span><span class="p">,</span> <span class="n">Power</span> <span class="n">Word</span><span class="p">:</span> <span class="n">Shield</span>
 </pre></div>
 </div>
-<p>This will cast &#8220;Power Word: Fortitude&#8221; if target is unbuffed with a buff that contains &#8216;Fortitude&#8217; in its icon name, else &#8220;Power Word: Shield&#8221;</p>
+<p>This will cast “Power Word: Fortitude” if target is unbuffed with a buff that contains ‘Fortitude’ in its icon name, else “Power Word: Shield”</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">in this example, i used &#8216;Fortitude&#8217; as &lt;buff_icon_name&gt; instead of the entire icon name, you can do it if you want (this will also check for Prayer of Fortitude buffs) !</p>
+<p class="last">in this example, i used ‘Fortitude’ as &lt;buff_icon_name&gt; instead of the entire icon name, you can do it if you want (this will also check for Prayer of Fortitude buffs) !</p>
 </div>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">dcast</span> <span class="o">&lt;</span><span class="n">debuff_icon_name</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">spell1</span><span class="o">&gt;</span><span class="p">[,</span> <span class="o">&lt;</span><span class="n">spell2</span><span class="o">&gt;</span><span class="p">]</span>
 </pre></div>
@@ -271,7 +270,7 @@
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">dcast</span> <span class="n">Pain</span><span class="p">,</span> <span class="n">Shadow</span> <span class="n">Word</span><span class="p">:</span> <span class="n">Pain</span><span class="p">,</span> <span class="n">Mind</span> <span class="n">Blast</span>
 </pre></div>
 </div>
-<p>This will cast &#8220;Shadow Word: Pain&#8221; if target is not debuffed with a debuff with contains &#8216;Pain&#8217; in its icon name, else will cast &#8220;Mind Blast&#8221;</p>
+<p>This will cast “Shadow Word: Pain” if target is not debuffed with a debuff with contains ‘Pain’ in its icon name, else will cast “Mind Blast”</p>
 </div>
 <div class="section" id="buff-debuff-stacks-count-based-cast">
 <h2>Buff/Debuff stacks count based cast<a class="headerlink" href="#buff-debuff-stacks-count-based-cast" title="Permalink to this headline">¶</a></h2>
@@ -291,7 +290,7 @@
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">dccast</span> <span class="n">Spell_Shadow_BlackPlague</span><span class="p">,</span> <span class="o">&gt;=</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">Mind</span> <span class="n">Flay</span><span class="p">,</span> <span class="n">Mind</span> <span class="n">Flay</span><span class="p">(</span><span class="n">Rank</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The example above is useful if you want to use a lower rank of Mind Flay to apply stacks of &#8220;Shadow Vulnerability&#8221;.</p>
+<p>The example above is useful if you want to use a lower rank of Mind Flay to apply stacks of “Shadow Vulnerability”.</p>
 <p>Available <em>operators</em> are: <strong>&lt;</strong>, <strong>&gt;</strong>, <strong>!=</strong>, <strong>==</strong>, <strong>&lt;=</strong>, <strong>&gt;=</strong></p>
 </div>
 <div class="section" id="cast-spell-based-on-target-lvl">
@@ -304,7 +303,7 @@
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">lvlcast</span> <span class="mi">20</span> <span class="n">Smite</span>
 </pre></div>
 </div>
-<p>This will cast &#8220;Smite&#8221; only if target is lvl 20+</p>
+<p>This will cast “Smite” only if target is lvl 20+</p>
 <p><strong>HINT</strong>: you can chain this commands in a macro to cast different spells on target of different level range</p>
 <p><strong>Example</strong></p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">mi</span> <span class="n">lvlcast</span> <span class="mi">50</span> <span class="n">Power</span> <span class="n">Word</span><span class="p">:</span> <span class="n">Fortitude</span><span class="p">(</span><span class="n">Rank</span> <span class="mi">6</span><span class="p">)</span>
@@ -315,7 +314,7 @@
 <p>This will cast rank 6 if target is 50+, rank 5 if target is 38-49, rank 4 if target is 26-37, rank 3 else.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">launching this macro can cause &#8220;Another action is in progress&#8221; message, this is normal because if you cast the first spell (Rank 6) then you can&#8217;t cast Rank 5-4 due to cooldown.</p>
+<p class="last">launching this macro can cause “Another action is in progress” message, this is normal because if you cast the first spell (Rank 6) then you can’t cast Rank 5-4 due to cooldown.</p>
 </div>
 </div>
 <div class="section" id="cast-appropriate-rank-for-a-spell">
@@ -436,15 +435,15 @@
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="autodismount.html"
-                        title="previous chapter">Auto Dismount</a></p>
+  <p class="topless"><a href="tracker_warning.html"
+                        title="previous chapter">Tracker warning</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="premade_macros.html"
                         title="next chapter">Premade macro commands</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/macro_framework.txt"
+      <li><a href="_sources/macro_framework.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -472,14 +471,14 @@
           <a href="premade_macros.html" title="Premade macro commands"
              >next</a> |</li>
         <li class="right" >
-          <a href="autodismount.html" title="Auto Dismount"
+          <a href="tracker_warning.html" title="Tracker warning"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="main.html">Mike WoW Addon 1.0.4 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="main.html">Mike WoW Addon 1.0.4 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2014, MicheleSr.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.4.
+        &#169; Copyright 2014, MicheleSr.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.4.
     </div>
   </body>
 </html>
