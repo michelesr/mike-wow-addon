@@ -437,7 +437,9 @@ end
 
 -- hp check, return true if hp < perc
 function mCheckHp(perc)
-  return (UnitHealth("target")/UnitHealthMax("target")) < (perc/100.0)
+  if (UnitHealth("target")/UnitHealthMax("target")) < (perc/100.0) then
+    return true
+    end
 end
 
 -- cast a spell on nearest friendly player if his/her hp % is < than perc
