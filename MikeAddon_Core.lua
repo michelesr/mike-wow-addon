@@ -88,9 +88,14 @@ end
 
 -- print player's position (x,y)
 function mPrintPosition()
-  local x,y = GetPlayerMapPosition("player")
-  local z = GetZoneText()
-  mPrint(string.format("%s: %.2f, %.2f", z, x*100, y*100))
+  local map = C_Map.GetBestMapForUnit("player")
+  if map then
+    local position = C_Map.GetPlayerMapPosition(map, "player")
+    local z = GetZoneText()
+    mPrint(string.format("%s: %.2f, %.2f", z, position.x*100, position.y*100))
+  else
+    mPrint("Can't get position")
+  end
 end
 
 -- share objective of quest in party chat
@@ -128,7 +133,7 @@ end
 function mGetCastSequence(reset, combat, target, spells)
   local b = false
   local n = getn(spells)
-  for x in castSequences do
+  for x,y in pairs(castSequences) do
     local s = castSequences[x]
     if s["reset"] and s["reset"] == reset and getn(s["spells"]) == n and
        s["combat"] == combat and s["target"] == target then
@@ -165,7 +170,7 @@ function mParseResetArgs(args)
     args = mSplit(args, "=")[2]
   end
   args = mSplit(args, "/")
-  for x in args do
+  for x,y in pairs(args) do
     if args[x] == "combat" then
       combat = true
     elseif args[x] == "target" then
@@ -181,7 +186,7 @@ function mParseResetArgs(args)
 end
 
 function mTriggerResetCastSequence(trigger)
-  for x in castSequences do
+  for x,y in pairs(castSequences) do
     local s = castSequences[x]
     if s[trigger] then
       mCastSequenceReset(s)
@@ -393,12 +398,12 @@ end
 
 -- cast spell1 if mana is >= than minMana, else s2
 function mManaCast(minMana, s1, s2)
-  mConditionalCast(UnitMana("player") >= minMana, s1, s2)
+  mConditionalCast(UnitPower("player") >= minMana, s1, s2)
 end
 
 -- cast spell1 if mana% is >= percent, else s2
 function mManaPercentCast(percent, s1, s2)
-  mManaCast(UnitManaMax("player") * percent / 100.0, s1, s2);
+  mManaCast(UnitPowerMax("player") * percent / 100.0, s1, s2);
 end
 
 function mMassBD(isBuff, spellName, checkString)
@@ -543,7 +548,7 @@ function mPoorSellOrDestroy(destroy)
     printString = "Selling item: "
   end
   local items = mGetContainerItemsByName("ff9d9d9d", printString)
-  for x in items do
+  for x,y in pairs(items) do
     if destroy then
       PickupContainerItem(items[x][1], items[x][2])
       DeleteCursorItem()
@@ -578,7 +583,7 @@ end
 
 -- equips items on the appropriate slots
 function mEquipItems(items)
-  for i in items do
+  for i,j in pairs(items) do
     local x,y
     x,y = mGetContainerItemByName(items[i], "Equipping item: ")
     if x and y then
@@ -601,7 +606,7 @@ end
 -- return a list of indexes from a list of stance names
 function mGetStancesIndex(stances)
   local s = {}
-  for x in stances do
+  for x,y in pairs(stances) do
     s[x] = mGetStanceByName(stances[x])
   end
   return s
@@ -610,7 +615,7 @@ end
 -- stance switch
 function mStanceSwitch(stances)
   local s = mGetStancesIndex(stances)
-  for x in s do
+  for x,y in pairs(s) do
     local a,b,c,d = GetShapeshiftFormInfo(s[x])
     if c == 1 then
       CastShapeshiftForm(s[mod(x, getn(s)) + 1])
@@ -815,7 +820,7 @@ function mPrintUnitStats(unit)
   if UnitName(unit) then
     mPrint(UnitName(unit) .. " "  .. UnitLevel(unit) .. " " ..  UnitClass(unit))
     mPrint("HP: " .. UnitHealth(unit) .. "/" ..  UnitHealthMax(unit))
-    mPrint("MP: " .. UnitMana(unit) .. "/" .. UnitManaMax(unit))
+    mPrint("MP: " .. UnitPower(unit) .. "/" .. UnitPowerMax(unit))
   end
 end
 
@@ -826,29 +831,10 @@ function mFishStats()
   mPrint("Fishes per points: " .. tostring(MikeData.fishing.fishes / MikeData.fishing.points))
 end
 
--- start tracking loots for fishing
-function mStartFishing()
-  if debug then
-    mPrint("Fishing started")
-  end
-    fishing.active = true
-end
-
--- stop tracking loots for fishing
-function mStopFishing()
-  if debug then
-    mPrint("Fishing stopped")
-  end
-    fishing.active = false
-end
-
 -- launch when a fish is catched
 function mOnFishCatch()
-  if fishing.active then
     MikeData.fishing.fishes = MikeData.fishing.fishes + 1
     mFishStats()
-    mStopFishing()
-  end
 end
 
 -- launch when a fishing skill point is earned

@@ -72,7 +72,7 @@ end
 function mAToString(a, sep)
   sep = sep or ' '
   local s = ""
-  for x in a do
+  for x,y  in pairs(a) do
     s = s .. sep .. a[x]
   end
   return string.sub(s, 2, string.len(s))

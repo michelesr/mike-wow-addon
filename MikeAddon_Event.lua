@@ -31,11 +31,9 @@ local FISH_MSG = "Your skill in Fishing has increased to (.+)"
 local MOUNT_MSG = "ounted"
 
 frame:RegisterEvent("ADDON_LOADED")
-frame:RegisterEvent("PLAYER_TARGET_CHANGED")
-frame:RegisterEvent("PLAYER_REGEN_ENABLED")
-frame:RegisterEvent("PLAYER_REGEN_DISABLED")
 
-local function mEventHandler()
+local function mEventHandler(self, event, ...)
+  local arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10 = ...
   if debug then
     mPrint(event .. " " .. tostring(arg1) .. " " ..  tostring(arg2) ..  " " .. tostring(arg3) .. " " .. tostring(arg4) .. " " ..
            tostring(arg5) .. " " .. tostring(arg6) .. " " .. tostring(arg7) .. " " .. tostring(arg8) .. " " .. tostring(arg9) .. " " ..
@@ -65,10 +63,10 @@ local function mEventHandler()
     end
     if MikeConfig.fishing then
       frame:RegisterEvent("CHAT_MSG_SKILL")
-      frame:RegisterEvent("CHAT_MSG_LOOT")
       frame:RegisterEvent("COMBAT_TEXT_UPDATE")
       frame:RegisterEvent("UI_ERROR_MESSAGE")
       frame:RegisterEvent("UI_INFO_MESSAGE")
+      frame:RegisterEvent("LOOT_OPENED")
       mPrint("Mike's Addon: Fishing script loaded", 1, 1, 0)
     end
     if MikeConfig.autodismount then
@@ -82,10 +80,6 @@ local function mEventHandler()
       frame:RegisterEvent("PLAYER_ALIVE")
       mPrint("Mike's Addon: tracker warning loaded", 1, 1, 0)
     end
-  elseif event == "PLAYER_TARGET_CHANGED" then
-    mTargetResetCastSequence()
-  elseif event == "PLAYER_REGEN_ENABLED" or event == "PLAYER_REGEN_DISABLED" then
-    mCombatResetCastSequence()
   elseif (event == "CHAT_MSG_SPELL_SELF_DAMAGE"  and string.find(arg1, SPL_DOD) or
           event == "CHAT_MSG_COMBAT_SELF_MISSES" and string.find(arg1, ATK_DOD)) and
          UnitLevel("player") >= 12 then
@@ -94,15 +88,7 @@ local function mEventHandler()
     PlaySound("RaidWarning")
   end
   if MikeConfig.fishing then
-    if event == "COMBAT_TEXT_UPDATE" then
-      if arg1 == "SPELL_CAST" and arg2 == "Fishing" then
-        mStartFishing()
-      else
-        mStopFishing()
-      end
-    elseif event == "UI_ERROR_MESSAGE" or event == "UI_INFO_MESSAGE" then
-      mStopFishing()
-    elseif event == "CHAT_MSG_LOOT" then
+    if event == "LOOT_OPENED" and IsFishingLoot() then
       mOnFishCatch()
     elseif event == "CHAT_MSG_SKILL" and string.find(arg1, FISH_MSG) then
       mOnFishPointGain()
