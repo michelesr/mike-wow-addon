@@ -95,7 +95,7 @@ local function mEventHandler(self, event, ...)
     end
   end
   if MikeConfig.autodismount and UnitLevel("player") >= 40 then
-    if event == "UI_ERROR_MESSAGE" and string.find(arg1, MOUNT_MSG) then
+    if event == "UI_ERROR_MESSAGE" and string.find(arg2, MOUNT_MSG) then
       if MikePlayerConfig.mount then
         mCancelPlayerBuff(MikePlayerConfig.mount)
       else

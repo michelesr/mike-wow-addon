@@ -179,7 +179,7 @@ function SlashCmdList.MIKE(msg, editbox)
     elseif m[2] == "off" then
       mDisableAutoDismount()
     elseif m[2] == "mount" then
-      mSetPlayerMount(m[3])
+      mSetPlayerMount(mGetSubArgs(m, 3))
     else
       mPrintAutoDismountStatus()
     end

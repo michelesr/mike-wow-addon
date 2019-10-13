@@ -228,12 +228,12 @@ end
 
 -- search player buff
 function mSearchPlayerBuff(checkString)
-  local i=0
+  local i=1
   while true do
-    texture = GetPlayerBuffTexture(i)
-    if not texture then
+    buff = UnitBuff("player", i)
+    if not buff then
       return nil
-    elseif string.find(texture, checkString) then
+    elseif string.find(buff, checkString) then
       return i
     end
     i=i+1
@@ -243,7 +243,7 @@ end
 function mCancelPlayerBuff(checkString)
   local i = mSearchPlayerBuff(checkString)
   if i ~= nil then
-    CancelPlayerBuff(i)
+    CancelUnitBuff("player", i)
   end
 end
 
