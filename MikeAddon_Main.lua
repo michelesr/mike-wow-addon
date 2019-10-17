@@ -75,12 +75,6 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint(mGetSubArgs(m))
   elseif m[1] == "fortitude" then
     mMassBuff("Power Word: Fortitude", "Fort")
-  elseif m[1] == "castsequence" then
-   if string.find(m[2], "reset") or tonumber(m[2]) then
-     mCastSequence(m[2], mSplit(mGetSubArgs(m, 3), ", "))
-   else
-     mCastSequence("", mSplit(mGetSubArgs(m), ", "))
-   end
   elseif m[1] == "castrandom" then
     local spells = mSplit(mGetSubArgs(m), ", ")
     mCastRandom(spells)
@@ -258,7 +252,6 @@ function SlashCmdList.MIKE(msg, editbox)
     mPrint("Macro framework", 1, 1, 0)
     mPrint("/mi tcast <spell>: target nearest enemy unit and cast a spell")
     mPrint("/mi ftcast <spell>: target nearest friendly unit and cast a spell")
-    mPrint("/mi castsequence [reset=<sec>/combat/target] <s1>, <s2>[, <s3>, ..., <sN>]: cast spell in sequence")
     mPrint("/mi castrandom <s1>, <s2>[, <s3>, ..., <sN>]: cast a random spell from the list");
     mPrint("/mi stance <s1>, <s2>[, <s3>, ..., <sN>]: cast stance that follow active in the list (or first if last is active or there is no active)")
     mPrint("/mi stancerandom [<s1>, ..., <sN>]: switch to a random unactive stance from list o from all the players one if none is provided")

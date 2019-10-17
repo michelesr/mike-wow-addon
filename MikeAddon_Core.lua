@@ -25,7 +25,6 @@ License:
 local N=10
 local timer = GetTime()
 local savedTarget = nil
-local castSequences = {};
 local fishing = { active = false }
 local debug = false
 
@@ -35,11 +34,6 @@ function mReloadUI()
 end
 
 -- switch windowed/fullscreen mode
-function mWindowSwitch()
-  SetCVar("gxWindow", mod(GetCVar("gxWindow") + 1, 2))
-  RestartGx()
-end
-
 function mWindowMaximizeSwitch()
   SetCVar("gxMaximize", mod(GetCVar("gxMaximize") + 1, 2))
   RestartGx()
@@ -126,104 +120,6 @@ end
 -- share selected quest
 function mShareSelectedQuestObjectives()
   mShareQuestObjective(GetQuestLogSelection())
-end
-
-
--- return reference to cast sequence matching reset time and spells, initializing if not present
-function mGetCastSequence(reset, combat, target, spells)
-  local b = false
-  local n = getn(spells)
-  for x,y in pairs(castSequences) do
-    local s = castSequences[x]
-    if s["reset"] and s["reset"] == reset and getn(s["spells"]) == n and
-       s["combat"] == combat and s["target"] == target then
-      local i = 1
-      while i <= n and s["spells"][i] == spells[i] do i=i+1 end
-      if i > n then
-        return s
-      end
-    end
-  end
-  return mInitializeCastSequence(reset, combat, target, spells)
-end
-
--- initialize new cast sequence with given reset time and spells and return reference
-function mInitializeCastSequence(reset, combat, target, spells)
-  local n = getn(castSequences)
-  castSequences[n+1] = {}
-  local s = castSequences[n+1]
-  s["combat"] = combat
-  s["target"] = target
-  s["spells"] = spells
-  s["reset"] = reset
-  s["index"] = 1
-  s["start"] = GetTime()
-  return s
-end
-
--- parse arguments for cast sequence
-function mParseResetArgs(args)
-  local rtime
-  local combat = false
-  local target = false
-  if string.find(args, "reset") then
-    args = mSplit(args, "=")[2]
-  end
-  args = mSplit(args, "/")
-  for x,y in pairs(args) do
-    if args[x] == "combat" then
-      combat = true
-    elseif args[x] == "target" then
-      target = true
-    elseif not rtime and tonumber(args[x]) then
-      rtime = tonumber(args[x])
-    end
-  end
-  if not rtime then
-    rtime = 0
-  end
-  return rtime, combat, target
-end
-
-function mTriggerResetCastSequence(trigger)
-  for x,y in pairs(castSequences) do
-    local s = castSequences[x]
-    if s[trigger] then
-      mCastSequenceReset(s)
-    end
-  end
-
-end
-
--- reset cast sequence to call on target change
-function mTargetResetCastSequence()
-  mTriggerResetCastSequence("target")
-end
-
-
--- reset cast sequence to call on combat enter/leave
-function mCombatResetCastSequence()
-  mTriggerResetCastSequence("combat")
-end
-
--- reset cast sequence
-function mCastSequenceReset(s)
-  s["start"] = GetTime()
-  s["index"] = 1
-end
-
--- cast spell in sequence
-function mCastSequence(args, spells)
-  local reset, combat, target = mParseResetArgs(args)
-  --mPrint(tostring(reset) .. " " .. tostring(combat) .. " " .. tostring(target))
-  local s = mGetCastSequence(reset, combat, target, spells)
-  -- reset if time expired or index out of range
-  if s["reset"] > 0 and (GetTime() - s["start"]) > s["reset"] or s["index"] > getn(s["spells"]) then
-    mCastSequenceReset(s)
-  end
-  -- cast and increment
-  CastSpellByName(s["spells"][s["index"]])
-  s["index"] = s["index"] + 1
 end
 
 -- cast a random spell from the list
