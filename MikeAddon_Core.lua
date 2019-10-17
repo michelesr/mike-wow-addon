@@ -226,27 +226,6 @@ function mCastSequence(args, spells)
   s["index"] = s["index"] + 1
 end
 
--- search player buff
-function mSearchPlayerBuff(checkString)
-  local i=1
-  while true do
-    buff = UnitBuff("player", i)
-    if not buff then
-      return nil
-    elseif string.find(buff, checkString) then
-      return i
-    end
-    i=i+1
-  end
-end
-
-function mCancelPlayerBuff(checkString)
-  local i = mSearchPlayerBuff(checkString)
-  if i ~= nil then
-    CancelUnitBuff("player", i)
-  end
-end
-
 -- cast a random spell from the list
 function mCastRandom(spells)
   local n = getn(spells)
@@ -746,16 +725,6 @@ function mPrintAutoDismountStatus()
     s = "OFF"
   end
   mPrint("Auto dismount script is " .. s)
-  if MikePlayerConfig.mount then
-    mPrint("Mount is " .. MikePlayerConfig.mount)
-  else
-    mPrint("Mount not setted")
-  end
-end
-
--- set the mount buff name to use in dismount
-function mSetPlayerMount(mount)
-  MikePlayerConfig.mount = mount
 end
 
 -- print overpower script status on console

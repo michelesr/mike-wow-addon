@@ -95,13 +95,9 @@ local function mEventHandler(self, event, ...)
     end
   end
   if MikeConfig.autodismount and UnitLevel("player") >= 40 then
-    if event == "UI_ERROR_MESSAGE" and string.find(arg2, MOUNT_MSG) and not UnitAffectingCombat("player") then
-      if MikePlayerConfig.mount then
-        mCancelPlayerBuff(MikePlayerConfig.mount)
-      else
-        mPrint("Mike's Addon: auto dismount is enabled but mount isn't setted, " ..
-               'use "/mi ad mount <mountBuff>" to set the mount for this player', 1, 1, 0)
-      end
+    if event == "UI_ERROR_MESSAGE" and string.find(arg2, MOUNT_MSG) then
+        Dismount()
+        UIErrorsFrame:Clear()
     end
   end
   if MikePlayerConfig.trackerWarning then
